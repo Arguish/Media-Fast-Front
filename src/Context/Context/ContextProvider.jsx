@@ -1,10 +1,10 @@
 import { GlobalContext } from "./Context";
 
 function ContextProvider({ children }) {
-  const meaning = 42;
+  const appName = "Media-Fast";
   return (
     <>
-      <GlobalContext.Provider value={{ meaning }}>
+      <GlobalContext.Provider value={{ appName }}>
         {children}
       </GlobalContext.Provider>
     </>

@@ -10,7 +10,6 @@ function App() {
         <BrowserRouter>
           <Public> </Public>
         </BrowserRouter>
-        <h1>World</h1>
       </ContextProvider>
     </>
   );

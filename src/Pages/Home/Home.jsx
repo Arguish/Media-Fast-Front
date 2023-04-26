@@ -1,10 +1,10 @@
 import Hello from "../../Components/Hello/Hello";
 
-function Home() {
+function Home({ temporal }) {
   return (
     <>
       <Hello></Hello>
-      <div>Home</div>
+      <h2>Ruta de : "{temporal}"</h2>
     </>
   );
 }

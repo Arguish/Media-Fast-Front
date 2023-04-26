@@ -5,7 +5,12 @@ function Public() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/"
+          loader={() => console.log("/")}
+          element={<Home temporal="/"></Home>}
+          errorElement={<Home temporal="ERROR"></Home>}
+        ></Route>
       </Routes>
     </>
   );

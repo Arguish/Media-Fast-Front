@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { GlobalContext } from "../../Context/Context/Context";
 
 function Hello() {
-  const { meaning } = useContext(GlobalContext);
+  const { appName } = useContext(GlobalContext);
 
   return (
     <div>
       {" "}
-      <span>{meaning}</span> Hello
+      <span>{appName}</span>
     </div>
   );
 }
