@@ -1,10 +1,17 @@
 import Hello from "../../Components/Hello/Hello";
+import GoTo from "../../Components/GoTo/GoTo";
 
-function Home() {
+function Home({ temporal, array }) {
   return (
     <>
       <Hello></Hello>
-      <div>Home</div>
+      <h2>Ruta de : "{temporal}"</h2>
+      <hr />
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {array.map((a) => {
+          return <GoTo text={a} path={a}></GoTo>;
+        })}
+      </div>
     </>
   );
 }
