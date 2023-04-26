@@ -2,7 +2,17 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../../Pages/Home/Home";
 
 function Public() {
-  const rutasTemporales = ["/", "/Loggin", "/CreateAccount", "/me"];
+  const rutasTemporales = [
+    "/",
+    "/Auth",
+    "/Auth/register",
+    "/Auth/loggin",
+    "/sugestions",
+    "/sugestions/show",
+    "/sugestions/movie",
+    "/me",
+    "/ByeMF",
+  ];
   return (
     <>
       <Routes>
@@ -16,6 +26,11 @@ function Public() {
             ></Route>
           );
         })}
+        <Route
+          path={"/*"}
+          loader={() => console.log(404)}
+          element={<Home temporal={"ERROR: 404"} array={[]}></Home>}
+        ></Route>
       </Routes>
     </>
   );
