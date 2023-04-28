@@ -8,11 +8,27 @@ import {
   Divider,
   Button,
   CardActions,
+  IconButton,
+  InputAdornment
 } from '@mui/material'
 
+
+
 import { register, login } from '../../Services/authService'
+import { Visibility } from '@mui/icons-material';
+import { VisibilityOff } from '@mui/icons-material';
+
 
 const RegisterCard = () => {
+
+   const [showPassword, setShowPassword] =useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const handleRegister = async () => {
     const body = {
       email: email,
@@ -76,9 +92,26 @@ const RegisterCard = () => {
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
             variant="outlined"
+            type={showPassword ? "text" : "password"}
             fullWidth={true}
             sx={{ marginBottom: '20px' }}
-          />
+            
+            InputProps={{ 
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment> 
+          )
+            }}
+            >
+          </TextField>
+
           <TextField
             InputLabelProps={{
               shrink: true,

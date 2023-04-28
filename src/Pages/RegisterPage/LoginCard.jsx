@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './LoginCard.css'
 import {
   Card,
   CardHeader,
@@ -9,11 +8,25 @@ import {
   Divider,
   Button,
   CardActions,
+  IconButton,
+  InputAdornment
 } from '@mui/material'
+
+
+import { Visibility } from '@mui/icons-material';
+import { VisibilityOff } from '@mui/icons-material';
 
 import { login } from '../../Services/authService'
 
 function LoginCard() {
+
+   const [showPassword, setShowPassword] =useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
  const handleLogin = async () => {
     const body = { email, password}
@@ -66,22 +79,32 @@ function LoginCard() {
               color: 'white',
             }}
           />
-          <TextField
+           <TextField
             InputLabelProps={{
               shrink: true,
-              className: 'inputLabel',
             }}
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
             variant="outlined"
-            color="warning"
+            type={showPassword ? "text" : "password"}
             fullWidth={true}
-            sx={{
-              marginBottom: '20px',
-              bgcolor: '#393939',
-              color: 'white',
+            sx={{ marginBottom: '20px' }}
+            
+            InputProps={{ 
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment> 
+          )
             }}
-          />
+            >
+          </TextField>
         </CardContent>
         <Divider />
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
