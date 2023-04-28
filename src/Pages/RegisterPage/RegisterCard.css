@@ -1,0 +1,9 @@
+.validPass {
+  color: green;
+  background-color: white;
+}
+
+.invalidPass {
+  color: red;
+  background-color: blue;
+}

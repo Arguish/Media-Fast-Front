@@ -9,25 +9,30 @@ import {
   Button,
   CardActions,
   IconButton,
-  InputAdornment
+  InputAdornment,
 } from '@mui/material'
-
-
+import './RegisterCard.css'
 
 import { register, login } from '../../Services/authService'
-import { Visibility } from '@mui/icons-material';
-import { VisibilityOff } from '@mui/icons-material';
-
+import { Visibility } from '@mui/icons-material'
+import { VisibilityOff } from '@mui/icons-material'
+import { ClassNames } from '@emotion/react'
 
 const RegisterCard = () => {
+  const [showPassword, setShowPassword] = useState(false)
 
-   const [showPassword, setShowPassword] =useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show)
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault()
+  }
 
-    const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const checkPassword = (e) => {
+    setPassword(e.target.value)
+    const regex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$')
+    console.log(regex.test(password))
+    return regex.test(password)
+  }
 
   const handleRegister = async () => {
     const body = {
@@ -60,17 +65,17 @@ const RegisterCard = () => {
       <Card
         sx={{
           maxWidth: '95vw',
-          height: '50vh',
+          height: 'auto',
           position: 'absolute',
           top: '40%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: 400,
-          bgcolor: 'background.paper',
+          bgcolor: '#000000',
           border: '2px solid #000',
           boxShadow: 24,
           p: 4,
-          color: 'black',
+          color: '#ee9e09',
         }}
       >
         <CardHeader title="Register" />
@@ -89,28 +94,26 @@ const RegisterCard = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={checkPassword}
             label="Password"
             variant="outlined"
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             fullWidth={true}
             sx={{ marginBottom: '20px' }}
-            
-            InputProps={{ 
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment> 
-          )
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
-            >
-          </TextField>
+          ></TextField>
 
           <TextField
             InputLabelProps={{

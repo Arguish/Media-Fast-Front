@@ -12,7 +12,6 @@ const login = async (body) => {
     localStorage.setItem('token', data.token)
     return 200
   } catch (error) {
-    console.log('AQUIIII')
     return error.message
     
   }

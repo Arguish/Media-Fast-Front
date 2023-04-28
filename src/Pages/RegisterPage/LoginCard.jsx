@@ -9,35 +9,32 @@ import {
   Button,
   CardActions,
   IconButton,
-  InputAdornment
+  InputAdornment,
 } from '@mui/material'
 
-
-import { Visibility } from '@mui/icons-material';
-import { VisibilityOff } from '@mui/icons-material';
+import { Visibility } from '@mui/icons-material'
+import { VisibilityOff } from '@mui/icons-material'
 
 import { login } from '../../Services/authService'
 
 function LoginCard() {
+  const [showPassword, setShowPassword] = useState(false)
 
-   const [showPassword, setShowPassword] =useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show)
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault()
+  }
 
-    const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
- const handleLogin = async () => {
-    const body = { email, password}
+  const handleLogin = async () => {
+    const body = { email, password }
     const result = await login(body)
-     if (result === 200) {
+    if (result === 200) {
       navigate('/')
     } else {
       console.log(result)
     }
   }
-
 
   const navigate = useNavigate()
 
@@ -49,7 +46,7 @@ function LoginCard() {
       <Card
         sx={{
           maxWidth: '95vw',
-          height: '25vh',
+          height: 'auto',
           position: 'absolute',
           top: '40%',
           left: '50%',
@@ -79,32 +76,30 @@ function LoginCard() {
               color: 'white',
             }}
           />
-           <TextField
+          <TextField
             InputLabelProps={{
               shrink: true,
             }}
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
             variant="outlined"
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             fullWidth={true}
             sx={{ marginBottom: '20px' }}
-            
-            InputProps={{ 
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment> 
-          )
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
-            >
-          </TextField>
+          ></TextField>
         </CardContent>
         <Divider />
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -112,10 +107,7 @@ function LoginCard() {
             sx={{
               color: '#ee9e09',
             }}
-
-
-             onClick={handleLogin}
-
+            onClick={handleLogin}
           >
             Login
           </Button>
