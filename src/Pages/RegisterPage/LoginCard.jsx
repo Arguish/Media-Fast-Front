@@ -11,7 +11,21 @@ import {
   CardActions,
 } from '@mui/material'
 
+import { login } from '../../Services/authService'
+
 function LoginCard() {
+
+ const handleLogin = async () => {
+    const body = { email, password}
+    const result = await login(body)
+     if (result === 200) {
+      navigate('/')
+    } else {
+      console.log(result)
+    }
+  }
+
+
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -75,6 +89,10 @@ function LoginCard() {
             sx={{
               color: '#ee9e09',
             }}
+
+
+             onClick={handleLogin}
+
           >
             Login
           </Button>
