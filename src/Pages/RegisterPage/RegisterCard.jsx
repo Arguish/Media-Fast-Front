@@ -10,13 +10,26 @@ import {
   CardActions,
 } from '@mui/material'
 
-import { register } from '../../Services/authService'
+import { register, login } from '../../Services/authService'
 
-const LoginCard = () => {
+const RegisterCard = () => {
   const handleRegister = async () => {
-    const body = { email, password, nickname, birthday }
+    const body = {
+      email: email,
+      password: password,
+      nickname: nickname,
+      date_of_birth: birthday,
+    }
     const result = await register(body)
-    console.log(result)
+    if (result.status === 200) {
+      const loginInfo = { email: email, password: password }
+      const result = await login(loginInfo)
+      if (result === 200) {
+        navigate('/')
+      } else {
+        console.log(result)
+      }
+    }
   }
 
   const navigate = useNavigate()
@@ -99,4 +112,4 @@ const LoginCard = () => {
   )
 }
 
-export default LoginCard
+export default RegisterCard
