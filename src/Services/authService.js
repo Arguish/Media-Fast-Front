@@ -1,7 +1,7 @@
 import api from "./config";
 
 const register = async (body) => {
-  const { data } = await api.post('/auth/register', body)
+  const data = await api.post('/auth/register', body)
   return data
 }
 

@@ -17,16 +17,6 @@ function LoginCard() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // const onLogin = async () => {
-  //   const form = { email, password }
-  //   const result = await login(form)
-  //   if (result === 200) {
-  //     navigate('/home')
-  //   } else {
-  //     console.log(result)
-  //   }
-  // }
-
   return (
     <>
       <Card
@@ -85,7 +75,6 @@ function LoginCard() {
             sx={{
               color: '#ee9e09',
             }}
-            // onClick={onLogin}
           >
             Login
           </Button>
