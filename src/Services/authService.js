@@ -2,7 +2,7 @@ import api from "./config";
 
 const register = async (body) => {
   const { data } = await api.post('/auth/register', body)
-  console.log(data, 'register')
+  return data
 }
 
 const login = async (body) => {

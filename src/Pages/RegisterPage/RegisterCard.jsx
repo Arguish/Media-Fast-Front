@@ -9,9 +9,16 @@ import {
   Button,
   CardActions,
 } from '@mui/material'
-import { Height } from '@mui/icons-material'
 
-function LoginCard() {
+import { register } from '../../Services/authService'
+
+const LoginCard = () => {
+  const handleRegister = async () => {
+    const body = { email, password, nickname, birthday }
+    const result = await register(body)
+    console.log(result)
+  }
+
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -83,11 +90,8 @@ function LoginCard() {
         </CardContent>
         <Divider />
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button
-            // onClick={onLogin}
-            color="success"
-          >
-            Login
+          <Button onClick={handleRegister} color="primary">
+            Register
           </Button>
         </CardActions>
       </Card>

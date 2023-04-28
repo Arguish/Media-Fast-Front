@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import './LoginCard.css'
 import {
   Card,
   CardHeader,
@@ -50,6 +50,7 @@ function LoginCard() {
           <TextField
             InputLabelProps={{
               shrink: true,
+              className: 'inputLabel',
             }}
             onChange={(e) => setEmail(e.target.value)}
             label="Email"
@@ -58,18 +59,24 @@ function LoginCard() {
             sx={{
               marginBottom: '20px',
               bgcolor: '#393939',
-              border: '1px solid #ee9e09',
               color: 'white',
             }}
           />
           <TextField
             InputLabelProps={{
               shrink: true,
+              className: 'inputLabel',
             }}
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
             variant="outlined"
+            color="warning"
             fullWidth={true}
+            sx={{
+              marginBottom: '20px',
+              bgcolor: '#393939',
+              color: 'white',
+            }}
           />
         </CardContent>
         <Divider />
