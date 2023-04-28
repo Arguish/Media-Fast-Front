@@ -14,14 +14,23 @@ import FormGroup from '@mui/material/FormGroup'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TopBar = () => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
 
+
+  const isLogged = () => {
+   return(localStorage.getItem('token') === null) ? false : true
+  }
+  
+
   // const handleChange = (event) => {
   //   setAuth(event.target.checked)
   // }
+
+   const navigate = useNavigate()
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
@@ -32,7 +41,8 @@ const TopBar = () => {
   }
 
   const handleLogOut = () => {
-    console.log('here')
+    localStorage.removeItem('token')
+    navigate('/')
   }
 
   return (
@@ -65,9 +75,9 @@ const TopBar = () => {
           >
             MEDIAFAST
           </Typography>
-          {
+           {isLogged() &&
             <div>
-              <IconButton
+             <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -98,7 +108,7 @@ const TopBar = () => {
               >
                 <MenuItem onClick={handleClose}>Me</MenuItem>
                 <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-              </Menu>
+              </Menu> 
             </div>
           }
         </Toolbar>
