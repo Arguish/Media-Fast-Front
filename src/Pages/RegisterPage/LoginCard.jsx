@@ -11,6 +11,7 @@ import {
   IconButton,
   InputAdornment,
 } from '@mui/material'
+import './LoginCard.css'
 
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
@@ -56,7 +57,7 @@ function LoginCard() {
           border: '2px solid #000',
           boxShadow: 24,
           p: 4,
-          color: '#ee9e09',
+          color: 'primary.main',
         }}
       >
         <CardHeader title="Login" />
@@ -64,7 +65,6 @@ function LoginCard() {
           <TextField
             InputLabelProps={{
               shrink: true,
-              className: 'inputLabel',
             }}
             onChange={(e) => setEmail(e.target.value)}
             label="Email"
@@ -72,9 +72,11 @@ function LoginCard() {
             fullWidth={true}
             sx={{
               marginBottom: '20px',
-              bgcolor: '#393939',
-              color: 'white',
-            }}
+              input: {
+              // color: (themeOptions) => themeOptions.palette.primary.main   //that works to change text color.
+
+              }
+            }}        
           />
           <TextField
             InputLabelProps={{

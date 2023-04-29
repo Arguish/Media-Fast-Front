@@ -16,22 +16,26 @@ import './RegisterCard.css'
 import { register, login } from '../../Services/authService'
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
-import { ClassNames } from '@emotion/react'
 
 const RegisterCard = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const [validPassword, setValidPassword] = useState(false)
+  const [validEmail, setValidEmail] = useState(false)
 
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
-
+  const checkEmail = (e) => {
+    setEmail(e.target.value)
+    const regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
+    setValidEmail(regex.test(email))
+  }
   const checkPassword = (e) => {
     setPassword(e.target.value)
     const regex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$')
-    console.log(regex.test(password))
-    return regex.test(password)
+    setValidPassword(regex.test(password))
   }
 
   const handleRegister = async () => {
@@ -84,11 +88,16 @@ const RegisterCard = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={checkEmail}
             label="Email"
             variant="outlined"
             fullWidth={true}
-            sx={{ marginBottom: '20px' }}
+            sx={{ marginBottom: '20px',
+            input: {
+              color: (themeOptions) => 
+                validEmail ? themeOptions.palette.primary.main : themeOptions.palette.secondary.main
+              
+            }  }}
           />
           <TextField
             InputLabelProps={{
@@ -99,7 +108,13 @@ const RegisterCard = () => {
             variant="outlined"
             type={showPassword ? 'text' : 'password'}
             fullWidth={true}
-            sx={{ marginBottom: '20px' }}
+            sx={{ marginBottom: '20px',
+            input: {
+              color: (themeOptions) => 
+                validPassword ? themeOptions.palette.primary.main : themeOptions.palette.secondary.main
+              
+            }   
+          }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
