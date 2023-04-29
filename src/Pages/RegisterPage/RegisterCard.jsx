@@ -29,13 +29,15 @@ const RegisterCard = () => {
   }
   const checkEmail = (e) => {
     setEmail(e.target.value)
-    const regex = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
+    const regex = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
     setValidEmail(regex.test(email))
   }
   const checkPassword = (e) => {
     setPassword(e.target.value)
     const regex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$')
-    setValidPassword(regex.test(password))
+    if (password.length > 0) {
+      setValidPassword(regex.test(password))
+    }
   }
 
   const handleRegister = async () => {
@@ -92,12 +94,21 @@ const RegisterCard = () => {
             label="Email"
             variant="outlined"
             fullWidth={true}
-            sx={{ marginBottom: '20px',
-            input: {
-              color: (themeOptions) => 
-                validEmail ? themeOptions.palette.primary.main : themeOptions.palette.secondary.main
-              
-            }  }}
+            color={!validEmail && email.length !== 0 ? 'secondary' : 'primary'}
+            helperText={
+              !validEmail && email.length !== 0
+                ? 'Please enter a valid email. '
+                : null
+            }
+            sx={{
+              marginBottom: '20px',
+              input: {
+                color: (themeOptions) =>
+                  !validEmail && email.length !== 0
+                    ? themeOptions.palette.secondary.main
+                    : themeOptions.palette.primary.main,
+              },
+            }}
           />
           <TextField
             InputLabelProps={{
@@ -108,13 +119,23 @@ const RegisterCard = () => {
             variant="outlined"
             type={showPassword ? 'text' : 'password'}
             fullWidth={true}
-            sx={{ marginBottom: '20px',
-            input: {
-              color: (themeOptions) => 
-                validPassword ? themeOptions.palette.primary.main : themeOptions.palette.secondary.main
-              
-            }   
-          }}
+            color={
+              !validPassword && password.length !== 0 ? 'secondary' : 'primary'
+            }
+            helperText={
+              !validPassword && password.length !== 0
+                ? '8 or more characters, cap, lower and number. '
+                : null
+            } //text to test, change it later.
+            sx={{
+              marginBottom: '20px',
+              input: {
+                color: (themeOptions) =>
+                  !validPassword && password.length !== 0
+                    ? themeOptions.palette.secondary.main
+                    : themeOptions.palette.primary.main,
+              },
+            }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
