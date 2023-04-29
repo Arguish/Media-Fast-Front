@@ -30,13 +30,13 @@ const RegisterCard = () => {
   const checkEmail = (e) => {
     setEmail(e.target.value)
     const regex = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    setValidEmail(regex.test(email))
+    setValidEmail(regex.test(e.target.value))
   }
   const checkPassword = (e) => {
     setPassword(e.target.value)
     const regex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$')
     if (password.length > 0) {
-      setValidPassword(regex.test(password))
+      setValidPassword(regex.test(e.target.value))
     }
   }
 
