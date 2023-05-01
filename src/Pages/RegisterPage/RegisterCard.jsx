@@ -59,6 +59,22 @@ const RegisterCard = () => {
     }
   }
 
+  const setMaxDate = () => {
+    const today = new Date()
+    let month = today.getMonth()+1
+    const year = today.getFullYear()
+    let day = today.getDay()
+    day < 10 ? day = '0'+day : day
+    month < 10 ? month = '0'+month : month
+    console.log(`${year}-${day}-${month}`)
+    return `${year}-${month}-${day}`
+  }
+
+  const setMinDate = () => {
+    const today = setMaxDate()
+    return today.slice(0,4)-80+today.slice(4)
+  }
+
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -168,9 +184,12 @@ const RegisterCard = () => {
             type="date"
             onChange={(e) => setBirthday(e.target.value)}
             label="Birthday"
+            inputProps={{ min: setMinDate(), max: setMaxDate() }}
             variant="outlined"
             fullWidth={true}
-            sx={{ marginBottom: '20px' }}
+            defaultValue={"1997-04-27"}
+            sx={{ marginBottom: '20px'
+           }}
           />
         </CardContent>
         <Divider />
