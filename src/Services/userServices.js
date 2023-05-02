@@ -15,7 +15,14 @@ const getUserMe = async (id) => {
   return data;
 };
 
-const getUserMeMedia = async (id) => {
+
+const getUserCategories = async (id) => {
+  const { data } = await api.get(`/user/me/categories`);
+  return data;
+};
+
+
+ const getUserMeMedia = async (id) => {
   const { data } = await api.get(`/user/me/user_media`);
   return data;
 };
@@ -67,4 +74,5 @@ export {
   postUserMedia,
   deleteUser,
   deleteUserME,
+  getUserCategories
 };

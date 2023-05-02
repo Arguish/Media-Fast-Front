@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://mf-api.onrender.com/api',
+
+  baseURL: 'https://mf-api.onrender.com/api', 
   headers: {
-    token: localStorage.getItem('token')
+    token : localStorage.getItem('token')
   }
 })
 
