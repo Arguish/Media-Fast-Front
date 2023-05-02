@@ -5,6 +5,7 @@ import AuthPage from '../../Pages/Auth_Page/Auth_Page'
 import App from '../../App'
 import UserPage from '../../Pages/UserPage/UserPage'
 import CategorySuggestionsPage from '../../Pages/CategorySuggestionsPage/CategorySuggestionsPage'
+import Media_page from '../../Pages/Media_page/Media_page'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,10 +32,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/user/me',
-        element: <UserPage />
-      }
+        element: <UserPage />,
+      },
+      {
         path: '/preferences',
-        element: <CategorySuggestionsPage/>
+        element: <CategorySuggestionsPage />,
+      },
+      {
+        path: '/Media',
+        element: <Media_page />,
       },
     ],
   },
