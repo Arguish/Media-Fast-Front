@@ -16,13 +16,13 @@ const getUserMe = async (id) => {
 };
 
 
-const getUserCategories = async (id) => {
-  const { data } = await api.get(`/user/me/categories`);
+const getUserCategories = async (body) => {
+  const { data } = await api.post(`/user/me/categories`, body);
   return data;
 };
 
 
- const getUserMeMedia = async (id) => {
+const getUserMeMedia = async (id) => {
   const { data } = await api.get(`/user/me/user_media`);
   return data;
 };
