@@ -30,13 +30,13 @@ const RegisterCard = () => {
   const checkEmail = (e) => {
     setEmail(e.target.value)
     const regex = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    setValidEmail(regex.test(email))
+    setValidEmail(regex.test(e.target.value))
   }
   const checkPassword = (e) => {
     setPassword(e.target.value)
     const regex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$')
     if (password.length > 0) {
-      setValidPassword(regex.test(password))
+      setValidPassword(regex.test(e.target.value))
     }
   }
 
@@ -57,6 +57,21 @@ const RegisterCard = () => {
         console.log(result)
       }
     }
+  }
+
+  const setMaxDate = () => {
+    const today = new Date()
+    let month = today.getMonth()+1
+    const year = today.getFullYear()
+    let day = today.getDay()
+    day < 10 ? day = '0'+day : day
+    month < 10 ? month = '0'+month : month
+    return `${year}-${month}-${day}`
+  }
+
+  const setMinDate = () => {
+    const today = setMaxDate()
+    return today.slice(0,4)-80+today.slice(4)
   }
 
   const navigate = useNavigate()
@@ -168,9 +183,12 @@ const RegisterCard = () => {
             type="date"
             onChange={(e) => setBirthday(e.target.value)}
             label="Birthday"
+            inputProps={{ min: setMinDate(), max: setMaxDate() }}
             variant="outlined"
             fullWidth={true}
-            sx={{ marginBottom: '20px' }}
+            defaultValue={"1997-04-27"}
+            sx={{ marginBottom: '20px'
+           }}
           />
         </CardContent>
         <Divider />

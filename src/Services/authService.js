@@ -9,7 +9,9 @@ const login = async (body) => {
   try {
     console.log('connecting...')
     const { data } = await api.post('/auth/login', body)
+    localStorage.setItem('userInfo', data)
     localStorage.setItem('token', data.token)
+    localStorage.setItem('email', body.email)
     return 200
   } catch (error) {
     return error.message

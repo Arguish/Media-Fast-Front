@@ -45,6 +45,10 @@ const TopBar = () => {
     navigate('/')
   }
 
+  const handleMe = () => {
+    navigate('/user/me')
+  }
+
   return (
     <Box
       sx={{
@@ -106,7 +110,7 @@ const TopBar = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Me</MenuItem>
+                <MenuItem onClick={handleMe}>Me</MenuItem>
                 <MenuItem onClick={handleLogOut}>Logout</MenuItem>
               </Menu> 
             </div>

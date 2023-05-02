@@ -73,10 +73,9 @@ function LoginCard() {
             sx={{
               marginBottom: '20px',
               input: {
-              // color: (themeOptions) => themeOptions.palette.primary.main   //that works to change text color.
-
-              }
-            }}        
+                // color: (themeOptions) => themeOptions.palette.primary.main   //that works to change text color.
+              },
+            }}
           />
           <TextField
             InputLabelProps={{
