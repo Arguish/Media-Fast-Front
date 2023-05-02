@@ -1,21 +1,19 @@
 import React, { useState, useEffect} from 'react'
 import './CategorySuggestionsPage.css'
 import { getCategory } from '../../Services/categoriesServices';
-
+import { getUserCategories } from '../../Services/userServices';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from '@mui/material';
 
 
-
 const CategorySuggestionsPage = () => {
 
   const [categories, setCategories] = useState()
+  const [checked, setChecked] = useState([true, false]);
 
-   const handleCategories = () => {
-
-   }
+ 
 
   useEffect(()=> {
     getAllCategories()
@@ -46,7 +44,7 @@ const CategorySuggestionsPage = () => {
   return (
    <div>
     {displayCategories()}
-    <Button onClick={handleCategories}>Next</Button>
+    <Button  >Next</Button>
    </div>
   )
 }
