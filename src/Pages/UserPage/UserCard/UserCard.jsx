@@ -6,6 +6,16 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Box, CardActionArea, CardHeader } from '@mui/material'
 const UserCard = ({ user }) => {
+  console.log(user)
+
+  const showUserCategories = () => {
+    if (user.categories.length > 0) {
+      return user.categories.map(el => {
+        return <Typography>{el.category_name}</Typography>
+      })
+    }
+  }
+
   return (
     <>
       <Card
@@ -50,6 +60,14 @@ const UserCard = ({ user }) => {
             alignItems: 'flex-start',
             color: 'text.primary'
           }}>
+            <Typography variant="h5"
+            sx={{
+              margin: '2px 0 5px 0',
+              color: 'secondary.main'
+            }}>
+              USER CATEGORIES
+            </Typography >
+            {showUserCategories()}
             <Typography variant="h5"
             sx={{
               margin: '2px 0 5px 0',
