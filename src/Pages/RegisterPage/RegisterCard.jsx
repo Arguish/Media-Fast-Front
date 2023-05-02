@@ -46,7 +46,7 @@ const RegisterCard = () => {
       const loginInfo = { email: email, password: password }
       const result = await login(loginInfo)
       if (result === 200) {
-        navigate('/')
+        navigate('/preferences')
       } else {
         console.log(result)
       }
