@@ -66,7 +66,6 @@ const RegisterCard = () => {
     let day = today.getDay()
     day < 10 ? day = '0'+day : day
     month < 10 ? month = '0'+month : month
-    console.log(`${year}-${day}-${month}`)
     return `${year}-${month}-${day}`
   }
 

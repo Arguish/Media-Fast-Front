@@ -3,6 +3,7 @@ import { createBrowserRouter, redirect } from 'react-router-dom'
 import Main from '../../Layouts/index'
 import AuthPage from '../../Pages/Auth_Page/Auth_Page'
 import App from '../../App'
+import UserPage from '../../Pages/UserPage/UserPage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: '/auth/register',
         element: <AuthPage />,
       },
+      {
+        path: '/user/me',
+        element: <UserPage />
+      }
     ],
   },
 ])
