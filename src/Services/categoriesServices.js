@@ -25,10 +25,4 @@ export const deleteCategory = async (id) => {
   return data;
 };
 
-export {
-  getCategory,
-  getCategoryByID,
-  putCategory,
-  postCategory,
-  deleteCategory,
-};
+

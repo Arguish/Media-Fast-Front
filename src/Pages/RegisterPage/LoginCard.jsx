@@ -31,7 +31,7 @@ function LoginCard() {
     const body = { email, password }
     const result = await login(body)
     if (result === 200) {
-      navigate('/')
+      navigate('/preferences')
     } else {
       console.log(result)
     }
