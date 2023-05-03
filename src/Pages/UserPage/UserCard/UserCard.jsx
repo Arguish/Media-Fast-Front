@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
 import { NavLink } from 'react-router-dom'
+
 const UserCard = ({ user }) => {
   const showUserCategories = () => {
     if (user.categories.length > 0) {
