@@ -32,8 +32,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/user/me',
-        element: <UserPage />,
-      },
+        element: <UserPage />
+      }, 
       {
         path: '/preferences',
         element: <CategorySuggestionsPage />,
