@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const MediaCard = ({ cardContent }) => {
+const MediaCard = ({ cardContent, cover }) => {
   const [turn, setTurn] = useState(true)
   const [Ready, setReady] = useState(false)
   useEffect(() => {
@@ -14,6 +14,9 @@ const MediaCard = ({ cardContent }) => {
           draggable={true}
           onClick={() => setTurn(!turn)}
           style={{
+            margin: '20px',
+            width: '300px',
+            height: '400px',
             display: 'flex',
             alignItems: 'center',
             transform: `rotateY(${turn ? 0 : 180}deg)`,
@@ -26,16 +29,10 @@ const MediaCard = ({ cardContent }) => {
         >
           <div style={card1}>
             <div style={paper}>
-              <div style={celo_1}>{cardContent.type}</div>
               <div style={celo_2}>
                 {cardContent.season} x {cardContent.season_episodes}
               </div>
-              <img
-                draggable={false}
-                style={image}
-                src="https://picsum.photos/200/300"
-                alt=""
-              />
+              <img draggable={false} style={image} src={cover} alt="" />
               <h1 style={title}>{cardContent.title}</h1>
             </div>
           </div>
@@ -73,7 +70,7 @@ const card1 = {
   placeContent: 'center',
   backgroundColor: '#e94',
   boxShadow: '5px 10px 5px 3px #00000055',
-  transform: 'perspective(12cm) translateX(150px)',
+  transform: 'perspective(12cm) translateX(10px)',
   backfaceVisibility: 'hidden',
   transition: 'all 500ms',
   userSelect: 'none',
@@ -89,7 +86,7 @@ const card2 = {
   boxShadow: '5px 10px 5px 3px #00000055',
   backfaceVisibility: 'hidden',
   transition: 'all 500ms',
-  transform: 'rotateY(180deg) perspective(12cm) translateX(150px)',
+  transform: 'rotateY(180deg) perspective(12cm) translateX(270px)',
   userSelect: 'none',
   cursor: 'pointer',
 }
@@ -98,6 +95,7 @@ const paper = {
   width: '260px',
   height: '360px',
   display: 'grid',
+  alignItems: 'end',
   placeContent: 'center',
   transform: 'rotate(-2deg)',
   backgroundColor: 'antiquewhite',
@@ -140,7 +138,7 @@ const title = {
   color: '#e94 ',
   position: 'absolute',
   gridArea: '2/3/2/3',
-  transform: 'rotate(3deg) translateX(-25px) translateY(-70px)',
+  transform: 'rotate(3deg) translateX(-25px)',
   userSelect: 'none',
   cursor: 'pointer',
 }
