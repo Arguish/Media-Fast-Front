@@ -1,9 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MediaCard from '../../Components/MediaCard/MediaCard'
+import { getMediaRandom, getMedia } from '../../Services/mediaServices'
 
 const Media_page = () => {
-  const [list, setList] = useState(['A', 'B', 'C'])
+  const [contentReady, setcontentReady] = useState(false)
+  const [list, setList] = useState([{}])
   const [listItem, setListItem] = useState(0)
+
+  useEffect(() => {
+    const arr = []
+    const options = 4
+    for (let index = 0; index < options - 1; index++) {
+      getMediaRandom().then((a) => arr.push(a))
+    }
+    console.log(arr)
+    setList(arr)
+  }, [])
+
+  useEffect(() => {
+    setcontentReady(list.length > 1 ? true : false)
+  })
+
   const next = () => {
     if (listItem >= list.length - 1) {
       setListItem(0)
@@ -18,22 +35,14 @@ const Media_page = () => {
       setListItem(listItem - 1)
     }
   }
+
   return (
     <>
       <div style={{ display: 'flex' }}>
         <button onClick={previous}>{' <<< '}</button>
-        <h1>{list[listItem]}</h1>
-        <MediaCard
-          visibility={list[listItem] === 'A' ? 'visible' : 'collapse'}
-        ></MediaCard>
-        <MediaCard
-          visibility={list[listItem] === 'B' ? 'visible' : 'collapse'}
-        ></MediaCard>
-        <MediaCard
-          visibility={list[listItem] === 'C' ? 'visible' : 'collapse'}
-        ></MediaCard>
+        {contentReady && <MediaCard cardContent={list[listItem]}></MediaCard>}
+        {console.log(list[listItem])}
         <button onClick={next}>{' >>> '}</button>
-        {console.log(list[listItem] === 'B' ? 'visible' : 'collapse')}
       </div>
     </>
   )

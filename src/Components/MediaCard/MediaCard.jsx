@@ -1,70 +1,65 @@
 import React, { useState, useEffect } from 'react'
-import { getMediaRandom, getMedia } from '../../Services/mediaServices'
 
-const MediaCard = ({ visibility }) => {
+const MediaCard = ({ cardContent }) => {
   const [turn, setTurn] = useState(true)
-  const [vis, setvis] = useState(visibility)
+  const [Ready, setReady] = useState(false)
   useEffect(() => {
-    setvis(visibility)
-  }, [visibility])
+    cardContent ? setReady(true) : setReady(false)
+  }, [cardContent])
 
-  const [cardContent, setcardContent] = useState({})
-  useEffect(() => {
-    getMediaRandom().then((a) => setcardContent(a))
-  }, [])
-  console.log(cardContent)
-  return (
-    <>
-      <div
-        draggable={true}
-        onClick={() => setTurn(!turn)}
-        style={{
-          visibility: { vis },
-          display: 'flex',
-          alignItems: 'center',
-          transform: `rotateY(${turn ? 0 : 180}deg)`,
-          transformStyle: 'preserve-3d',
-          transition: 'all 500ms',
-          userSelect: 'none',
-          cursor: 'pointer',
-        }}
-        className="father"
-      >
-        <div style={card1}>
-          <div style={paper}>
-            <div style={celo_1}>{cardContent.type}</div>
-            <div style={celo_2}>
-              {cardContent.season} x {cardContent.season_episodes}
+  if (Ready) {
+    return (
+      <>
+        <div
+          draggable={true}
+          onClick={() => setTurn(!turn)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            transform: `rotateY(${turn ? 0 : 180}deg)`,
+            transformStyle: 'preserve-3d',
+            transition: 'all 500ms',
+            userSelect: 'none',
+            cursor: 'pointer',
+          }}
+          className="father"
+        >
+          <div style={card1}>
+            <div style={paper}>
+              <div style={celo_1}>{cardContent.type}</div>
+              <div style={celo_2}>
+                {cardContent.season} x {cardContent.season_episodes}
+              </div>
+              <img
+                draggable={false}
+                style={image}
+                src="https://picsum.photos/200/300"
+                alt=""
+              />
+              <h1 style={title}>{cardContent.title}</h1>
             </div>
-            <img
-              draggable={false}
-              style={image}
-              src="https://picsum.photos/200/300"
-              alt=""
-            />
-            <h1 style={title}>{cardContent.title}</h1>
+          </div>
+          <div style={card2}>
+            <div style={paper}>
+              <h1 style={{ color: 'black', margin: '5px' }}>
+                {cardContent.title}
+              </h1>
+              <hr style={{ color: 'black', margin: '5px' }} />
+              <h4 style={{ color: 'black', margin: '5px' }}>
+                {cardContent.type === 'movie'
+                  ? cardContent.type
+                  : cardContent.season + ' x ' + cardContent.season_episodes}
+              </h4>
+              <hr style={{ color: 'black', margin: '5px' }} />
+              <p style={{ color: 'black', padding: '20px', margin: '5px' }}>
+                {cardContent.description}
+              </p>
+            </div>
           </div>
         </div>
-        <div style={card2}>
-          <div style={paper}>
-            <h1 style={{ color: 'black', margin: '5px' }}>
-              {cardContent.title}
-            </h1>
-            <hr style={{ color: 'black', margin: '5px' }} />
-            <h4 style={{ color: 'black', margin: '5px' }}>
-              {cardContent.type === 'movie'
-                ? cardContent.type
-                : cardContent.season + ' x ' + cardContent.season_episodes}
-            </h4>
-            <hr style={{ color: 'black', margin: '5px' }} />
-            <p style={{ color: 'black', padding: '20px', margin: '5px' }}>
-              {cardContent.description}
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+      </>
+    )
+  }
 }
 
 export default MediaCard
