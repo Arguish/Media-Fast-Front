@@ -29,7 +29,6 @@ const MediaCard = ({ cardContent, cover }) => {
         >
           <div style={card1}>
             <div style={paper}>
-              <div style={celo_1}>{cardContent.type}</div>
               <div style={celo_2}>
                 {cardContent.season} x {cardContent.season_episodes}
               </div>
@@ -96,6 +95,7 @@ const paper = {
   width: '260px',
   height: '360px',
   display: 'grid',
+  alignItems: 'end',
   placeContent: 'center',
   transform: 'rotate(-2deg)',
   backgroundColor: 'antiquewhite',
@@ -138,7 +138,7 @@ const title = {
   color: '#e94 ',
   position: 'absolute',
   gridArea: '2/3/2/3',
-  transform: 'rotate(3deg) translateX(-25px) translateY(-70px)',
+  transform: 'rotate(3deg) translateX(-25px)',
   userSelect: 'none',
   cursor: 'pointer',
 }
