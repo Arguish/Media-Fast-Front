@@ -35,7 +35,7 @@ const UserCategoriesComponent = () => {
 
   const handleSubmit = async () => {
     const result = await updateUserCategories(categoriesToSend)
-    categoriesToSend = []
+    categoriesToSend.splice(0, categoriesToSend.length)
   }
 
   const displayCategories = () => {
