@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { useNavigate } from 'react-router-dom'
 
 // const bull = (
 //   <Box
@@ -16,7 +16,19 @@ import Typography from '@mui/material/Typography';
 //   </Box>
 // );
 
+
+
  const TimePage = () => {
+  const navigate = useNavigate()
+
+  const chooseMedia = () => {
+      navigate('/choosemedia')
+  }
+
+  const goMedia = () => {
+      navigate('/Media')
+  }
+
    
   return (
     <Card sx={{ minWidth: 275 , height: 275}}>
@@ -27,10 +39,10 @@ import Typography from '@mui/material/Typography';
       </CardContent>
       <CardActions sx={{display: 'flex',flexDirection: 'column'    }} >
         <div>
-          <Button size="small" sx={{display: 'block', margin: 2}} > Menos de 2 horas</Button>
+          <Button size="small" sx={{display: 'block', margin: 2}} onClick= {goMedia} > Menos de 2 horas</Button>
           </div>
           <div>
-          <Button size="small" sx={{display: 'block', margin: 2}} >Más de 2 horas</Button>
+          <Button size="small" sx={{display: 'block', margin: 2}} onClick= {chooseMedia} >Más de 2 horas</Button>
           </div>
          
        
