@@ -27,17 +27,13 @@ const router = createBrowserRouter([
         path: '/',
         element: <App />,
       },
-      // {
-      //   path: '/auth/register',
-      //   element: <AuthPage />,
-      // },
       {
         path: '/user/me',
         element: <UserPage />,
       },
       {
         path: '/user/me/preferences',
-        element: <UserCategoriesComponent />
+        element: <UserCategoriesComponent />,
       },
       {
         path: '/preferences',
@@ -55,26 +51,25 @@ const router = createBrowserRouter([
         path: '/choosemedia',
         element: <ChooseMedia />,
       },
-      ],
-      },
-      {
-        path: '/auth',
-        element: <AuthPage />,
-      },
+
       {
         path: '/changetoshow',
-        element: <ChangeToShow/>
+        element: <ChangeToShow />,
       },
       {
         path: '/changetomovie',
-        element: <ChangeToMovie/>
+        element: <ChangeToMovie />,
       },
       {
         path: '/bye',
-        element: <Bye/>
+        element: <Bye />,
       },
-      ],
-    },
+    ],
+  },
+  {
+    path: '/auth',
+    element: <AuthPage />,
+  },
 ])
 
 export default router
