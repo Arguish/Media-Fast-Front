@@ -4,6 +4,7 @@ import { getMediaRandom, getMedia } from '../../Services/mediaServices'
 
 const Media_page = () => {
   const [contentReady, setcontentReady] = useState(false)
+  const [spin, setspin] = useState(0)
   const [list, setList] = useState([{}])
   const [listItem, setListItem] = useState(0)
 
@@ -22,6 +23,7 @@ const Media_page = () => {
   })
 
   const next = () => {
+    setspin(spin + 720)
     if (listItem >= list.length - 1) {
       setListItem(0)
     } else {
@@ -29,6 +31,7 @@ const Media_page = () => {
     }
   }
   const previous = () => {
+    setspin(spin - 720)
     if (listItem <= 0) {
       setListItem(list.length - 1)
     } else {
@@ -40,7 +43,19 @@ const Media_page = () => {
     <>
       <div style={{ display: 'flex' }}>
         {contentReady && <button onClick={previous}>{' <<< '}</button>}
-        {contentReady && <MediaCard cardContent={list[listItem]}></MediaCard>}
+        <div
+          style={{
+            transition: 'all 200ms',
+            transform: `rotateY(${spin}deg)`,
+          }}
+        >
+          {contentReady && (
+            <MediaCard
+              cover={`https://picsum.photos/seed/${list[listItem]}/200/300`}
+              cardContent={list[listItem]}
+            ></MediaCard>
+          )}
+        </div>
         {console.log(list[listItem])}
         <button onClick={next}>
           {contentReady ? ' >>> ' : 'Estoy listo!'}
