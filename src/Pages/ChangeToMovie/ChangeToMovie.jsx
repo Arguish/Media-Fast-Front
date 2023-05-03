@@ -29,10 +29,10 @@ import { useNavigate } from "react-router-dom";
       </CardContent>
       <CardActions sx={{display: 'flex',flexDirection: 'column'    }} >
         <div>
-          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick={seeMedia}> Si</Button>
+          <Button variant="contained" size="medium" sx={{display: 'block', margin: 2, color: 'black', width: 200, alignContent: 'center'}} onClick={seeMedia}> Si</Button>
           </div>
           <div>
-          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick={goToByeBye} >No</Button>
+          <Button variant="contained" size="medium" sx={{display: 'block', margin: 2, color: 'black', width: 200}} onClick={goToByeBye} >No</Button>
           </div>
          
        

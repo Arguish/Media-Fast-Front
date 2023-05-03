@@ -25,10 +25,10 @@ import { useNavigate } from "react-router-dom";
       </CardContent>
       <CardActions sx={{display: 'flex',flexDirection: 'column'    }} >
         <div>
-          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick={seeMedia}> Peli</Button>
+          <Button variant="contained" size="medium" sx={{display: 'block', margin: 2, color: 'black', width: 200}} onClick={seeMedia}> Peli</Button>
           </div>
           <div>
-          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick={seeMedia} >Serie</Button>
+          <Button variant="contained" size="medium" sx={{display: 'block', margin: 2, color: 'black', width: 200}} onClick={seeMedia} >Serie</Button>
           </div>
          
        
