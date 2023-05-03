@@ -4,15 +4,50 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Box, CardActionArea, CardHeader } from '@mui/material'
+import {
+  Box,
+  Button,
+  CardActionArea,
+  CardActions,
+  CardHeader,
+} from '@mui/material'
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
+import { NavLink } from 'react-router-dom'
 const UserCard = ({ user }) => {
-
   const showUserCategories = () => {
     if (user.categories.length > 0) {
-      return user.categories.map(el => {
-        return <Typography key={el.id} >{el.category_name}</Typography>
+      return user.categories.map((el) => {
+        return <Typography key={el.id}>{el.category_name}</Typography>
       })
     }
+  }
+
+  const showUserMedia = () => {
+    return user.media.length > 0
+      ? user.media.map((el) => {
+          return (
+            <Typography
+              sx={{
+                color: 'primary.main',
+              }}
+              key={el.user_media.mediumId}
+            >
+              {el.title} | {el.type}{' '}
+              {el.categories.length > 0
+                ? `| ${el.categories[0].category_name}`
+                : false}
+            </Typography>
+          )
+        })
+      : <Typography>NO MEDIA ADDED YET</Typography>
+  }
+
+  const ShowButton = ({path, id}) => {
+    return (
+      <NavLink to={path} id={id}>
+        <ModeEditOutlineOutlinedIcon />
+      </NavLink>
+    )
   }
 
   return (
@@ -52,42 +87,45 @@ const UserCard = ({ user }) => {
               }}
             />
           </Typography>
-          <CardContent sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
-            color: 'text.primary'
-          }}>
-            <Typography variant="h5"
+          <CardContent
             sx={{
-              margin: '2px 0 5px 0',
-              color: 'secondary.main'
-            }}>
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+              color: 'text.primary',
+            }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                margin: '2px 0 5px 0',
+                color: 'secondary.main',
+              }}
+            >
               USER CATEGORIES
-            </Typography >
+              <ShowButton path='preferences' id='userCatBtn' />
+            </Typography>
             {showUserCategories()}
-            <Typography variant="h5"
-            sx={{
-              margin: '2px 0 5px 0',
-              color: 'secondary.main'
-            }}>
+            <Typography
+              variant="h5"
+              sx={{
+                margin: '2px 0 5px 0',
+                color: 'secondary.main',
+              }}
+            >
               USER MEDIA
-            </Typography >
-            {user.media.length > 0 ? (
-              user.media.map((el) => {
-                return (
-                  <Typography sx={{
-                    color: 'primary.main'
-                  }} key={el.user_media.mediumId}>
-                    {el.title} | {el.type} {el.categories.length > 0 ? `| ${el.categories[0].category_name}` : false}
-                  </Typography>
-                )
-              })
-            ) : (
-              <Typography>NO MEDIA ADDED YET.</Typography>
-            )}
+            {/* {showButton()} */}
+            </Typography>
+            {showUserMedia()}
           </CardContent>
+          <CardActions
+            sx={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+          >
+          </CardActions>
         </CardContent>
       </Card>
     </>

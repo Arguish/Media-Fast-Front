@@ -7,6 +7,7 @@ import App from '../../App'
 import UserPage from '../../Pages/UserPage/UserPage'
 import CategorySuggestionsPage from '../../Pages/CategorySuggestionsPage/CategorySuggestionsPage'
 import Media_page from '../../Pages/Media_page/Media_page'
+import UserCategoriesComponent from '../../Pages/UserPage/UserCard/UserCategoriesComponent/UserCategoriesComponent'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,16 +25,20 @@ const router = createBrowserRouter([
         element: <App />,
       },
       // {
-        //   path: '/auth/register',
-        //   element: <AuthPage />,
-        // },
-        {
-          path: '/user/me',
-          element: <UserPage />
-                  }, 
-        {
-          path: '/preferences',
-          element: <CategorySuggestionsPage />,
+      //   path: '/auth/register',
+      //   element: <AuthPage />,
+      // },
+      {
+        path: '/user/me',
+        element: <UserPage />,
+      },
+      {
+        path: '/user/me/preferences',
+        element: <UserCategoriesComponent />
+      },
+      {
+        path: '/preferences',
+        element: <CategorySuggestionsPage />,
       },
       {
         path: '/media',
@@ -41,18 +46,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/time',
-        element: <TimePage/>
+        element: <TimePage />,
       },
       {
         path: '/choosemedia',
-        element: <ChooseMedia/>
-        },
-      ],
-    },
-    {
-      path: '/auth',
-      element: <AuthPage />,
-    },
+        element: <ChooseMedia />,
+      },
+    ],
+  },
+  {
+    path: '/auth',
+    element: <AuthPage />,
+  },
 ])
 
 export default router
