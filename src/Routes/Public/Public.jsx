@@ -11,6 +11,7 @@ import UserCategoriesComponent from '../../Pages/UserPage/UserCard/UserCategorie
 import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
 import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
 import Bye from '../../Pages/Bye/Bye'
+import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         path: '/bye',
         element: <Bye />,
       },
+      {
+        path: '/mediaByCategories',
+        element : <MediaByCategoryPage />
+      }
     ],
   },
   {

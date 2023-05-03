@@ -30,11 +30,7 @@ export const deleteMedia = async (id) => {
   return data
 }
 
-/* export {
-  getMedia,
-  getMediaRandom,
-  getMediaByID,
-  putMedia,
-  postMedia,
-  deleteMedia,
-} */
+export const getMediaByCategories = async (userId) => {
+  const {data} = await api.get(`/media/user/${userId}/categories`)
+  return data
+}
