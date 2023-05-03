@@ -41,6 +41,7 @@ const RegisterCard = () => {
   }
 
   const handleRegister = async () => {
+    console.log(birthday)
     const body = {
       email: email,
       password: password,
@@ -75,7 +76,7 @@ const RegisterCard = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [nickname, setNickname] = useState('')
-  const [birthday, setBirthday] = useState('')
+  const [birthday, setBirthday] = useState('1997-04-27')
 
   return (
     <>
