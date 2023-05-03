@@ -39,10 +39,12 @@ const Media_page = () => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        <button onClick={previous}>{' <<< '}</button>
+        {contentReady && <button onClick={previous}>{' <<< '}</button>}
         {contentReady && <MediaCard cardContent={list[listItem]}></MediaCard>}
         {console.log(list[listItem])}
-        <button onClick={next}>{' >>> '}</button>
+        <button onClick={next}>
+          {contentReady ? ' >>> ' : 'Estoy listo!'}
+        </button>
       </div>
     </>
   )
