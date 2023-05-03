@@ -39,10 +39,10 @@ import { useNavigate } from 'react-router-dom'
       </CardContent>
       <CardActions sx={{display: 'flex',flexDirection: 'column'    }} >
         <div>
-          <Button size="small" sx={{display: 'block', margin: 2}} onClick= {goMedia} > Menos de 2 horas</Button>
+          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick= {goMedia} > Menos de 2 horas</Button>
           </div>
           <div>
-          <Button size="small" sx={{display: 'block', margin: 2}} onClick= {chooseMedia} >Más de 2 horas</Button>
+          <Button variant="contained" size="small" sx={{display: 'block', margin: 2, color: 'black'}} onClick= {chooseMedia} >Más de 2 horas</Button>
           </div>
          
        
