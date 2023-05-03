@@ -7,6 +7,9 @@ import App from '../../App'
 import UserPage from '../../Pages/UserPage/UserPage'
 import CategorySuggestionsPage from '../../Pages/CategorySuggestionsPage/CategorySuggestionsPage'
 import Media_page from '../../Pages/Media_page/Media_page'
+import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
+import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
+import Bye from '../../Pages/Bye/Bye'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,6 +50,18 @@ const router = createBrowserRouter([
         path: '/choosemedia',
         element: <ChooseMedia/>
         },
+        {
+          path: '/changetoshow',
+          element: <ChangeToShow/>
+          },
+          {
+            path: '/changetomovie',
+            element: <ChangeToMovie/>
+            },
+            {
+              path: '/bye',
+              element: <Bye/>
+              },
       ],
     },
     {
