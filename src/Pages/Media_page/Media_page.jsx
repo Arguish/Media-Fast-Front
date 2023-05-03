@@ -58,8 +58,12 @@ const Media_page = () => {
             otra vez...
           </h2>
         )}
-        <div style={{ display: 'flex' }}>
-          {contentReady && <button onClick={previous}>{' <<< '}</button>}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {contentReady && (
+            <button style={button} onClick={previous}>
+              {' <<< '}
+            </button>
+          )}
           <div
             style={{
               transition: 'all 200ms',
@@ -74,12 +78,13 @@ const Media_page = () => {
             )}
           </div>
           {console.log(list[listItem])}
-          <button onClick={next}>
+          <button style={button} onClick={next}>
             {contentReady ? ' >>> ' : 'Estoy listo!'}
           </button>
         </div>
         {contentReady && (
           <button
+            style={button}
             onClick={() => {
               getMediaByID(list[listItem].id).then(
                 (A) => (window.location = A.platforms[0].platform_url)
@@ -95,3 +100,12 @@ const Media_page = () => {
 }
 
 export default Media_page
+
+const button = {
+  padding: '10px',
+  border: 'none',
+  backgroundColor: '#e94',
+  borderRadius: '10px',
+  fontSize: '20px',
+  color: '#d00',
+}
