@@ -11,36 +11,32 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
-    // loader: () => {
-    //   if (!localStorage.getItem('token')) {
-    //     return redirect('/auth')
-    //   } else {
-    //     return redirect('/') //here we should redirect to suggestions when page is done
-    //   }
-    // },
+    loader: () => {
+      if (!localStorage.getItem('token')) {
+        return redirect('/auth')
+      } else {
+        return null //here we should redirect to suggestions when page is done
+      }
+    },
     children: [
       {
         path: '/',
         element: <App />,
       },
-      {
-        path: '/auth',
-        element: <AuthPage />,
+      // {
+        //   path: '/auth/register',
+        //   element: <AuthPage />,
+        // },
+        {
+          path: '/user/me',
+          element: <UserPage />
+                  }, 
+        {
+          path: '/preferences',
+          element: <CategorySuggestionsPage />,
       },
       {
-        path: '/auth/register',
-        element: <AuthPage />,
-      },
-      {
-        path: '/user/me',
-        element: <UserPage />
-      }, 
-      {
-        path: '/preferences',
-        element: <CategorySuggestionsPage />,
-      },
-      {
-        path: '/Media',
+        path: '/media',
         element: <Media_page />,
       },
       {
@@ -50,9 +46,13 @@ const router = createBrowserRouter([
       {
         path: '/choosemedia',
         element: <ChooseMedia/>
-      },
-    ],
-  },
+        },
+      ],
+    },
+    {
+      path: '/auth',
+      element: <AuthPage />,
+    },
 ])
 
 export default router

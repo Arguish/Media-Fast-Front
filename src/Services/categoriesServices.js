@@ -24,5 +24,3 @@ export const deleteCategory = async (id) => {
   const { data } = await api.delete(`/category/${id}`);
   return data;
 };
-
-

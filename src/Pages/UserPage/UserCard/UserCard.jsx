@@ -6,12 +6,11 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Box, CardActionArea, CardHeader } from '@mui/material'
 const UserCard = ({ user }) => {
-  console.log(user)
 
   const showUserCategories = () => {
     if (user.categories.length > 0) {
       return user.categories.map(el => {
-        return <Typography>{el.category_name}</Typography>
+        return <Typography key={el.id} >{el.category_name}</Typography>
       })
     }
   }

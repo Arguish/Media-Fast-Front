@@ -28,7 +28,6 @@ const CategorySuggestionsPage = () => {
     categoriesToSend.includes(element) === false
       ? categoriesToSend.push(element)
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
-    console.log(categoriesToSend)
   }
 
   const handleSubmit = async () => {

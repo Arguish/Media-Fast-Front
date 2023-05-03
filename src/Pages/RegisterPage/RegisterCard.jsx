@@ -49,29 +49,25 @@ const RegisterCard = () => {
     }
     const result = await register(body)
     if (result.status === 200) {
-      const loginInfo = { email: email, password: password }
-      const result = await login(loginInfo)
-      if (result === 200) {
-        navigate('/preferences')
-      } else {
-        console.log(result)
-      }
+      navigate('/preferences')
+    } else {
+      console.error('Something went wrong', result)
     }
   }
 
   const setMaxDate = () => {
     const today = new Date()
-    let month = today.getMonth()+1
+    let month = today.getMonth() + 1
     const year = today.getFullYear()
     let day = today.getDay()
-    day < 10 ? day = '0'+day : day
-    month < 10 ? month = '0'+month : month
+    day < 10 ? (day = '0' + day) : day
+    month < 10 ? (month = '0' + month) : month
     return `${year}-${month}-${day}`
   }
 
   const setMinDate = () => {
     const today = setMaxDate()
-    return today.slice(0,4)-80+today.slice(4)
+    return today.slice(0, 4) - 80 + today.slice(4)
   }
 
   const navigate = useNavigate()
@@ -186,9 +182,8 @@ const RegisterCard = () => {
             inputProps={{ min: setMinDate(), max: setMaxDate() }}
             variant="outlined"
             fullWidth={true}
-            defaultValue={"1997-04-27"}
-            sx={{ marginBottom: '20px'
-           }}
+            defaultValue={'1997-04-27'}
+            sx={{ marginBottom: '20px' }}
           />
         </CardContent>
         <Divider />
