@@ -24,29 +24,37 @@ const UserCard = ({ user }) => {
   }
 
   const showUserMedia = () => {
-    return user.media.length > 0
-      ? user.media.map((el) => {
-          return (
-            <Typography
-              sx={{
-                color: 'primary.main',
-              }}
-              key={el.user_media.mediumId}
-            >
-              {el.title} | {el.type}{' '}
-              {el.categories.length > 0
-                ? `| ${el.categories[0].category_name}`
-                : false}
-            </Typography>
-          )
-        })
-      : <Typography>NO MEDIA ADDED YET</Typography>
+    return user.media.length > 0 ? (
+      user.media.map((el) => {
+        return (
+          <Typography
+            sx={{
+              color: 'primary.main',
+            }}
+            key={el.user_media.mediumId}
+          >
+            {el.title} | {el.type}{' '}
+            {el.categories.length > 0
+              ? `| ${el.categories[0].category_name}`
+              : false}
+          </Typography>
+        )
+      })
+    ) : (
+      <Typography
+        sx={{
+          color: 'text',
+        }}
+      >
+        NO MEDIA ADDED YET
+      </Typography>
+    )
   }
 
-  const ShowButton = ({path, id}) => {
+  const ShowButton = ({ path, id }) => {
     return (
       <NavLink to={path} id={id}>
-        <ModeEditOutlineOutlinedIcon />
+        <ModeEditOutlineOutlinedIcon color="primary" />
       </NavLink>
     )
   }
@@ -105,7 +113,7 @@ const UserCard = ({ user }) => {
               }}
             >
               USER CATEGORIES
-              <ShowButton path='preferences' id='userCatBtn' />
+              <ShowButton path="preferences" id="userCatBtn" />
             </Typography>
             {showUserCategories()}
             <Typography
@@ -116,7 +124,7 @@ const UserCard = ({ user }) => {
               }}
             >
               USER MEDIA
-            {/* {showButton()} */}
+              {/* {showButton()} */}
             </Typography>
             {showUserMedia()}
           </CardContent>
@@ -125,8 +133,7 @@ const UserCard = ({ user }) => {
               display: 'flex',
               justifyContent: 'flex-end',
             }}
-          >
-          </CardActions>
+          ></CardActions>
         </CardContent>
       </Card>
     </>
