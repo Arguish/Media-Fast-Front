@@ -1,5 +1,4 @@
 import React from 'react'
-import './UserCard.css'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -41,6 +40,7 @@ const UserCard = ({ user }) => {
         )
       })
     ) : (
+<<<<<<< HEAD
       <Typography
         sx={{
           color: 'text',
@@ -48,6 +48,9 @@ const UserCard = ({ user }) => {
       >
         NO MEDIA ADDED YET
       </Typography>
+=======
+      <Typography>NO MEDIA ADDED YET</Typography>
+>>>>>>> main
     )
   }
 

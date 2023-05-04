@@ -1,25 +1,22 @@
+import React from "react";
 // import Box from '@mui/material/Box';
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { CardHeader } from '@mui/material'
+
+
+
 
 const TimePage = () => {
   const navigate = useNavigate()
 
   const chooseMedia = () => {
-    navigate('/choosemedia')
+      navigate('/choosemedia')
   }
 
   const goMedia = () => {
-    navigate('/Media')
+      navigate('/Media')
   }
 
-  const [isHover, setIsHover] = useState()
 
   const handleHoverIn = () => {
     setIsHover(true)
@@ -75,7 +72,7 @@ const TimePage = () => {
   }
 
   return (
-    <Card style={cardStyle}>
+    }<Card style={cardStyle}>
       <CardHeader
         disableTypography={true}
         style={headerStyle}
@@ -96,9 +93,8 @@ const TimePage = () => {
         >
           Más de 2 horas
         </Button>
+
       </CardActions>
-    </Card>
-  )
-}
+    </Card>)
 
 export default TimePage

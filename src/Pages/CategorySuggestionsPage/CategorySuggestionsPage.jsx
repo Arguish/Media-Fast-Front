@@ -6,11 +6,14 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const CategorySuggestionsPage = () => {
   const [categories, setCategories] = useState([])
   const [checked, setChecked] = useState(false)
   const categoriesToSend = []
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getAllCategories()
@@ -32,6 +35,7 @@ const CategorySuggestionsPage = () => {
 
   const handleSubmit = async () => {
     const result = await getUserCategories(categoriesToSend)
+    navigate('/time')
     console.log(result)
   }
 

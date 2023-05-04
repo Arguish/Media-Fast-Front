@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../../../Services/authService'
+
 import {
   Card,
   CardHeader,
@@ -11,15 +13,15 @@ import {
   IconButton,
   InputAdornment,
 } from '@mui/material'
-import './LoginCard.css'
-
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
-import { login } from '../../Services/authService'
-
 function LoginCard() {
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
 
   const [validEmail, setValidEmail] = useState(false)
 
@@ -45,6 +47,7 @@ function LoginCard() {
     }
   }
 
+<<<<<<< HEAD:src/Pages/RegisterPage/LoginCard.jsx
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -112,6 +115,12 @@ function LoginCard() {
           disableTypography={true}
           style={headerStyle}
         />
+=======
+  return (
+    <>
+      <Card sx={cardStyle1}>
+        <CardHeader title="Login" />
+>>>>>>> main:src/Pages/RegisterPage/RegisterComponents/LoginCard.jsx
         <CardContent>
           <TextField
             style={inputStyle}
@@ -188,3 +197,18 @@ function LoginCard() {
 }
 
 export default LoginCard
+
+const cardStyle1 = {
+  maxWidth: '95vw',
+  height: 'auto',
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: '#000000',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  color: 'primary.main',
+}

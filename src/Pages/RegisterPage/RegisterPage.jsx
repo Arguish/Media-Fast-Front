@@ -1,14 +1,15 @@
 import { Box, Button, Modal } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
-import LoginCard from './LoginCard'
-import RegisterCard from './RegisterCard'
+import LoginCard from './RegisterComponents/LoginCard'
+import RegisterCard from './RegisterComponents/RegisterCard'
 
 const RegisterModalComponent = ({ name }) => {
   const showCard = () => {
     return name === 'Register' ? <RegisterCard /> : <LoginCard />
   }
 
+<<<<<<< HEAD
   const [isHover, setIsHover] = useState()
 
   const handleHoverIn = () => {
@@ -17,6 +18,8 @@ const RegisterModalComponent = ({ name }) => {
   const handleHoverOut = () => {
     setIsHover(false)
   }
+=======
+>>>>>>> main
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
