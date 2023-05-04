@@ -17,8 +17,7 @@ import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/AllUsers'
 
-const router = createBrowserRouter([
-
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
@@ -74,20 +73,20 @@ const router = createBrowserRouter([
       {
         path: '/mediaByCategories',
 
-        element : <MediaByCategoryPage />
-      }, 
+        element: <MediaByCategoryPage />,
+      },
       {
         path: '/admin',
-        element : <AdminPage />
-      }, 
+        element: <AdminPage />,
+      },
       {
         path: '/admin/options',
-        element : <AdminOptions />
-      }, 
-       {
+        element: <AdminOptions />,
+      },
+      {
         path: '/allusers',
-        element : <AllUsers />
-      }
+        element: <AllUsers />,
+      },
     ],
   },
   {

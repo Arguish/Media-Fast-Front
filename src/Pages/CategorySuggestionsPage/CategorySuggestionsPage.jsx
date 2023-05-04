@@ -13,7 +13,7 @@ const CategorySuggestionsPage = () => {
   const [checked, setChecked] = useState(false)
   const categoriesToSend = []
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getAllCategories()
@@ -33,13 +33,11 @@ const CategorySuggestionsPage = () => {
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
   }
 
-
   const handleSubmit = async () => {
     const result = await getUserCategories(categoriesToSend)
     navigate('/time')
     console.log(result)
   }
-
 
   const displayCategories = () => {
     if (categories) {
@@ -55,11 +53,6 @@ const CategorySuggestionsPage = () => {
         )
       })
     }
-  }
-
-  const handleSubmit = async () => {
-    const result = await getUserCategories(categoriesToSend)
-    console.log(result)
   }
 
   return (
