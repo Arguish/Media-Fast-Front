@@ -12,6 +12,10 @@ import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
 import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
 import Bye from '../../Pages/Bye/Bye'
 import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
+import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
+import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -68,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: '/mediaByCategories',
         element : <MediaByCategoryPage />
+      }, 
+      {
+        path: '/admin',
+        element : <AdminPage />
+      }, 
+      {
+        path: '/admin/options',
+        element : <AdminOptions />
       }
     ],
   },
