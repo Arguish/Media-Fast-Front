@@ -40,17 +40,7 @@ const UserCard = ({ user }) => {
         )
       })
     ) : (
-<<<<<<< HEAD
-      <Typography
-        sx={{
-          color: 'text',
-        }}
-      >
-        NO MEDIA ADDED YET
-      </Typography>
-=======
       <Typography>NO MEDIA ADDED YET</Typography>
->>>>>>> main
     )
   }
 

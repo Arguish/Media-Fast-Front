@@ -1,3 +1,4 @@
+import { Button, Card, CardActions, CardHeader } from '@mui/material';
 import React from "react";
 // import Box from '@mui/material/Box';
 
@@ -66,13 +67,13 @@ const TimePage = () => {
     fontWeight: '800',
     fontSize: '22px',
     fontFamily: 'Poppins, sans seriff',
-    transform: isHover ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
+    // transform: isHover ? 'scale(1.05)' : 'scale(1)',
+    // boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
     textShadow: '0.1px 0.1px white',
   }
 
   return (
-    }<Card style={cardStyle}>
+    <Card style={cardStyle}>
       <CardHeader
         disableTypography={true}
         style={headerStyle}
@@ -95,6 +96,8 @@ const TimePage = () => {
         </Button>
 
       </CardActions>
-    </Card>)
+    </Card>
+  )
+}
 
 export default TimePage

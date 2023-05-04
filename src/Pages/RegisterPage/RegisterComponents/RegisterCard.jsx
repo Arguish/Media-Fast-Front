@@ -131,17 +131,12 @@ const RegisterCard = () => {
 
   return (
     <>
-<<<<<<< HEAD:src/Pages/RegisterPage/RegisterCard.jsx
       <Card style={cardStyle}>
         <CardHeader
           disableTypography={true}
           style={headerStyle}
           title="REGISTER"
         />
-=======
-      <Card sx={cardStyle1}>
-        <CardHeader title="Register" />
->>>>>>> main:src/Pages/RegisterPage/RegisterComponents/RegisterCard.jsx
         <CardContent>
           <TextField
             style={inputStyle}
