@@ -30,11 +30,6 @@ const CategorySuggestionsPage = () => {
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
   }
 
-  const handleSubmit = async () => {
-    const result = await getUserCategories(categoriesToSend)
-    console.log(result)
-  }
-
   const displayCategories = () => {
     if (categories) {
       return categories.map((category) => {
@@ -49,6 +44,11 @@ const CategorySuggestionsPage = () => {
         )
       })
     }
+  }
+
+  const handleSubmit = async () => {
+    const result = await getUserCategories(categoriesToSend)
+    console.log(result)
   }
 
   return (

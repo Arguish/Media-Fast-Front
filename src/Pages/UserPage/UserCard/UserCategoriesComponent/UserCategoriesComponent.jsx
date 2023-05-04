@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { getCategory } from '../../../../Services/categoriesServices'
-import {
-  getUserCategories,
-  updateUserCategories,
-} from '../../../../Services/userServices'
+import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { Button } from '@mui/material'
-import './UserCategoriesComponent.css'
 
 const UserCategoriesComponent = () => {
   const [categories, setCategories] = useState([])
-  const [checked, setChecked] = useState(false)
   const categoriesToSend = []
 
   useEffect(() => {
@@ -57,7 +52,6 @@ const UserCategoriesComponent = () => {
   return (
     <div>
       <FormGroup>{displayCategories()}</FormGroup>
-
       <Button onClick={handleSubmit}>Next</Button>
     </div>
   )

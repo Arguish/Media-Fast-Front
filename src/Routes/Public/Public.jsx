@@ -12,7 +12,8 @@ import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
 import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
 import Bye from '../../Pages/Bye/Bye'
 import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
-const router = createBrowserRouter([
+
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
@@ -67,8 +68,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/mediaByCategories',
-        element : <MediaByCategoryPage />
-      }
+        element: <MediaByCategoryPage />,
+      },
     ],
   },
   {
@@ -76,5 +77,3 @@ const router = createBrowserRouter([
     element: <AuthPage />,
   },
 ])
-
-export default router
