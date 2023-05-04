@@ -14,7 +14,7 @@ import Bye from '../../Pages/Bye/Bye'
 import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
-
+import AllUsers from '../../Pages/AdminOptions/AllUsers'
 
 const router = createBrowserRouter([
   {
@@ -80,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/options',
         element : <AdminOptions />
+      }, 
+       {
+        path: '/allusers',
+        element : <AllUsers />
       }
     ],
   },
