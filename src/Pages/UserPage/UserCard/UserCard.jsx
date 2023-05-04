@@ -40,14 +40,24 @@ const UserCard = ({ user }) => {
         )
       })
     ) : (
+<<<<<<< HEAD
+      <Typography
+        sx={{
+          color: 'text',
+        }}
+      >
+        NO MEDIA ADDED YET
+      </Typography>
+=======
       <Typography>NO MEDIA ADDED YET</Typography>
+>>>>>>> main
     )
   }
 
   const ShowButton = ({ path, id }) => {
     return (
       <NavLink to={path} id={id}>
-        <ModeEditOutlineOutlinedIcon />
+        <ModeEditOutlineOutlinedIcon color="primary" />
       </NavLink>
     )
   }

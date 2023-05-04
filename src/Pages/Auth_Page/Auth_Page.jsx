@@ -3,6 +3,7 @@ import RegisterModalComponent from '../RegisterPage/RegisterPage'
 
 
 const AuthPage = () => {
+
   return (
     <div>
       <RegisterModalComponent name="Register" />

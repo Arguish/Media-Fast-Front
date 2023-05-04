@@ -1,15 +1,4 @@
-import {
-  Box,
-  Button,
-  Modal,
-  Card,
-  CardHeader,
-  CardContent,
-  TextField,
-  Divider,
-  CardActions,
-  Typography,
-} from '@mui/material'
+import { Box, Button, Modal } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import LoginCard from './RegisterComponents/LoginCard'
@@ -20,13 +9,47 @@ const RegisterModalComponent = ({ name }) => {
     return name === 'Register' ? <RegisterCard /> : <LoginCard />
   }
 
+<<<<<<< HEAD
+  const [isHover, setIsHover] = useState()
+
+  const handleHoverIn = () => {
+    setIsHover(true)
+  }
+  const handleHoverOut = () => {
+    setIsHover(false)
+  }
+=======
+>>>>>>> main
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
+  const btnStyle = {
+    height: '50px',
+    minWidth: '40vw',
+    margin: '10px',
+    color: '#000000',
+    backgroundColor: '#ee9e09',
+    borderRadius: '15px',
+    fontWeight: '800',
+    fontSize: '22px',
+    fontFamily: 'Poppins, sans seriff',
+    background: '#EE9E09',
+    textShadow: '0.5px 0.5px 5px #FFF',
+    transform: isHover ? 'scale(1.05)' : 'scale(1)',
+    boxShadow: isHover ? '0px 1px 35px #000000' : '0px 1px 0px #000000',
+  }
+
   return (
     <div>
-      <Button onClick={handleOpen}>{name}</Button>
+      <Button
+        onMouseEnter={handleHoverIn}
+        onMouseLeave={handleHoverOut}
+        style={btnStyle}
+        onClick={handleOpen}
+      >
+        {name}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
