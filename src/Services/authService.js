@@ -1,13 +1,13 @@
-import api from "./config";
+import api from './config'
 
-const register = async (body) => {
+export const register = async (body) => {
   const data = await api.post('/auth/register', body)
   localStorage.setItem('token', data.data.token)
   localStorage.setItem('userId', data.data.user.id)
   return data
 }
 
-const login = async (body) => {
+export const login = async (body) => {
   try {
     console.log('connecting...')
     const { data } = await api.post('/auth/login', body)
@@ -18,11 +18,5 @@ const login = async (body) => {
     return 200
   } catch (error) {
     return error.message
-
   }
-}
-
-export {
-  register,
-  login
 }

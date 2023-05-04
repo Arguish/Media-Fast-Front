@@ -12,14 +12,13 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
-import LoginCard from './LoginCard'
-import RegisterCard from './RegisterCard'
+import LoginCard from './RegisterComponents/LoginCard'
+import RegisterCard from './RegisterComponents/RegisterCard'
 
 const RegisterModalComponent = ({ name }) => {
   const showCard = () => {
     return name === 'Register' ? <RegisterCard /> : <LoginCard />
   }
-
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -34,9 +33,7 @@ const RegisterModalComponent = ({ name }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div>
-          {showCard()}
-        </div>
+        <div>{showCard()}</div>
       </Modal>
     </div>
   )

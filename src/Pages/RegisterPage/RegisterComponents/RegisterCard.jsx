@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import './RegisterCard.css'
 
-import { register, login } from '../../Services/authService'
+import { register, login } from '../../../Services/authService'
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
@@ -80,22 +80,7 @@ const RegisterCard = () => {
 
   return (
     <>
-      <Card
-        sx={{
-          maxWidth: '95vw',
-          height: 'auto',
-          position: 'absolute',
-          top: '40%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: '#000000',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-          color: '#ee9e09',
-        }}
-      >
+      <Card sx={cardStyle1}>
         <CardHeader title="Register" />
         <CardContent>
           <TextField
@@ -199,3 +184,18 @@ const RegisterCard = () => {
 }
 
 export default RegisterCard
+
+const cardStyle1 = {
+  maxWidth: '95vw',
+  height: 'auto',
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: '#000000',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  color: '#ee9e09',
+}

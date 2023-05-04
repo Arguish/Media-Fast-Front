@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getUserMe } from '../../Services/userServices'
 import UserCard from './UserCard/UserCard'
+
 const UserPage = () => {
   useEffect(() => {
     getUserInfo()
