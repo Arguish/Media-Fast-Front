@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../../../Services/authService'
+import { login } from '../../../../Services/authService'
 
 import {
   Card,
@@ -48,8 +48,6 @@ function LoginCard() {
     }
   }
 
-
-
   const handleHoverIn = () => {
     setIsHover(true)
   }
@@ -58,13 +56,11 @@ function LoginCard() {
   }
 
   const cardStyle = {
-    maxWidth: '95vw',
     height: 'auto',
     position: 'absolute',
     top: '40%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
     bgcolor: '#000000',
     border: '2px solid #000',
     boxShadow: 24,
@@ -78,6 +74,7 @@ function LoginCard() {
     textAlign: 'center',
     fontWeight: 'bold',
     fontFamily: 'Poppins, sans seriff',
+    textShadow: '1px 1px white' 
   }
 
   const inputStyle = {
@@ -86,26 +83,25 @@ function LoginCard() {
     fontFamily: 'Poppins, sans seriff',
     fontWeight: '400',
   }
-
-  const btnStyle = {
+    const btnStyle = {
     height: '50px',
-    minWidth: '40vw',
+    minWidth: '50px',
     margin: '10px',
-    color: '#000000',
-    backgroundColor: '#ee9e09',
+    color: '#ee9e09',
     borderRadius: '15px',
     fontWeight: '800',
     fontSize: '22px',
     fontFamily: 'Poppins, sans seriff',
-    background: '#EE9E09',
-    textShadow: '0.5px 0.5px 5px #FFF',
     transform: isHover ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHover ? '0px 1px 35px #000000' : '0px 1px 0px #000000',
+    boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
+    textShadow: '0.1px 0.1px white',
+    border: '0.5px solid'
+
   }
 
   return (
-    <>
-      <Card style={cardStyle}>
+    <div className='authComponentCardWrapper'>
+      <Card className='authComponentCard' style={cardStyle}>
         <CardHeader
           title="LOGIN"
           disableTypography={true}
@@ -143,9 +139,7 @@ function LoginCard() {
             variant="outlined"
             type={showPassword ? 'text' : 'password'}
             fullWidth={true}
-            color={
-              password.length <= 1 ? 'secondary' : 'primary'
-            }
+            color={password.length <= 1 ? 'secondary' : 'primary'}
             sx={{
               input: {
                 color: (themeOptions) =>
@@ -182,9 +176,8 @@ function LoginCard() {
           </Button>
         </CardActions>
       </Card>
-    </>
+    </div>
   )
 }
 
 export default LoginCard
-

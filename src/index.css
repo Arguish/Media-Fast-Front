@@ -17,6 +17,7 @@
   -webkit-text-size-adjust: 100%;
 }
 body {
+  width: 100%;
   margin: 0;
   display: flex;
   place-items: center;
@@ -29,4 +30,36 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+
+@media (max-width: 800px) {
+  #root {
+    padding: 0;
+  }
+
+  body {
+
+    padding: 0;
+  }
+
+  .authModalComponent {
+    width: 85vw;
+  }
+
+  .authModalComponent button {
+    width: 90%;
+  }
+
+  .authComponentCard {
+    width: 100vw;
+  }
+
+  .showQuestionComponent {
+    width: 100vw;
+  }
+
+  .listComponent label {
+    /* margin-left: 30px; */
+  }
 }

@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import './RegisterCard.css'
 
-import { register, login } from '../../../Services/authService'
+import { register, login } from '../../../../Services/authService'
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
@@ -86,13 +86,11 @@ const RegisterCard = () => {
   }
 
   const cardStyle = {
-    maxWidth: '95vw',
     height: 'auto',
     position: 'absolute',
     top: '40%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
     bgcolor: '#000000',
     border: '2px solid #000',
     boxShadow: 24,
@@ -106,6 +104,7 @@ const RegisterCard = () => {
     textAlign: 'center',
     fontWeight: 'bold',
     fontFamily: 'Poppins, sans seriff',
+    textShadow: '1px 1px white' 
   }
 
   const inputStyle = {
@@ -127,11 +126,12 @@ const RegisterCard = () => {
     transform: isHover ? 'scale(1.05)' : 'scale(1)',
     boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
     textShadow: '0.1px 0.1px white',
+    border: '0.5px solid'
   }
 
   return (
-    <>
-      <Card style={cardStyle}>
+    <div className='authComponentCardWrapper'>
+      <Card className='authComponentCard' style={cardStyle}>
         <CardHeader
           disableTypography={true}
           style={headerStyle}
@@ -259,23 +259,8 @@ const RegisterCard = () => {
           </Button>
         </CardActions>
       </Card>
-    </>
+    </div>
   )
 }
 
 export default RegisterCard
-
-const cardStyle1 = {
-  maxWidth: '95vw',
-  height: 'auto',
-  position: 'absolute',
-  top: '40%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#000000',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  color: '#ee9e09',
-}
