@@ -5,14 +5,35 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { Button } from '@mui/material'
+import { useTheme } from '@emotion/react'
 
 const UserCategoriesComponent = () => {
   const [categories, setCategories] = useState([])
   const categoriesToSend = []
+  const { palette } = useTheme()
 
   useEffect(() => {
     getAllCategories()
   }, [])
+
+  const btnStyle = {
+    height: '50px',
+    minWidth: '50px',
+    margin: '10px',
+    padding: '20px',
+    color: '#ee9e09',
+    borderRadius: '15px',
+    fontWeight: '800',
+    fontSize: '22px',
+    fontFamily: 'Poppins, sans seriff',
+    textShadow: '0.1px 0.1px white',
+    border: '0.5px solid',
+  }
+
+  const optionStyle = {
+    marginLeft: '30px',
+    color: palette.primary.contrastText,
+  }
 
   const getAllCategories = async () => {
     const result = await getCategory()
@@ -33,17 +54,18 @@ const UserCategoriesComponent = () => {
     categoriesToSend.splice(0, categoriesToSend.length)
   }
 
+
   const displayCategories = () => {
     if (categories) {
       return categories.map((category) => {
         return (
-          <div key={category.id}>
-            <FormControlLabel
-              control={<Checkbox onClick={setCategory} />}
-              label={category.category_name}
-              value={category.id}
-            />
-          </div>
+          <FormControlLabel
+            style={optionStyle}
+            key={category.id}
+            control={<Checkbox color={'secondary'} onClick={setCategory} />}
+            label={category.category_name}
+            value={category.id}
+          />
         )
       })
     }
@@ -52,7 +74,7 @@ const UserCategoriesComponent = () => {
   return (
     <div>
       <FormGroup>{displayCategories()}</FormGroup>
-      <Button onClick={handleSubmit}>Next</Button>
+      <Button style={btnStyle} onClick={handleSubmit}>UPDATE</Button>
     </div>
   )
 }
