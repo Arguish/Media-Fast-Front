@@ -16,6 +16,9 @@ import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategory
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/AllUsers'
+import OneUser from '../../Pages/AdminOptions/OneUser'
+import AllMedia from '../../Pages/AdminOptions/AllMedia'
+import OneMedia from '../../Pages/AdminOptions/OneMedia'
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +89,18 @@ export const router = createBrowserRouter([
       {
         path: '/allusers',
         element: <AllUsers />,
+      },
+      {
+        path: '/user/:userId',
+        element: <OneUser />,
+      },
+      {
+        path: '/allmedia',
+        element: <AllMedia />,
+      },
+      {
+        path: '/media/:mediaId',
+        element: <OneMedia />,
       },
     ],
   },

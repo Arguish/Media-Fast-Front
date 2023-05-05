@@ -6,9 +6,16 @@ import ListItem from '@mui/material/ListItem';
 import {  Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import ListItemButton from "@mui/material/ListItemButton";
+import { useNavigate } from "react-router-dom";
 
 const AllUsers = () => {
 const [users, setUsers] = useState([])
+const navigate = useNavigate()
+
+
+const goToUserCard = (userId) => {
+  navigate(`/user/${userId}`)
+}
 
  useEffect(() => {
     getAllUsers()
@@ -23,26 +30,32 @@ const [users, setUsers] = useState([])
  const displayUsers = () => {
     if (users) {
       return users.map((user) => {
+        console.log(user)
         return (
           <div key={user.id}>
-            <Box sx={{ width: 700, bgcolor: 'background.paper', marginTop: 2 }}>
-                <nav aria-label="main mailbox folders">
-                    <List>
+            
+                
+                    <List  >
                     <ListItem disablePadding>
-                    <ListItemButton>
+                    <ListItemButton sx={{  marginTop: 0.5 , backgroundColor: '#ee9e09', border: '0.10px solid black', color: 'black'}} onClick={() => goToUserCard(user.id)} >
+                      <Grid container spacing={2} item xs={6} sx={{marginLeft: 2}}>
+                            <Typography variant="caption" align="right">{user.id}</Typography>
+                            </Grid>
                         <Grid container spacing={2} alignItems="center">
                             <Grid item xs={6}>
                             <Typography variant="subtitle1">{user.nickname}</Typography>
                             </Grid>
+                            {user.private_info  ? 
                             <Grid item xs={6}>
-                            <Typography variant="caption" align="right">{user.id}</Typography>
-                            </Grid>
+                            <Typography variant="caption" align="left">{user.private_info.email}</Typography>
+
+                            </Grid> : '' }
+                            
                         </Grid>
                     </ListItemButton>
                     </ListItem>
                     </List>
-                </nav>
-            </Box>
+               
           </div>
         )
       })
@@ -52,7 +65,7 @@ const [users, setUsers] = useState([])
 
   return (
   <div>
-  {displayUsers()}
+  <Box sx={{ width: 700, bgcolor: 'background.paper', marginTop: 3 }}><nav aria-label="main mailbox folders">{displayUsers()}</nav></Box>
   </div>
   )
 }
