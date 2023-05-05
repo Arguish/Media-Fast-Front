@@ -44,8 +44,9 @@ const Media_page = () => {
   }
 
   return (
-    <>
+    <div className='mediaCardWrapper'>
       <div
+      
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -60,7 +61,7 @@ const Media_page = () => {
         )}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {contentReady && (
-            <button style={button} onClick={previous}>
+            <button  onClick={previous}>
               {' <<< '}
             </button>
           )}
@@ -78,13 +79,13 @@ const Media_page = () => {
             )}
           </div>
           {console.log(list[listItem])}
-          <button style={button} onClick={next}>
+          <button onClick={next}>
             {contentReady ? ' >>> ' : 'Estoy listo!'}
           </button>
         </div>
         {contentReady && (
           <button
-            style={button}
+            
             onClick={() => {
               getMediaByID(list[listItem].id).then(
                 (A) => (window.location = A.platforms[0].platform_url)
@@ -95,7 +96,7 @@ const Media_page = () => {
           </button>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

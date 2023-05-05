@@ -1,8 +1,8 @@
 import { Box, Button, Modal } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
-import LoginCard from './RegisterComponents/LoginCard'
-import RegisterCard from './RegisterComponents/RegisterCard'
+import LoginCard from './RegisterComponents/LoginCard/LoginCard'
+import RegisterCard from './RegisterComponents/RegisterCard/RegisterCard'
 
 const RegisterModalComponent = ({ name }) => {
   const showCard = () => {
@@ -38,7 +38,7 @@ const RegisterModalComponent = ({ name }) => {
   }
 
   return (
-    <div>
+    <div className='authModalComponent'>
       <Button
         onMouseEnter={handleHoverIn}
         onMouseLeave={handleHoverOut}

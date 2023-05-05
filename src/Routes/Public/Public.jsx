@@ -16,6 +16,7 @@ import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategory
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/AllUsers'
+import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
 
 export const router = createBrowserRouter([
   {
@@ -49,13 +50,17 @@ export const router = createBrowserRouter([
         path: '/media',
         element: <Media_page />,
       },
+      // {
+      //   path: '/time',
+      //   element: <TimePage optionOne={} optionTwo={} />,
+      // },
       {
         path: '/time',
-        element: <TimePage />,
+        element: <ShowOptionsComponent question={'¿CUÁNTO TIEMPO TIENES?'} optionOne={'MENOS DE DOS HORAS'} optionTwo={'MAS DE DOS HORAS'} />,
       },
       {
         path: '/choosemedia',
-        element: <ChooseMedia />,
+        element: <ShowOptionsComponent question={'¿PELI O SERIE?'} optionOne={'PELI'} optionTwo={'SERIE'} />,
       },
 
       {

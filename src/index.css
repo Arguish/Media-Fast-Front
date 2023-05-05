@@ -30,3 +30,22 @@ body {
   padding: 2rem;
   text-align: center;
 }
+
+
+@media (max-width: 800px) {
+  .authModalComponent {
+    width: 85vw;
+  }
+
+  .authModalComponent button {
+    width: 90%;
+  }
+
+  .authComponentCard {
+    width: 100vw;
+  }
+
+  .timeQuestionComponent {
+    width: 100vw;
+  }
+}
