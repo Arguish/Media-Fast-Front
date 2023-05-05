@@ -21,7 +21,7 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
   // }
   // const handleHoverOut = () => {
   //   setIsHover(false)
-  // }
+  // }timeQuestionComponent
 
   const cardStyle = {
     height: 'auto',
@@ -66,7 +66,7 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
   }
 
   return (
-    <Card className="timeQuestionComponent" style={cardStyle}>
+    <Card className="showQuestionComponent" style={cardStyle}>
       <CardHeader
         disableTypography={true}
         style={headerStyle}

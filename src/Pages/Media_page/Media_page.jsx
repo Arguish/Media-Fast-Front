@@ -44,9 +44,8 @@ const Media_page = () => {
   }
 
   return (
-    <div className='mediaCardWrapper'>
+    <div className="mediaCardWrapper">
       <div
-      
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -60,11 +59,7 @@ const Media_page = () => {
           </h2>
         )}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {contentReady && (
-            <button  onClick={previous}>
-              {' <<< '}
-            </button>
-          )}
+          {contentReady && <button onClick={previous}>{' <<< '}</button>}
           <div
             style={{
               transition: 'all 200ms',
@@ -85,7 +80,6 @@ const Media_page = () => {
         </div>
         {contentReady && (
           <button
-            
             onClick={() => {
               getMediaByID(list[listItem].id).then(
                 (A) => (window.location = A.platforms[0].platform_url)

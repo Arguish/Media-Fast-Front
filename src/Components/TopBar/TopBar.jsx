@@ -39,6 +39,17 @@ const TopBar = () => {
     return navigate('/')
   }
 
+  const logoStyle = {
+    fontSize: '50px',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontFamily: 'Poppins, sans seriff',
+    flexGrow: 1,
+    userSelect: 'none',
+    cursor:'pointer',
+    color: '#ee9e09'
+  }
+
   return (
     <Box
       sx={{
@@ -60,14 +71,15 @@ const TopBar = () => {
             sx={{ mr: 2 }}
           ></IconButton>
           <Typography
-            style={{ userSelect: 'none', cursor: 'pointer' }}
             variant="h6"
             component="div"
             onClick={handleHome}
-            sx={{
-              flexGrow: 1,
-              color: '#ee9e09',
-            }}
+            style={logoStyle}
+            // sx={{
+            //   flexGrow: 1,
+            //   color: '#ee9e09',
+            // }}
+            
           >
             MEDIAFAST
           </Typography>

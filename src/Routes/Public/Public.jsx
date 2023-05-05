@@ -50,10 +50,6 @@ export const router = createBrowserRouter([
         path: '/media',
         element: <Media_page />,
       },
-      // {
-      //   path: '/time',
-      //   element: <TimePage optionOne={} optionTwo={} />,
-      // },
       {
         path: '/time',
         element: <ShowOptionsComponent question={'¿CUÁNTO TIEMPO TIENES?'} optionOne={'MENOS DE DOS HORAS'} optionTwo={'MAS DE DOS HORAS'} />,

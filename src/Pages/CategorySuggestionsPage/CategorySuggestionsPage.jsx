@@ -5,19 +5,40 @@ import { getUserCategories } from '../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { Button } from '@mui/material'
+import { Button, ThemeProvider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-
+import { useTheme } from '@emotion/react'
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 const CategorySuggestionsPage = () => {
   const [categories, setCategories] = useState([])
   const [checked, setChecked] = useState(false)
   const categoriesToSend = []
+  const { palette } = useTheme()
 
   const navigate = useNavigate()
 
   useEffect(() => {
     getAllCategories()
   }, [])
+
+  const btnStyle = {
+    height: '50px',
+    minWidth: '50px',
+    margin: '10px',
+    padding: '20px',
+    color: '#ee9e09',
+    borderRadius: '15px',
+    fontWeight: '800',
+    fontSize: '22px',
+    fontFamily: 'Poppins, sans seriff',
+    textShadow: '0.1px 0.1px white',
+    border: '0.5px solid',
+  }
+
+  const optionStyle = {
+    marginLeft: '30px',
+    color: palette.primary.contrastText,
+  }
 
   const getAllCategories = async () => {
     const result = await getCategory()
@@ -43,23 +64,25 @@ const CategorySuggestionsPage = () => {
     if (categories) {
       return categories.map((category) => {
         return (
-          <div key={category.id}>
-            <FormControlLabel
-              control={<Checkbox onClick={setCategory} />}
-              label={category.category_name}
-              value={category.id}
-            />
-          </div>
+          <FormControlLabel
+            style={optionStyle}
+            key={category.id}
+            control={<Checkbox color={'secondary'} onClick={setCategory} />}
+            label={category.category_name}
+            value={category.id}
+          />
         )
       })
     }
   }
 
   return (
-    <div>
-      <FormGroup>{displayCategories()}</FormGroup>
+    <div className="listComponentWrapper">
+      <FormGroup className="listComponent">{displayCategories()}</FormGroup>
 
-      <Button onClick={handleSubmit}>Next</Button>
+      <Button style={btnStyle} onClick={handleSubmit}>
+        CONTINUE
+      </Button>
     </div>
   )
 }
