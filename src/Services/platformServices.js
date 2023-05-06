@@ -15,8 +15,8 @@ export const putPlatform = async (id) => {
   return data
 }
 
-export const postPlatform = async (id) => {
-  const { data } = await api.post('/platform')
+export const postPlatform = async (body) => {
+  const { data } = await api.post('/platform', body)
   return data
 }
 
