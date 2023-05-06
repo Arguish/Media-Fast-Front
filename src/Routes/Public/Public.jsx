@@ -16,12 +16,12 @@ import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategory
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/AllUsers'
+import AllPlatforms from '../../Pages/AdminOptions/AllPlatforms'
 
 import OneUser from '../../Pages/AdminOptions/OneUser'
 import AllMedia from '../../Pages/AdminOptions/AllMedia'
 import OneMedia from '../../Pages/AdminOptions/OneMedia'
 import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
-
 
 export const router = createBrowserRouter([
   {
@@ -57,11 +57,23 @@ export const router = createBrowserRouter([
       },
       {
         path: '/time',
-        element: <ShowOptionsComponent question={'¿CUÁNTO TIEMPO TIENES?'} optionOne={'MENOS DE DOS HORAS'} optionTwo={'MAS DE DOS HORAS'} />,
+        element: (
+          <ShowOptionsComponent
+            question={'¿CUÁNTO TIEMPO TIENES?'}
+            optionOne={'MENOS DE DOS HORAS'}
+            optionTwo={'MAS DE DOS HORAS'}
+          />
+        ),
       },
       {
         path: '/choosemedia',
-        element: <ShowOptionsComponent question={'¿PELI O SERIE?'} optionOne={'PELI'} optionTwo={'SERIE'} />,
+        element: (
+          <ShowOptionsComponent
+            question={'¿PELI O SERIE?'}
+            optionOne={'PELI'}
+            optionTwo={'SERIE'}
+          />
+        ),
       },
 
       {
@@ -91,6 +103,10 @@ export const router = createBrowserRouter([
       {
         path: '/allusers',
         element: <AllUsers />,
+      },
+      {
+        path: '/allplatforms',
+        element: <AllPlatforms />,
       },
       {
         path: '/user/:userId',
