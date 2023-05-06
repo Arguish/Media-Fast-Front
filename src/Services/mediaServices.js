@@ -31,6 +31,11 @@ export const deleteMedia = async (id) => {
 }
 
 export const getMediaByCategories = async (userId) => {
-  const {data} = await api.get(`/media/user/${userId}/categories`)
+  const { data } = await api.get(`/media/user/${userId}/categories`)
+  return data
+}
+
+export const getMediaByCategoriesAndType = async (userId, type) => {
+  const { data } = await api.get(`media/user/${userId}/categories/media/${type}`)
   return data
 }

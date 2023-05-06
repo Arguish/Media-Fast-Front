@@ -15,7 +15,7 @@ export const getUserMe = async (id) => {
   return data
 }
 
-export const getUserCategories = async (body) => {
+export const setUserCategories = async (body) => {
   const { data } = await api.post(`/user/me/categories`, body)
   return data
 }

@@ -62,7 +62,7 @@ const MediaCard = ({ cardContent, cover }) => {
 export default MediaCard
 
 const card1 = {
-  display: 'absolute',
+  // display: 'absolute',
   border: '10px solid black',
   width: '300px',
   height: '400px',

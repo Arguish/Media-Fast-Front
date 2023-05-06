@@ -12,17 +12,16 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
   }
   
   const goMedia = (e) => {
-    (location.pathname === 'choosemedia') || e.target.value === 'MENOS DE DOS HORAS' || e.target.value === 'PELI' || e.target.value === 'SERIE' ?
-    navigate('/media') : navigate('/choosemedia')
+    if (e.target.value === 'MENOS DE DOS HORAS' || e.target.value === 'SERIE') {
+      navigate('/user/me/categories/media/show')
+    } else if (e.target.value === 'PELI') {
+      navigate('/user/me/categories/media/movie')
+    } else {
+      navigate('/choosemedia')
+    }
   }
 
-  // const handleHoverIn = () => {
-  //   setIsHover(true)
-  // }
-  // const handleHoverOut = () => {
-  //   setIsHover(false)
-  // }timeQuestionComponent
-
+  
   const cardStyle = {
     height: 'auto',
     position: 'absolute',

@@ -77,8 +77,7 @@ export const router = createBrowserRouter([
         element: <Bye />,
       },
       {
-        path: '/mediaByCategories',
-
+        path: 'user/me/categories/media/:type',
         element: <MediaByCategoryPage />,
       },
       {
