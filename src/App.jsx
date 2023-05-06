@@ -1,15 +1,25 @@
 import { ContextProvider } from './Context/Context/ContextProvider'
-import GoTo from './Components/GoTo/GoTo'
+import { Navigate } from 'react-router-dom'
 
 function App() {
+  console.log(localStorage.getItem('dfghjk'))
   return (
     <>
       <ContextProvider>
-        {/* <BrowserRouter> */}
-        {/* <Public> </Public> */}
-        {/* </BrowserRouter> */}
-        <GoTo path={'/auth'} text={'auth'} />
-        <GoTo path={'/time'} text={'time'} />
+        <iframe
+          src="https://giphy.com/embed/x9hvUcjOAM0jC"
+          width="480"
+          height="480"
+          frameBorder="0"
+          class="giphy-embed"
+          allowFullScreen
+        ></iframe>
+
+        {localStorage.getItem('token') ? (
+          <Navigate to="/time"></Navigate>
+        ) : (
+          <Navigate to="/auth"></Navigate>
+        )}
       </ContextProvider>
     </>
   )
