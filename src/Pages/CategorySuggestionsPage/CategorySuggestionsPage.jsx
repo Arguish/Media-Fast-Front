@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './CategorySuggestionsPage.css'
 import { getCategory } from '../../Services/categoriesServices'
-import { getUserCategories } from '../../Services/userServices'
+import { setUserCategories } from '../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { Button, ThemeProvider } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@emotion/react'
-import AcUnitIcon from '@mui/icons-material/AcUnit';
+
 const CategorySuggestionsPage = () => {
   const [categories, setCategories] = useState([])
   const [checked, setChecked] = useState(false)
@@ -55,7 +55,8 @@ const CategorySuggestionsPage = () => {
   }
 
   const handleSubmit = async () => {
-    const result = await getUserCategories(categoriesToSend)
+    const result = await setUserCategories(categoriesToSend)
+    console.log(result)
     navigate('/time')
     console.log(result)
   }

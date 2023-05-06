@@ -47,11 +47,13 @@ const UserCategoriesComponent = () => {
     categoriesToSend.includes(element) === false
       ? categoriesToSend.push(element)
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
+      console.log(categoriesToSend, 'IN SETCATEGORY')
   }
 
   const handleSubmit = async () => {
+    // categoriesToSend.splice(0, categoriesToSend.length)
+    console.log(categoriesToSend, 'categoriestosend')
     const result = await updateUserCategories(categoriesToSend)
-    categoriesToSend.splice(0, categoriesToSend.length)
   }
 
 
