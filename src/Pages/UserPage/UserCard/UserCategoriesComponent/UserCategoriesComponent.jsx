@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import { getCategory } from '../../../../Services/categoriesServices'
 import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
@@ -47,7 +48,7 @@ const UserCategoriesComponent = () => {
     categoriesToSend.includes(element) === false
       ? categoriesToSend.push(element)
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
-      console.log(categoriesToSend, 'IN SETCATEGORY')
+    console.log(categoriesToSend, 'IN SETCATEGORY')
   }
 
   const handleSubmit = async () => {
@@ -55,7 +56,6 @@ const UserCategoriesComponent = () => {
     console.log(categoriesToSend, 'categoriestosend')
     const result = await updateUserCategories(categoriesToSend)
   }
-
 
   const displayCategories = () => {
     if (categories) {
@@ -76,7 +76,11 @@ const UserCategoriesComponent = () => {
   return (
     <div>
       <FormGroup>{displayCategories()}</FormGroup>
-      <Button style={btnStyle} onClick={handleSubmit}>UPDATE</Button>
+      <NavLink to="/user/me" reloadDocument={true}>
+        <Button style={btnStyle} onClick={handleSubmit}>
+          UPDATE
+        </Button>
+      </NavLink>
     </div>
   )
 }
