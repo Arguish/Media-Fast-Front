@@ -4,6 +4,7 @@
 :root {
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
+  font-size: 16px;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -32,8 +33,12 @@ body {
   text-align: center;
 }
 
+.chipStyle {
+  text-transform: uppercase;
+  margin: 5px;
+}
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   #root {
     padding: 0;
   }
@@ -59,7 +64,18 @@ body {
     width: 100vw;
   }
 
-  .listComponent label {
-    /* margin-left: 30px; */
+
+  .categoryWrapperStyle {
+    border: 1px solid red;
+  }
+
+  .chipStyle {
+    text-transform: uppercase;
+    margin: 2px;
+  }
+
+  .userAvatarClass {
+    border: 1px solid #ee9e09;
+    height: 100px;
   }
 }
