@@ -44,7 +44,6 @@ body {
   }
 
   body {
-
     padding: 0;
   }
 
@@ -57,11 +56,11 @@ body {
   }
 
   .authComponentCard {
-    width: 100vw;
+    width: 90vw;
   }
 
   .showQuestionComponent {
-    width: 100vw;
+    width: 90vw;
   }
 
 
@@ -74,8 +73,5 @@ body {
     margin: 2px;
   }
 
-  .userAvatarClass {
-    border: 1px solid #ee9e09;
-    height: 100px;
-  }
+  
 }

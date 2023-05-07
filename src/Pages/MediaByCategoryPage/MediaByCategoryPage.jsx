@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import MediaCard from '../../Components/MediaCard/MediaCard'
 import { getMediaRandom, getMediaByID } from '../../Services/mediaServices'
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import {
   getMediaByCategories,
   getMediaByCategoriesAndType,
 } from '../../Services/mediaServices'
 import { useParams } from 'react-router-dom'
+import { Button } from '@mui/material'
 
 const MediaByCategoryPage = () => {
   const [contentReady, setcontentReady] = useState(false)
@@ -66,7 +68,19 @@ const MediaByCategoryPage = () => {
           </h2>
         )}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {contentReady && <button onClick={previous}>{' <<< '}</button>}
+          {contentReady && (
+            <Button style={arrowsBtnStyle} onClick={previous}>
+              {
+                <ArrowBackIosIcon
+                  color="secondary"
+                  sx={{
+                    height: '50px',
+                    width: '50px',
+                  }}
+                />
+              }
+            </Button>
+          )}
           <div
             style={{
               transition: 'all 200ms',
@@ -81,24 +95,59 @@ const MediaByCategoryPage = () => {
             )}
           </div>
           {console.log(list[listItem])}
-          <button onClick={next}>
-            {contentReady ? ' >>> ' : 'Estoy listo!'}
-          </button>
+          <Button style={arrowsBtnStyle} onClick={next}>
+            {contentReady ? (
+              <ArrowForwardIosIcon
+                sx={{
+                  height: '50px',
+                  width: '50px',
+                }}
+                color="secondary"
+              />
+            ) : (
+              'Estoy listo!'
+            )}
+          </Button>
         </div>
         {contentReady && (
-          <button
+          <Button
+            style={btnStyle}
             onClick={() => {
               getMediaByID(list[listItem].id).then(
                 (A) => (window.location = A.platforms[0].platform_url)
               )
             }}
           >
-            <h2>VER AHORA!</h2>
-          </button>
+            VER AHORA!
+          </Button>
         )}
       </div>
     </div>
   )
+}
+
+const btnStyle = {
+  height: '50px',
+  minWidth: '50px',
+  margin: '10px',
+  color: '#ee9e09',
+  borderRadius: '15px',
+  fontWeight: '800',
+  fontSize: '22px',
+  fontFamily: 'Poppins, sans seriff',
+  textShadow: '0.1px 0.1px white',
+  border: '2px solid',
+}
+
+const arrowsBtnStyle = {
+  height: '5em',
+  margin: '10px',
+  color: '#ee9e09',
+  borderRadius: '15px',
+  fontWeight: '800',
+  fontSize: '22px',
+  fontFamily: 'Poppins, sans seriff',
+  textShadow: '0.1px 0.1px white',
 }
 
 export default MediaByCategoryPage

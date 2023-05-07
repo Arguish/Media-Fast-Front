@@ -155,3 +155,16 @@ const image = {
   userSelect: 'none',
   cursor: 'pointer',
 }
+
+const btnStyle = {
+  height: '50px',
+  minWidth: '50px',
+  margin: '10px',
+  color: '#ee9e09',
+  borderRadius: '15px',
+  fontWeight: '800',
+  fontSize: '22px',
+  fontFamily: 'Poppins, sans seriff',
+  textShadow: '0.1px 0.1px white',
+  border: '0.5px solid',
+}

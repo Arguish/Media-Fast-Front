@@ -9,7 +9,8 @@ import IconButton from '@mui/material/IconButton'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
-
+import LogoutIcon from '@mui/icons-material/Logout'
+import AccountBoxIcon from '@mui/icons-material/AccountBox'
 const TopBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -46,14 +47,14 @@ const TopBar = () => {
     fontFamily: 'Poppins, sans seriff',
     flexGrow: 1,
     userSelect: 'none',
-    cursor:'pointer',
-    color: '#ee9e09'
+    cursor: 'pointer',
+    color: '#ee9e09',
   }
 
   return (
     <Box
       sx={{
-        flexGrow: 1,
+        // flexGrow: 1,
       }}
     >
       <AppBar
@@ -75,11 +76,6 @@ const TopBar = () => {
             component="div"
             onClick={handleHome}
             style={logoStyle}
-            // sx={{
-            //   flexGrow: 1,
-            //   color: '#ee9e09',
-            // }}
-            
           >
             MEDIAFAST
           </Typography>
@@ -95,7 +91,7 @@ const TopBar = () => {
               >
                 <AccountCircle
                   sx={{
-                    color: '#ee9e09',
+                    color: 'secondary.main',
                   }}
                 />
               </IconButton>
@@ -104,18 +100,32 @@ const TopBar = () => {
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'left',
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'none',
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleMe}>Me</MenuItem>
-                <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                <MenuItem
+                  sx={{
+                    color: 'primary.main',
+                  }}
+                  onClick={handleMe}
+                >
+                  <AccountBoxIcon />
+                </MenuItem>
+                <MenuItem
+                  sx={{
+                    color: 'secondary.main',
+                  }}
+                  onClick={handleLogOut}
+                >
+                  <LogoutIcon />
+                </MenuItem>
               </Menu>
             </div>
           )}
