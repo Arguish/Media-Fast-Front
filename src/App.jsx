@@ -3,11 +3,11 @@ import { ContextProvider } from './Context/Context/ContextProvider'
 import { Navigate, useNavigate } from 'react-router-dom'
 import useSound from 'use-sound'
 
-import boopSfx from '../src/assets/braam-6150.mp3'
+import chaaaaaanFX from '../src/assets/braam-6150.mp3'
 
 function App() {
   const navigate = useNavigate()
-  const [play] = useSound(boopSfx, { volume: 0.3 })
+  const [play] = useSound(chaaaaaanFX, { volume: 0.3 })
 
   console.log(localStorage.getItem('dfghjk'))
   play()
