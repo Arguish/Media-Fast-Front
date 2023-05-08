@@ -39,6 +39,9 @@ const TopBar = () => {
   const handleHome = () => {
     return navigate('/')
   }
+  const handleAbout = () => {
+    return navigate('/aboutus')
+  }
 
   const logoStyle = {
     fontSize: '50px',
@@ -76,6 +79,10 @@ const TopBar = () => {
             component="div"
             onClick={handleHome}
             style={logoStyle}
+            // sx={{
+            //   flexGrow: 1,
+            //   color: '#ee9e09',
+            // }}
           >
             MEDIAFAST
           </Typography>
@@ -126,6 +133,9 @@ const TopBar = () => {
                 >
                   <LogoutIcon />
                 </MenuItem>
+                <MenuItem onClick={handleMe}>Me</MenuItem>
+                <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                <MenuItem onClick={handleAbout}>About Us</MenuItem>
               </Menu>
             </div>
           )}

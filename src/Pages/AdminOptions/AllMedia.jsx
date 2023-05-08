@@ -1,66 +1,137 @@
-import { useEffect, useState } from 'react'
-import {getMedia} from '../../Services/mediaServices'
-import { useNavigate } from 'react-router-dom'
-import { Box, Grid, List, ListItem, ListItemButton, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { getMedia, deleteMedia, postMedia } from '../../Services/mediaServices'
 
-const AllMedia = () =>{
-    const [media, setMedia] = useState([])
-    const navigate = useNavigate()
-    
-    
-    const goToMediaCard = (mediaId) => {
-      navigate(`/media/${mediaId}`)
+const AllMedia = () => {
+  const [header, setheader] = useState([])
+  const [body, setbody] = useState([])
+  const [nextId, setnextId] = useState(0)
+
+  const getNextId = (num) => {
+    num > nextId ? setnextId(num + 1) : nextId + 1
+  }
+
+  const handleGetData = async (getter) => {
+    const result = await getter
+    console.log(result)
+    console.log(Object.keys(result[0]))
+    const headerMod = Object.keys(result[0]).slice(1)
+    headerMod.splice(5, 2)
+    setheader(headerMod)
+    console.log(Object.values(result[0]))
+    setbody(result)
+  }
+
+  const handleDelete = async (id) => {
+    await deleteMedia(id)
+    location.reload()
+  }
+
+  const handleCreate = async (e) => {
+    e.preventDefault()
+    const res = new Object()
+    header.map((a) => {
+      res[e.target[a].name] = e.target[a].value
+    })
+    console.log(res)
+    await postMedia(res)
+    location.reload()
+  }
+
+  useEffect(() => {
+    handleGetData(getMedia())
+  }, [])
+
+  const shorString = (str) => {
+    if (String(str).length > 20) {
+      return String(str).slice(0, 20) + '...'
+    } else {
+      return str
     }
-    
-     useEffect(() => {
-        getAllMedia()
-      }, [])
-    
-      const getAllMedia = async () => {
-        const result = await getMedia()
-        setMedia(result)
-    
-      }
-    
-     const displayMedia = () => {
-        if (media) {
-          return media.map((film) => {
-            return (
-              <div key={film.id}>
-                
-                    
-                        <List  >
-                        <ListItem disablePadding>
-                        <ListItemButton sx={{  marginTop: 0.5 , backgroundColor: '#ee9e09', border: '0.10px solid black', color: 'black'}} onClick={() => goToMediaCard(film.id)} >
-                          <Grid container spacing={2} item xs={6} sx={{marginLeft: 2}}>
-                                <Typography variant="caption" align="right">{film.id}</Typography>
-                                </Grid>
-                            <Grid container spacing={2} alignItems="center">
-                                <Grid item xs={6}>
-                                <Typography variant="subtitle1">{film.title}</Typography>
-                                </Grid>
-                                <Grid item xs={6}>
-                                <Typography variant="caption" align="left">{film.type}</Typography>
-    
-                                </Grid> 
-                                
-                            </Grid>
-                        </ListItemButton>
-                        </ListItem>
-                        </List>
-                   
-              </div>
-            )
-          })
-        }
-    }
-      
-    
-      return (
-      <div>
-      <Box sx={{ width: 700, bgcolor: 'background.paper', marginTop: 3 }}><nav aria-label="main mailbox folders">{displayMedia()}</nav></Box>
+  }
+
+  return (
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'stretch' }}
+    >
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
+          marginTop: '100px',
+        }}
+      >
+        {header.map((a, i) => (
+          <h2 style={{ grid: `${i}/${i + 1}` }}> {a} </h2>
+        ))}
+        <h1></h1>
       </div>
-      )
+
+      <form
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
+        }}
+        onSubmit={(event) => handleCreate(event)}
+      >
+        {header.map((a, i) => {
+          return (
+            <input
+              name={a}
+              placeholder={a}
+              type="text"
+              style={{ margin: '3px', grid: `${i}/${i + 1}` }}
+            />
+          )
+        })}
+        <button type="submit" style={{ margin: 3 }}>
+          ✔
+        </button>
+      </form>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
+        }}
+      >
+        {body.map((a) => {
+          getNextId(a.id)
+          const aValue = Object.values(a)
+          aValue.splice(6, 2)
+          return (
+            <>
+              {aValue
+                .map((b, i) => {
+                  if (typeof b === 'object') {
+                    if (b[0]) {
+                      console.log(Object.values(b[0])[1])
+                      return (
+                        <>
+                          <h3 style={{ grid: `${i}/${i + 1}` }}>
+                            {shorString(Object.values(b[0])[1])}
+                          </h3>
+                        </>
+                      )
+                    }
+                    return <h3> N/A </h3>
+                  }
+                  return (
+                    <>
+                      <h3 style={{ grid: `${i}/${i + 1}` }}>{shorString(b)}</h3>
+                    </>
+                  )
+                })
+                .slice(1)}
+
+              <button onClick={() => handleDelete(a.id)} style={{ margin: 3 }}>
+                ❌
+              </button>
+            </>
+          )
+        })}
+      </div>
+    </div>
+  )
 }
 
 export default AllMedia
