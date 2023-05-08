@@ -22,6 +22,7 @@ import OneUser from '../../Pages/AdminOptions/OneUser'
 import AllMedia from '../../Pages/AdminOptions/AllMedia'
 import OneMedia from '../../Pages/AdminOptions/OneMedia'
 import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
+import AboutUs from '../../Pages/AboutUs/AboutUs'
 
 export const router = createBrowserRouter([
   {
@@ -119,6 +120,10 @@ export const router = createBrowserRouter([
       {
         path: '/media/:mediaId',
         element: <OneMedia />,
+      },
+      {
+        path: '/aboutus',
+        element: <AboutUs />,
       },
     ],
   },

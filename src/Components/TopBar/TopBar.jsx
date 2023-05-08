@@ -38,6 +38,9 @@ const TopBar = () => {
   const handleHome = () => {
     return navigate('/')
   }
+  const handleAbout = () => {
+    return navigate('/aboutus')
+  }
 
   const logoStyle = {
     fontSize: '50px',
@@ -46,8 +49,8 @@ const TopBar = () => {
     fontFamily: 'Poppins, sans seriff',
     flexGrow: 1,
     userSelect: 'none',
-    cursor:'pointer',
-    color: '#ee9e09'
+    cursor: 'pointer',
+    color: '#ee9e09',
   }
 
   return (
@@ -79,7 +82,6 @@ const TopBar = () => {
             //   flexGrow: 1,
             //   color: '#ee9e09',
             // }}
-            
           >
             MEDIAFAST
           </Typography>
@@ -116,6 +118,7 @@ const TopBar = () => {
               >
                 <MenuItem onClick={handleMe}>Me</MenuItem>
                 <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                <MenuItem onClick={handleAbout}>About Us</MenuItem>
               </Menu>
             </div>
           )}
