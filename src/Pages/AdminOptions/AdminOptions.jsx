@@ -17,6 +17,10 @@ const AdminOptions = () => {
     navigate('/allplatforms')
   }
 
+  const goToAllCategories = () => {
+    navigate('/allcategories')
+  }
+
   return (
     <div>
       <Button
@@ -52,6 +56,7 @@ const AdminOptions = () => {
         variant="contained"
         size="medium"
         sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
+        onClick={goToAllCategories}
       >
         CATEGORIES
       </Button>
