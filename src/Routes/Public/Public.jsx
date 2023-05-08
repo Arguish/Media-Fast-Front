@@ -16,14 +16,14 @@ import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategory
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/AllUsers'
-import AllPlatforms from '../../Pages/AdminOptions/AllPlatforms'
+import AllPlatforms from '../../Pages/AdminOptions/Platforms/AllPlatforms'
 
 import OneUser from '../../Pages/AdminOptions/OneUser'
 import AllMedia from '../../Pages/AdminOptions/AllMedia'
 import OneMedia from '../../Pages/AdminOptions/OneMedia'
 import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
 import AboutUs from '../../Pages/AboutUs/AboutUs'
-
+import AllCategories from '../../Pages/AdminOptions/Categories/AllCategories'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -124,6 +124,10 @@ export const router = createBrowserRouter([
       {
         path: '/aboutus',
         element: <AboutUs />,
+      },
+        {
+        path: '/allcategories',
+        element: <AllCategories />,
       },
     ],
   },

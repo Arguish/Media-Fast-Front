@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import {
-  getPlatform,
-  deletePlatform,
-  postPlatform,
-} from '../../Services/platformServices'
-
-const AllPlatforms = () => {
+import React from 'react'
+import  { useEffect, useState } from 'react'
+import { getCategory, deleteCategory, postCategory } from '../../../Services/categoriesServices'
+import './AllCategories.css'
+const AllCategories = () => {
   const [header, setheader] = useState([])
   const [body, setbody] = useState([])
   const [nextId, setnextId] = useState(0)
@@ -16,15 +13,12 @@ const AllPlatforms = () => {
 
   const handleGetData = async (getter) => {
     const result = await getter
-    console.log(result)
-    console.log(Object.keys(result[0]))
     setheader(Object.keys(result[0]).slice(1, -2))
-    console.log(Object.values(result[0]))
     setbody(result)
   }
 
   const handleDelete = async (id) => {
-    await deletePlatform(id)
+    await deleteCategory(id)
     location.reload()
   }
 
@@ -35,12 +29,12 @@ const AllPlatforms = () => {
       res[e.target[a].name] = e.target[a].value
     })
     console.log(res)
-    await postPlatform(res)
+    await postCategory(res)
     location.reload()
   }
 
   useEffect(() => {
-    handleGetData(getPlatform())
+    handleGetData(getCategory())
   }, [])
 
   return (
@@ -53,9 +47,8 @@ const AllPlatforms = () => {
         }}
       >
         {header.map((a, i) => (
-          <h2 style={{ grid: `${i}/${i + 1}` }}>{a}</h2>
+          <h2 key={i} style={{ grid: `${i}/${i + 1}` }}>{a}</h2>
         ))}
-        <h1></h1>
       </div>
 
       <form
@@ -68,6 +61,7 @@ const AllPlatforms = () => {
         {header.map((a, i) => {
           return (
             <input
+              key={i}
               name={a}
               placeholder={a}
               type="text"
@@ -79,29 +73,16 @@ const AllPlatforms = () => {
           ✔
         </button>
       </form>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
-        }}
-      >
-        {body.map((a) => {
+      <div className='gridWrapper'>
+        {body.map((a, i ) => {
           getNextId(a.id)
           return (
-            <>
-              {Object.values(a)
-                .map((b, i) => {
-                  return (
-                    <>
-                      <h3 style={{ grid: `${i}/${i + 1}` }}> {b} </h3>
-                    </>
-                  )
-                })
-                .slice(1, -2)}
-              <button onClick={() => handleDelete(a.id)} style={{ margin: 3 }}>
+            <div className='categoryRow'key={i}>
+                <h3 > {a.category_name}</h3>
+                <button onClick={() => handleDelete(a.id)} style={{ margin: 3 }}>
                 ❌
-              </button>
-            </>
+                </button>
+            </div>
           )
         })}
       </div>
@@ -109,4 +90,4 @@ const AllPlatforms = () => {
   )
 }
 
-export default AllPlatforms
+export default AllCategories

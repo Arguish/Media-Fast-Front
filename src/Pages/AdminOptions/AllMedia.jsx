@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getMedia, deleteMedia, postMedia } from '../../Services/mediaServices'
-
+import './AllMedia.css'
 const AllMedia = () => {
   const [header, setheader] = useState([])
   const [body, setbody] = useState([])
@@ -12,12 +12,9 @@ const AllMedia = () => {
 
   const handleGetData = async (getter) => {
     const result = await getter
-    console.log(result)
-    console.log(Object.keys(result[0]))
     const headerMod = Object.keys(result[0]).slice(1)
-    headerMod.splice(5, 2)
+    headerMod.splice(6, 5)
     setheader(headerMod)
-    console.log(Object.values(result[0]))
     setbody(result)
   }
 
@@ -32,7 +29,6 @@ const AllMedia = () => {
     header.map((a) => {
       res[e.target[a].name] = e.target[a].value
     })
-    console.log(res)
     await postMedia(res)
     location.reload()
   }
@@ -51,24 +47,20 @@ const AllMedia = () => {
 
   return (
     <div
-      style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'stretch' }}
+      className="gridWrapper"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
+        marginTop: '100px',
+      }}
     >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
-          marginTop: '100px',
-        }}
-      >
-        {header.map((a, i) => (
-          <h2 style={{ grid: `${i}/${i + 1}` }}> {a} </h2>
-        ))}
-        <h1></h1>
-      </div>
+      {header.map((a, i) => (
+        <h2 style={{ grid: `${i}/${i + 1}` }}> {a} </h2>
+      ))}
+      <h1></h1>
 
       <form
         style={{
-          display: 'grid',
           gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
         }}
         onSubmit={(event) => handleCreate(event)}
@@ -79,7 +71,11 @@ const AllMedia = () => {
               name={a}
               placeholder={a}
               type="text"
-              style={{ margin: '3px', grid: `${i}/${i + 1}` }}
+              style={{
+                margin: '3px',
+                grid: `${i}/${i + 1}`,
+                gridTemplateColumns: `repeat(${header.length}), 1fr`,
+              }}
             />
           )
         })}
@@ -88,45 +84,27 @@ const AllMedia = () => {
         </button>
       </form>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
-        }}
-      >
+      <div>
         {body.map((a) => {
           getNextId(a.id)
           const aValue = Object.values(a)
-          aValue.splice(6, 2)
+          aValue.splice(8, 2)
           return (
-            <>
-              {aValue
-                .map((b, i) => {
-                  if (typeof b === 'object') {
-                    if (b[0]) {
-                      console.log(Object.values(b[0])[1])
-                      return (
-                        <>
-                          <h3 style={{ grid: `${i}/${i + 1}` }}>
-                            {shorString(Object.values(b[0])[1])}
-                          </h3>
-                        </>
-                      )
-                    }
-                    return <h3> N/A </h3>
-                  }
-                  return (
-                    <>
-                      <h3 style={{ grid: `${i}/${i + 1}` }}>{shorString(b)}</h3>
-                    </>
-                  )
-                })
-                .slice(1)}
-
-              <button onClick={() => handleDelete(a.id)} style={{ margin: 3 }}>
+            <div>
+              <h5> {a.originalId}</h5>
+              <h5> {a.title}</h5>
+              <h5> {a.description}</h5>
+              <h5> {a.type}</h5>
+              <h5> {a.season}</h5>
+              <h5> {a.season_episodes}</h5>
+              <button
+                className="button"
+                onClick={() => handleDelete(a.id)}
+                style={{ margin: 3, width: 40, height: 40 }}
+              >
                 ❌
               </button>
-            </>
+            </div>
           )
         })}
       </div>
