@@ -9,7 +9,6 @@ function App() {
   const navigate = useNavigate()
   const [play] = useSound(chaaaaaanFX, { volume: 0.3 })
 
-  console.log(localStorage.getItem('dfghjk'))
   play()
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +27,6 @@ function App() {
           src="https://giphy.com/embed/x9hvUcjOAM0jC"
           width="480"
           height="480"
-          frameBorder="0"
           className="giphy-embed"
           allowFullScreen
         ></iframe>
