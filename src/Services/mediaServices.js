@@ -20,8 +20,8 @@ export const putMedia = async (id) => {
   return data
 }
 
-export const postMedia = async (id) => {
-  const { data } = await api.post('/media')
+export const postMedia = async (body) => {
+  const { data } = await api.post('/media', body)
   return data
 }
 

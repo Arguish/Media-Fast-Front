@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
+import GroupsIcon from '@mui/icons-material/Groups';
 const TopBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -56,9 +57,11 @@ const TopBar = () => {
 
   return (
     <Box
-      sx={{
-        // flexGrow: 1,
-      }}
+      sx={
+        {
+          // flexGrow: 1,
+        }
+      }
     >
       <AppBar
         position="fixed"
@@ -98,7 +101,7 @@ const TopBar = () => {
               >
                 <AccountCircle
                   sx={{
-                    color: 'secondary.main',
+                    color: 'primary.main',
                   }}
                 />
               </IconButton>
@@ -112,7 +115,7 @@ const TopBar = () => {
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'none',
+                  horizontal: 'left',
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
@@ -125,6 +128,9 @@ const TopBar = () => {
                 >
                   <AccountBoxIcon />
                 </MenuItem>
+                <MenuItem onClick={handleAbout}>
+                  <GroupsIcon />
+                </MenuItem>
                 <MenuItem
                   sx={{
                     color: 'secondary.main',
@@ -133,9 +139,6 @@ const TopBar = () => {
                 >
                   <LogoutIcon />
                 </MenuItem>
-                <MenuItem onClick={handleMe}>Me</MenuItem>
-                <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-                <MenuItem onClick={handleAbout}>About Us</MenuItem>
               </Menu>
             </div>
           )}
