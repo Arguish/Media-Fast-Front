@@ -9,7 +9,8 @@ import IconButton from '@mui/material/IconButton'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
-
+import LogoutIcon from '@mui/icons-material/Logout'
+import AccountBoxIcon from '@mui/icons-material/AccountBox'
 const TopBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -56,7 +57,7 @@ const TopBar = () => {
   return (
     <Box
       sx={{
-        flexGrow: 1,
+        // flexGrow: 1,
       }}
     >
       <AppBar
@@ -97,7 +98,7 @@ const TopBar = () => {
               >
                 <AccountCircle
                   sx={{
-                    color: '#ee9e09',
+                    color: 'secondary.main',
                   }}
                 />
               </IconButton>
@@ -106,16 +107,32 @@ const TopBar = () => {
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'left',
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'none',
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+                <MenuItem
+                  sx={{
+                    color: 'primary.main',
+                  }}
+                  onClick={handleMe}
+                >
+                  <AccountBoxIcon />
+                </MenuItem>
+                <MenuItem
+                  sx={{
+                    color: 'secondary.main',
+                  }}
+                  onClick={handleLogOut}
+                >
+                  <LogoutIcon />
+                </MenuItem>
                 <MenuItem onClick={handleMe}>Me</MenuItem>
                 <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                 <MenuItem onClick={handleAbout}>About Us</MenuItem>

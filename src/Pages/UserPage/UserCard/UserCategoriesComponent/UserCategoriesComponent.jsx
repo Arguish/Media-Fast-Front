@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, Navigate, redirect, useNavigate } from 'react-router-dom'
 import { getCategory } from '../../../../Services/categoriesServices'
 import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
@@ -13,7 +13,6 @@ const UserCategoriesComponent = () => {
   const categoriesToSend = []
   const { palette } = useTheme()
   const navigate = useNavigate()
-
   useEffect(() => {
     getAllCategories()
   }, [])
@@ -49,12 +48,9 @@ const UserCategoriesComponent = () => {
     categoriesToSend.includes(element) === false
       ? categoriesToSend.push(element)
       : categoriesToSend.splice(categoriesToSend.indexOf(element), 1)
-    console.log(categoriesToSend, 'IN SETCATEGORY')
   }
 
   const handleSubmit = async () => {
-    // categoriesToSend.splice(0, categoriesToSend.length)
-    console.log(categoriesToSend, 'categoriestosend')
     const result = await updateUserCategories(categoriesToSend)
     navigate('/user/me')
   }
@@ -78,9 +74,9 @@ const UserCategoriesComponent = () => {
   return (
     <div>
       <FormGroup>{displayCategories()}</FormGroup>
-      <Button style={btnStyle} onClick={handleSubmit}>
-        UPDATE
-      </Button>
+        <Button style={btnStyle} onClick={handleSubmit}>
+          UPDATE
+        </Button>
     </div>
   )
 }

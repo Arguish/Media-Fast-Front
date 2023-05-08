@@ -12,13 +12,15 @@ import {
 } from '@mui/material'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
 import { NavLink } from 'react-router-dom'
+import UserCategoryChip from './UserCategoryChip/UserCategoryChip'
+import { useTheme } from '@emotion/react'
 
 const UserCard = ({ user }) => {
+  const theme = useTheme().palette
+
   const showUserCategories = () => {
     if (user.categories.length > 0) {
-      return user.categories.map((el) => {
-        return <Typography key={el.id}>{el.category_name}</Typography>
-      })
+      return <UserCategoryChip stackElements={user.categories} />
     }
   }
 
@@ -52,84 +54,112 @@ const UserCard = ({ user }) => {
     )
   }
 
+  const cardStyle = {
+    height: 'auto',
+    width: '100%',
+    position: 'static',
+    border: '2px solid #000',
+    boxShadow: 24,
+    color: '#ee9e09',
+    fontFamily: 'Poppins, sans seriff',
+  }
+
+  const categoryWrapperStyle = {
+    width: '100%',
+  }
+
+  const headerStyle = {
+    fontSize: '50px',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontFamily: 'Poppins, sans seriff',
+  }
+
+  const sectionHeaderStyle = {
+    fontSize: '20px',
+    margin: '5px 0',
+    textAlign: 'center',
+    fontWeight: '600',
+    textShadow: `0 1px 30px ${theme.secondary.main}`,
+    color: theme.secondary.main,
+    fontFamily: 'Poppins, sans seriff',
+  }
+
+  const btnStyle = {
+    height: '50px',
+    minWidth: '50px',
+    margin: '10px',
+    color: '#ee9e09',
+    borderRadius: '15px',
+    fontWeight: '800',
+    fontSize: '22px',
+    fontFamily: 'Poppins, sans seriff',
+    textShadow: '0.1px 0.1px white',
+    border: '0.5px solid',
+  }
+
   return (
-    <>
-      <Card
-        sx={{
-          margin: '5px',
-          maxWidth: '95vw',
-          bgcolor: '#000000',
-          height: '50%',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-          color: 'primary.main',
-        }}
-      >
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="div"
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'baseline',
-              fontSize: '50px',
-              fontWeight: 'light',
-            }}
-          >
+    <Card className="userCardWrapper" style={cardStyle}>
+      <CardContent>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Typography style={headerStyle} variant="h4" component="div">
             {user.nickname}
-            <CardMedia
-              component="img"
-              image={user.img_url}
-              alt="User avatar."
-              sx={{
-                width: '25%',
-              }}
-            />
           </Typography>
-          <CardContent
+          <CardMedia
+            className="userAvatarClass"
+            component="img"
+            image={user.img_url}
+            alt="User avatar."
             sx={{
+              border: '1px solid #ee9e09',
+              height: '100px',
+              width: '100px',
+            }}
+          />
+        </Box>
+
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            color: 'text.primary',
+          }}
+        >
+          <Box
+            sx={{
+              width: '50%',
               display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start',
-              color: 'text.primary',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
             }}
           >
-            <Typography
-              variant="h5"
-              sx={{
-                margin: '2px 0 5px 0',
-                color: 'secondary.main',
-              }}
-            >
-              USER CATEGORIES
-              <ShowButton path="preferences" id="userCatBtn" />
-            </Typography>
-            {showUserCategories()}
-            <Typography
-              variant="h5"
-              sx={{
-                margin: '2px 0 5px 0',
-                color: 'secondary.main',
-              }}
-            >
-              USER MEDIA
-              {/* {showButton()} */}
-            </Typography>
-            {showUserMedia()}
-          </CardContent>
-          <CardActions
+            <Typography style={sectionHeaderStyle}>CATEGORIES</Typography>
+            <ShowButton path="preferences" id="userCatBtn" />
+          </Box>
+          <div style={categoryWrapperStyle}>{showUserCategories()}</div>
+          <Box
             sx={{
+              width: '50%',
               display: 'flex',
-              justifyContent: 'flex-end',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
             }}
-          ></CardActions>
+          >
+            <Typography style={sectionHeaderStyle}>USER MEDIA</Typography>
+            <ShowButton path="#" id="userMediaBtn" />
+          </Box>
+          {showUserMedia()}
         </CardContent>
-      </Card>
-    </>
+      </CardContent>
+    </Card>
   )
 }
 export default UserCard
