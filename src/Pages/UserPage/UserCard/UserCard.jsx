@@ -54,60 +54,37 @@ const UserCard = ({ user }) => {
     )
   }
 
-  const cardStyle = {
-    height: 'auto',
-    width: '100%',
-    position: 'static',
-    border: '2px solid #000',
-    boxShadow: 24,
-    color: '#ee9e09',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const categoryWrapperStyle = {
-    width: '100%',
-  }
-
-  const headerStyle = {
-    fontSize: '50px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const sectionHeaderStyle = {
-    fontSize: '20px',
-    margin: '5px 0',
-    textAlign: 'center',
-    fontWeight: '600',
-    textShadow: `0 1px 30px ${theme.secondary.main}`,
-    color: theme.secondary.main,
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const btnStyle = {
-    height: '50px',
-    minWidth: '50px',
-    margin: '10px',
-    color: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    textShadow: '0.1px 0.1px white',
-    border: '0.5px solid',
-  }
 
   return (
-    <Card className="userCardWrapper" style={cardStyle}>
+    <Card
+      className="userCardWrapper"
+      sx={{
+        height: 'auto',
+        position: 'static',
+        border: '2px solid #000',
+        boxShadow: 24,
+        color: '#ee9e09',
+        fontFamily: 'Poppins, sans seriff',
+      }}
+    >
       <CardContent>
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          <Typography style={headerStyle} variant="h4" component="div">
+          <Typography
+            sx={{
+              fontSize: '50px',
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontFamily: 'Poppins, sans seriff',
+            }}
+            variant="h4"
+            component="div"
+          >
             {user.nickname}
           </Typography>
           <CardMedia
@@ -140,10 +117,22 @@ const UserCard = ({ user }) => {
               flexDirection: 'row',
             }}
           >
-            <Typography style={sectionHeaderStyle}>CATEGORIES</Typography>
+            <Typography
+              sx={{
+                fontSize: '20px',
+                margin: '5px 0',
+                textAlign: 'center',
+                fontWeight: '600',
+                textShadow: `0 1px 30px ${theme.secondary.main}`,
+                color: theme.secondary.main,
+                fontFamily: 'Poppins, sans seriff',
+              }}
+            >
+              CATEGORIES
+            </Typography>
             <ShowButton path="preferences" id="userCatBtn" />
           </Box>
-          <div style={categoryWrapperStyle}>{showUserCategories()}</div>
+          <div >{showUserCategories()}</div>
           <Box
             sx={{
               width: '50%',
@@ -153,8 +142,20 @@ const UserCard = ({ user }) => {
               flexDirection: 'row',
             }}
           >
-            <Typography style={sectionHeaderStyle}>USER MEDIA</Typography>
-            <ShowButton path="#" id="userMediaBtn" />
+            <Typography
+              sx={{
+                fontSize: '20px',
+                margin: '5px 0',
+                textAlign: 'center',
+                fontWeight: '600',
+                textShadow: `0 1px 30px ${theme.secondary.main}`,
+                color: theme.secondary.main,
+                fontFamily: 'Poppins, sans seriff',
+              }}
+            >
+              USER MEDIA
+            </Typography>
+            {/* <ShowButton path="#" id="userMediaBtn" /> */}
           </Box>
           {showUserMedia()}
         </CardContent>
