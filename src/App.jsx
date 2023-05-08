@@ -7,7 +7,7 @@ import chaaaaaanFX from '../src/assets/braam-6150.mp3'
 
 function App() {
   const navigate = useNavigate()
-  const [play] = useSound(chaaaaaanFX, { volume: 0.3 })
+  const [play] = useSound(chaaaaaanFX, { volume: 0.2 })
 
   play()
   useEffect(() => {
@@ -24,6 +24,11 @@ function App() {
     <>
       <ContextProvider>
         <iframe
+          style={{
+            borderRadius: '50%',
+            boxShadow: '10px 10px 10px black',
+            border: '10px solid #ee9e09',
+          }}
           src="https://giphy.com/embed/x9hvUcjOAM0jC"
           width="480"
           height="480"
