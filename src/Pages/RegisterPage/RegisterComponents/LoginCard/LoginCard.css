@@ -1,0 +1,39 @@
+.authComponentCard {
+  height: auto;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 4;
+  font-family: Poppins, sans seriff;
+}
+
+.authCardTitle {
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.authInput {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: Poppins, sans seriff;
+  font-weight: 400;
+}
+
+
+@media (max-width: 800px) {
+
+  .authComponentCard {
+    font-size: 10px;
+  }
+
+
+  .authComponentCard input {
+    font-size: 20px;
+  }
+}

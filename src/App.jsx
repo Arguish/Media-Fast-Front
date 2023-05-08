@@ -2,7 +2,6 @@ import { ContextProvider } from './Context/Context/ContextProvider'
 import { Navigate } from 'react-router-dom'
 
 function App() {
-  console.log(localStorage.getItem('dfghjk'))
   return (
     <>
       <ContextProvider>
@@ -10,7 +9,6 @@ function App() {
           src="https://giphy.com/embed/x9hvUcjOAM0jC"
           width="480"
           height="480"
-          frameBorder="0"
           className="giphy-embed"
           allowFullScreen
         ></iframe>
