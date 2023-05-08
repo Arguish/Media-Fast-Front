@@ -1,8 +1,26 @@
+import { useEffect } from 'react'
 import { ContextProvider } from './Context/Context/ContextProvider'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+import useSound from 'use-sound'
+
+import boopSfx from '../src/assets/braam-6150.mp3'
 
 function App() {
+  const navigate = useNavigate()
+  const [play] = useSound(boopSfx, { volume: 0.3 })
+
   console.log(localStorage.getItem('dfghjk'))
+  play()
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      localStorage.getItem('token') ? navigate('/time') : navigate('/auth')
+    }, 2000)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
   return (
     <>
       <ContextProvider>
@@ -15,11 +33,7 @@ function App() {
           allowFullScreen
         ></iframe>
 
-        {localStorage.getItem('token') ? (
-          <Navigate to="/time"></Navigate>
-        ) : (
-          <Navigate to="/auth"></Navigate>
-        )}
+        {}
       </ContextProvider>
     </>
   )
