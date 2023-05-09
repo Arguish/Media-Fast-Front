@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { redirect, useNavigate, NavLink } from 'react-router-dom'
+import './TopBar.css'
 
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -11,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
-import GroupsIcon from '@mui/icons-material/Groups';
+import GroupsIcon from '@mui/icons-material/Groups'
 const TopBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -78,6 +79,7 @@ const TopBar = () => {
             sx={{ mr: 2 }}
           ></IconButton>
           <Typography
+            className="Aachen"
             variant="h6"
             component="div"
             onClick={handleHome}

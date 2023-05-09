@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'Aachen';
+  src: url(./assets/Aachen/aachenn.ttf);
+}
+@font-face {
+  font-family: 'Busorama';
+  src: url(./assets/ITC\ Busorama/BusoramaBold/BusoramBold.otf);
+} /* No funciona bien... */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+}
+
+#MEDIA,
+#FAST {
+  position: absolute;
+  font-size: 130px;
+  color: #ee9e09;
+  -webkit-text-stroke: 4px black;
+  text-shadow: 6px 6px #a40000;
+  font-family: Aachen;
+  font-weight: 900;
+  animation-duration: 2s;
+  animation-delay: 100ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+#MEDIA {
+  animation-name: MEDIAintro;
+  animation-direction: normal;
+}
+
+#FAST {
+  animation-name: FASTintro;
+  animation-direction: reverse;
+}
+
+@keyframes MEDIAintro {
+  0% {
+    top: 10vh;
+    left: -100vw;
+  }
+
+  20% {
+    top: 10vh;
+    left: 30vw;
+  }
+
+  80% {
+    top: 10vh;
+    left: 30vw;
+  }
+
+  100% {
+    top: 10vh;
+    left: 100vw;
+  }
+}
+@keyframes FASTintro {
+  0% {
+    bottom: 10vh;
+    left: -100vw;
+  }
+
+  20% {
+    bottom: 10vh;
+    left: 50vw;
+  }
+
+  80% {
+    bottom: 10vh;
+    left: 50vw;
+  }
+
+  100% {
+    bottom: 10vh;
+    left: 100vw;
+  }
+}
