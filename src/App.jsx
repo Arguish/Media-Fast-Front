@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { ContextProvider } from './Context/Context/ContextProvider'
 import { Navigate, useNavigate } from 'react-router-dom'
 import useSound from 'use-sound'
 import './app.css'
@@ -12,6 +11,9 @@ function App() {
 
   play()
   useEffect(() => {
+    localStorage.getItem('lang')
+      ? localStorage.setItem('lang', '0')
+      : localStorage.setItem('lang', String(localStorage.getItem('lang')))
     const timer = setTimeout(() => {
       localStorage.getItem('token') ? navigate('/time') : navigate('/auth')
     }, 2000)
@@ -23,24 +25,22 @@ function App() {
 
   return (
     <>
-      <ContextProvider>
-        <div style={{ textAlign: 'center', overflow: 'hidden' }}>
-          <h1 id="MEDIA">MEDIA</h1>
-          <iframe
-            style={{
-              borderRadius: '50%',
-              boxShadow: '10px 10px 10px black',
-              border: '10px solid #ee9e09',
-            }}
-            src="https://giphy.com/embed/x9hvUcjOAM0jC"
-            width="480"
-            height="480"
-            className="giphy-embed"
-            allowFullScreen
-          ></iframe>
-          <h1 id="FAST">FAST</h1>
-        </div>
-      </ContextProvider>
+      <div style={{ textAlign: 'center', overflow: 'hidden' }}>
+        <h1 id="MEDIA">MEDIA</h1>
+        <iframe
+          style={{
+            borderRadius: '50%',
+            boxShadow: '10px 10px 10px black',
+            border: '10px solid #ee9e09',
+          }}
+          src="https://giphy.com/embed/x9hvUcjOAM0jC"
+          width="480"
+          height="480"
+          className="giphy-embed"
+          allowFullScreen
+        ></iframe>
+        <h1 id="FAST">FAST</h1>
+      </div>
     </>
   )
 }

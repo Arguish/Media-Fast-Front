@@ -60,9 +60,21 @@ export const router = createBrowserRouter([
         path: '/time',
         element: (
           <ShowOptionsComponent
-            question={'¿CUÁNTO TIEMPO TIENES?'}
-            optionOne={'MENOS DE DOS HORAS'}
-            optionTwo={'MAS DE DOS HORAS'}
+            question={
+              ['¿CUÁNTO TIEMPO TIENES?', 'HOW MUCH TIME DO YOU HAVE?'][
+                localStorage.getItem('lang')
+              ]
+            }
+            optionOne={
+              ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
+                localStorage.getItem('lang')
+              ]
+            }
+            optionTwo={
+              ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
+                localStorage.getItem('lang')
+              ]
+            }
           />
         ),
       },
@@ -70,9 +82,11 @@ export const router = createBrowserRouter([
         path: '/choosemedia',
         element: (
           <ShowOptionsComponent
-            question={'¿PELI O SERIE?'}
-            optionOne={'PELI'}
-            optionTwo={'SERIE'}
+            question={
+              ['¿PELI O SERIE?', 'MOVIE OR SHOW?'][localStorage.getItem('lang')]
+            }
+            optionOne={['SERIE', 'TV SHOW'][localStorage.getItem('lang')]}
+            optionTwo={['PELI', 'MOVIE'][localStorage.getItem('lang')]}
           />
         ),
       },
@@ -125,7 +139,7 @@ export const router = createBrowserRouter([
         path: '/aboutus',
         element: <AboutUs />,
       },
-        {
+      {
         path: '/allcategories',
         element: <AllCategories />,
       },
