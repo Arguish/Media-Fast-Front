@@ -39,7 +39,6 @@ const TopBar = () => {
     return navigate('/user/me')
   }
   const handleHome = () => {
-    console.log(localStorage.getItem('role'))
     if(localStorage.getItem('role') === 'admin'){
       return navigate('/admin')
     }else{
@@ -147,6 +146,22 @@ const TopBar = () => {
                 >
                   <LogoutIcon />
                 </MenuItem>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('lang', '0')
+                    location.reload()
+                  }}
+                >
+                  🇪🇸
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('lang', '1')
+                    location.reload()
+                  }}
+                >
+                  🇬🇧
+                </button>
               </Menu>
             </div>
           )}
