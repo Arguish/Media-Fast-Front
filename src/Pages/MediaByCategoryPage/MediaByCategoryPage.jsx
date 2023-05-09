@@ -30,8 +30,8 @@ const MediaByCategoryPage = () => {
     const userId = localStorage.userId
     // const result = await getMediaByCategories(userId)
     const result = await getMediaByCategoriesAndType(userId, type)
-    console.log(result)
-    setList(result.slice(0, maxCount))
+    console.log(Math.floor(Math.random() * result.length))
+    setList(result.splice(Math.floor(Math.random() * result.length), maxCount))
     setcontentReady(true)
   }
   const next = () => {
