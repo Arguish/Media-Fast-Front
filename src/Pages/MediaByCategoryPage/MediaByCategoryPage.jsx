@@ -28,7 +28,6 @@ const MediaByCategoryPage = () => {
 
   const getCategories = async () => {
     const userId = localStorage.userId
-    // const result = await getMediaByCategories(userId)
     const result = await getMediaByCategoriesAndType(userId, type)
     setList(result.slice(0, maxCount))
     setcontentReady(true)
@@ -117,7 +116,7 @@ const MediaByCategoryPage = () => {
               )
             }}
           >
-            {list[listItem].title} <br />
+           {list[listItem].title} <br />
             Ver en {list[listItem].platforms[0].name} !
           </Button>
         )}

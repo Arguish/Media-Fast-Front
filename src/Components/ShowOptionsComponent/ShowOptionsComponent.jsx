@@ -16,12 +16,19 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
       navigate('/user/me/categories/media/show')
     } else if (e.target.value === 'PELI') {
       navigate('/user/me/categories/media/movie')
-    } else {
+    } else if (e.target.value === 'ENJOY') {
+        navigate('/choosemedia')
+    }else if (e.target.value === 'WORK') {
+        navigate('/admin/options')
+    }else {
       navigate('/choosemedia')
     }
   }
 
   
+  // else {
+  //     navigate('/choosemedia')
+  //   }
   const cardStyle = {
     height: 'auto',
     position: 'absolute',

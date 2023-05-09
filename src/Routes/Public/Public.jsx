@@ -12,8 +12,6 @@ import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
 import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
 import Bye from '../../Pages/Bye/Bye'
 import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
-
-import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
 import AllUsers from '../../Pages/AdminOptions/Users/AllUsers'
 import AllPlatforms from '../../Pages/AdminOptions/Platforms/AllPlatforms'
@@ -95,7 +93,13 @@ export const router = createBrowserRouter([
       },
       {
         path: '/admin',
-        element: <AdminPage />,
+        element: (
+          <ShowOptionsComponent
+            question={'¿PELI O SERIE?'}
+            optionOne={'ENJOY'}
+            optionTwo={'WORK'}
+          />
+        ),
       },
       {
         path: '/admin/options',
@@ -125,7 +129,7 @@ export const router = createBrowserRouter([
         path: '/aboutus',
         element: <AboutUs />,
       },
-        {
+      {
         path: '/allcategories',
         element: <AllCategories />,
       },
