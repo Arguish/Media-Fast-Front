@@ -118,7 +118,8 @@ const MediaByCategoryPage = () => {
               )
             }}
           >
-            VER AHORA!
+            {list[listItem].title} <br />
+            Ver en {list[listItem].platforms[0].name} !
           </Button>
         )}
       </div>
@@ -127,7 +128,6 @@ const MediaByCategoryPage = () => {
 }
 
 const btnStyle = {
-  height: '50px',
   minWidth: '50px',
   margin: '10px',
   color: '#ee9e09',
