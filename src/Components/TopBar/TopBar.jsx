@@ -39,6 +39,9 @@ const TopBar = () => {
     return navigate('/user/me')
   }
   const handleHome = () => {
+    if (localStorage.getItem('role') === 'admin') {
+      return navigate('/admin')
+    }
     return navigate('/')
   }
   const handleAbout = () => {
