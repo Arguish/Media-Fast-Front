@@ -15,12 +15,12 @@ import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategory
 
 import AdminPage from '../../Pages/AdminPage/AdminPage.jsx'
 import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
-import AllUsers from '../../Pages/AdminOptions/AllUsers'
+import AllUsers from '../../Pages/AdminOptions/Users/AllUsers'
 import AllPlatforms from '../../Pages/AdminOptions/Platforms/AllPlatforms'
 
-import OneUser from '../../Pages/AdminOptions/OneUser'
-import AllMedia from '../../Pages/AdminOptions/AllMedia'
-import OneMedia from '../../Pages/AdminOptions/OneMedia'
+import OneUser from '../../Pages/AdminOptions/Users/OneUser'
+import AllMedia from '../../Pages/AdminOptions/Media/AllMedia'
+import OneMedia from '../../Pages/AdminOptions/Media/OneMedia'
 import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
 import AboutUs from '../../Pages/AboutUs/AboutUs'
 import AllCategories from '../../Pages/AdminOptions/Categories/AllCategories'

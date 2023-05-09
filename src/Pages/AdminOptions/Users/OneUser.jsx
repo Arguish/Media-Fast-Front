@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import UserCard from '../UserPage/UserCard/UserCard'
-import { getUserByID } from '../../Services/userServices'
+import UserCard from '../../UserPage/UserCard/UserCard'
+import { getUserByID } from '../../../Services/userServices'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 const OneUser = () => {

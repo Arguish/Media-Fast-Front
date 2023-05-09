@@ -30,8 +30,10 @@ const MediaByCategoryPage = () => {
     const userId = localStorage.userId
     // const result = await getMediaByCategories(userId)
     const result = await getMediaByCategoriesAndType(userId, type)
+
     console.log(Math.floor(Math.random() * result.length))
     setList(result.splice(Math.floor(Math.random() * result.length), maxCount))
+
     setcontentReady(true)
   }
   const next = () => {
@@ -94,7 +96,7 @@ const MediaByCategoryPage = () => {
               ></MediaCard>
             )}
           </div>
-          {console.log(list[listItem])}
+          
           <Button style={arrowsBtnStyle} onClick={next}>
             {contentReady ? (
               <ArrowForwardIosIcon

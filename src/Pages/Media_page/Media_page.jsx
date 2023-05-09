@@ -16,7 +16,6 @@ const Media_page = () => {
     for (let index = 0; index < options - 1; index++) {
       getMediaRandom().then((a) => arr.push(a))
     }
-    console.log(arr)
     setList(arr)
   }, [])
 

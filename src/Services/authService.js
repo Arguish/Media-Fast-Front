@@ -12,9 +12,11 @@ export const login = async (body) => {
     console.log('connecting...')
     const { data } = await api.post('/auth/login', body)
     const userId = data.userInfo.user.id
+    const role = data.userInfo.user.role
     localStorage.setItem('userId', userId)
     localStorage.setItem('token', data.token)
     localStorage.setItem('email', body.email)
+    localStorage.setItem('role', role)
     return 200
   } catch (error) {
     return error.message
