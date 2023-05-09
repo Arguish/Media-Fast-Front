@@ -56,9 +56,7 @@ const CategorySuggestionsPage = () => {
 
   const handleSubmit = async () => {
     const result = await setUserCategories(categoriesToSend)
-    console.log(result)
     navigate('/time')
-    console.log(result)
   }
 
   const displayCategories = () => {

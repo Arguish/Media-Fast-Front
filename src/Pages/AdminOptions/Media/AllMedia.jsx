@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getMedia, deleteMedia, postMedia } from '../../Services/mediaServices'
+import { getMedia, deleteMedia, postMedia } from '../../../Services/mediaServices'
 import './AllMedia.css'
-import ServiceCard from './ServiceCard/ServiceCard'
+import ServiceCard from '../ServiceCard/ServiceCard'
 const AllMedia = () => {
   const [header, setheader] = useState([])
   const [body, setbody] = useState([])

@@ -67,7 +67,6 @@ const ServiceCard = ({ service }) => {
   const handleCreate = async () => {
     data['image'] = 'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
     data['description'] = `${data.title} has not description.`
-    console.log(data)
     const result = await postMedia(data)
     if (result) {
       console.log('Media created.', result)
