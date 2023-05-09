@@ -150,7 +150,7 @@ const TopBar = () => {
                     location.reload()
                   }}
                 >
-                  ES
+                  🇪🇸
                 </button>
                 <button
                   onClick={() => {
@@ -158,7 +158,7 @@ const TopBar = () => {
                     location.reload()
                   }}
                 >
-                  EN
+                  🇬🇧
                 </button>
               </Menu>
             </div>
