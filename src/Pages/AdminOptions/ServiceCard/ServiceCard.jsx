@@ -30,17 +30,19 @@ const ServiceCard = ({ service }) => {
     const result = await service
     if (result) {
       setHeader(
-        Object.keys(service[0]).filter((el) => {
+        Object.keys(result[0]).filter((el) => {
           return el !== 'createdAt' && el !== 'updatedAt' && el !== 'id'
         })
       )
       setKeys(
-        Object.keys(service[0]).filter((el) => {
+        Object.keys(result[0]).filter((el) => {
           return (
             el !== 'createdAt' &&
             el !== 'updatedAt' &&
             el.includes('image') === false &&
-            el.includes('description') === false
+            el.includes('description') === false &&
+            el !== 'categories' &&
+            el !== 'platforms'
           )
         })
       )
@@ -65,8 +67,11 @@ const ServiceCard = ({ service }) => {
   }
 
   const handleCreate = async () => {
-    data['image'] = 'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
+    data['image'] =
+      'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
     data['description'] = `${data.title} has not description.`
+    data['platform'] = 'Netflix'
+    data['category'] = 'Drama'
     const result = await postMedia(data)
     if (result) {
       console.log('Media created.', result)
@@ -87,6 +92,7 @@ const ServiceCard = ({ service }) => {
   const showForm = () => {
     if (keys) {
       const columns = keys.map((column, idx) => {
+        console.log(column)
         return { id: column, label: column.toUpperCase(), align: 'right' }
       })
 

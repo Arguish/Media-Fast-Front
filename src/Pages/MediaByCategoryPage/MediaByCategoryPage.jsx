@@ -29,11 +29,12 @@ const MediaByCategoryPage = () => {
   const getCategories = async () => {
     const userId = localStorage.userId
     const result = await getMediaByCategoriesAndType(userId, type)
-
-    console.log(Math.floor(Math.random() * result.length))
-    setList(result.splice(Math.floor(Math.random() * result.length), maxCount))
-
-    setcontentReady(true)
+    if (result.length !== 0) {
+      setList(
+        result.splice(Math.floor(Math.random() * result.length), maxCount)
+      )
+      setcontentReady(true)
+    }
   }
   const next = () => {
     settryCount(tryCount + 1)
@@ -131,8 +132,6 @@ const MediaByCategoryPage = () => {
               )
             }}
           >
-
-
             {list[listItem].title} <br />
             {['Ver en ', 'See on '][localStorage.getItem('lang')]}{' '}
             {list[listItem].platforms[0].name} !
