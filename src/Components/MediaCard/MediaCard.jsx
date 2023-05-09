@@ -28,23 +28,25 @@ const MediaCard = ({ cardContent, cover }) => {
           className="father"
         >
           <div style={card1}>
-            <div style={paper}>
+            <div style={paper1}>
               <div style={celo_2}>
                 {cardContent.season} x {cardContent.season_episodes}
               </div>
-              <img draggable={false} style={image} src={cover} alt="" />
-              <h1 style={title}>{cardContent.title}</h1>
+              <img
+                draggable={false}
+                style={image}
+                src={cardContent.image}
+                alt=""
+              />
+              {/*               <h1 style={title}>{cardContent.title}</h1>
+               */}{' '}
             </div>
           </div>
           <div style={card2}>
-            <div style={paper}>
-              <h1 style={{ color: 'black', margin: '5px' }}>
-                {cardContent.title}
-              </h1>
-              <hr style={{ color: 'black', margin: '5px' }} />
+            <div style={paper2}>
               <h4 style={{ color: 'black', margin: '5px' }}>
                 {cardContent.type === 'movie'
-                  ? cardContent.type
+                  ? ''
                   : cardContent.season + ' x ' + cardContent.season_episodes}
               </h4>
               <hr style={{ color: 'black', margin: '5px' }} />
@@ -90,14 +92,27 @@ const card2 = {
   userSelect: 'none',
   cursor: 'pointer',
 }
-const paper = {
+const paper1 = {
   boxShadow: '3px 3px 5px black',
   width: '260px',
   height: '360px',
   display: 'grid',
   alignItems: 'end',
   placeContent: 'center',
-  transform: 'rotate(-2deg)',
+  overflow: 'hidden',
+
+  backgroundColor: 'antiquewhite',
+  userSelect: 'none',
+  cursor: 'pointer',
+}
+const paper2 = {
+  boxShadow: '3px 3px 5px black',
+  width: '260px',
+  height: '360px',
+  display: 'grid',
+  alignItems: 'end',
+  placeContent: 'center',
+
   backgroundColor: 'antiquewhite',
   userSelect: 'none',
   cursor: 'pointer',
@@ -134,11 +149,11 @@ const celo_2 = {
 const title = {
   fontFamily: 'sans-serif',
   WebkitTextStroke: '0.1px balck',
-  textShadow: '2px 2px indigo',
+  textShadow: '2px 2px #a40000',
   color: '#e94 ',
   position: 'absolute',
   gridArea: '2/3/2/3',
-  transform: 'rotate(3deg) translateX(-25px)',
+  transform: ' translateX(-25px)',
   userSelect: 'none',
   cursor: 'pointer',
 }
