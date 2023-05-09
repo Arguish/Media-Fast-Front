@@ -65,8 +65,18 @@ const MediaByCategoryPage = () => {
       >
         {loading && !contentReady && (
           <h2>
-            El servidor esta tardando{tryCount > 3 ? ' MUCHO' : ''}... Espere
-            por Favor...
+            {
+              [
+                `El servidor esta tardando${
+                  tryCount > 3 ? ' MUCHO' : ''
+                }... Espere
+            por Favor...`,
+                `The server is taking time${
+                  tryCount > 3 ? ' A LOT' : ''
+                }... Please wait
+            please...`,
+              ][localStorage.getItem('lang')]
+            }
           </h2>
         )}
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -96,7 +106,7 @@ const MediaByCategoryPage = () => {
               ></MediaCard>
             )}
           </div>
-          
+
           <Button style={arrowsBtnStyle} onClick={next}>
             {contentReady ? (
               <ArrowForwardIosIcon
@@ -107,7 +117,9 @@ const MediaByCategoryPage = () => {
                 color="secondary"
               />
             ) : (
-              'Estoy listo!'
+              ['Un momento por favor...', 'One moment, please...'][
+                localStorage.getItem('lang')
+              ]
             )}
           </Button>
         </div>
@@ -121,7 +133,8 @@ const MediaByCategoryPage = () => {
             }}
           >
             {list[listItem].title} <br />
-            Ver en {list[listItem].platforms[0].name} !
+            {['Ver en ', 'See on '][localStorage.getItem('lang')]}{' '}
+            {list[listItem].platforms[0].name} !
           </Button>
         )}
       </div>

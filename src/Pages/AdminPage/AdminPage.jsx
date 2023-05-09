@@ -1,29 +1,41 @@
-import { Button } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-import React from "react"
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../Context/Context/Context'
 
-const AdminPage =() => {
-    const navigate = useNavigate()
-    
-    const enjoy = () => {
-        navigate('/time')
-    }
+const AdminPage = () => {
+  const { lang } = useContext(GlobalContext)
+  const navigate = useNavigate()
 
-    const  work = () => {
-        navigate('/admin/options')
-    }
+  const enjoy = () => {
+    navigate('/time')
+  }
 
-    return (
-       <div>
-        <Button variant="contained" size="medium" sx={{display: 'block', margin: 2, color: 'black', width: 200}} onClick= {enjoy} > ENJOY</Button>
-         
-         <Button variant="contained" size="medium" sx={{display: 'block', margin: 2 , color: 'black', width: 200}} onClick= {work} >WORK</Button> 
-      
+  const work = () => {
+    navigate('/admin/options')
+  }
 
-       </div>
-    )
+  return (
+    <div>
+      <Button
+        variant="contained"
+        size="medium"
+        sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
+        onClick={enjoy}
+      >
+        {['DISFRUTAR', 'ENJOY'][lang]}
+      </Button>
 
-    } 
+      <Button
+        variant="contained"
+        size="medium"
+        sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
+        onClick={work}
+      >
+        {['TRABAJAR', 'WORK'][lang]}
+      </Button>
+    </div>
+  )
+}
 
 export default AdminPage
-

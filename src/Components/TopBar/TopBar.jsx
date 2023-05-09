@@ -144,6 +144,22 @@ const TopBar = () => {
                 >
                   <LogoutIcon />
                 </MenuItem>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('lang', '0')
+                    location.reload()
+                  }}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('lang', '1')
+                    location.reload()
+                  }}
+                >
+                  EN
+                </button>
               </Menu>
             </div>
           )}

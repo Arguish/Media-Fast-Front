@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
+import { GlobalContext } from '../../Context/Context/Context'
 
 const AdminOptions = () => {
+  const { lang } = useContext(GlobalContext)
   const navigate = useNavigate()
 
   const goToAllUsers = () => {
@@ -29,8 +31,7 @@ const AdminOptions = () => {
         sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
         onClick={goToAllUsers}
       >
-        {' '}
-        USERS
+        {['USUARIOS', 'USERS'][lang]}
       </Button>
 
       <Button
@@ -48,8 +49,7 @@ const AdminOptions = () => {
         sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
         onClick={goToAllPlat}
       >
-        {' '}
-        PLATFORMS
+        {['PLATAFORMAS', 'PLATFORMS'][lang]}
       </Button>
 
       <Button
@@ -58,7 +58,7 @@ const AdminOptions = () => {
         sx={{ display: 'block', margin: 2, color: 'black', width: 200 }}
         onClick={goToAllCategories}
       >
-        CATEGORIES
+        {['CATEGORIAS', 'CATEGORIES'][lang]}
       </Button>
     </div>
   )

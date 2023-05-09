@@ -10,18 +10,25 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
   const chooseMedia = () => {
     navigate('/choosemedia')
   }
-  
+
   const goMedia = (e) => {
-    if (e.target.value === 'MENOS DE DOS HORAS' || e.target.value === 'SERIE') {
+    if (
+      e.target.value ===
+        ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
+          localStorage.getItem('lang')
+        ] ||
+      e.target.value === ['SERIE', 'TV SHOW'][localStorage.getItem('lang')]
+    ) {
       navigate('/user/me/categories/media/show')
-    } else if (e.target.value === 'PELI') {
+    } else if (
+      e.target.value === ['PELI', 'MOVIE'][localStorage.getItem('lang')]
+    ) {
       navigate('/user/me/categories/media/movie')
     } else {
       navigate('/choosemedia')
     }
   }
 
-  
   const cardStyle = {
     height: 'auto',
     position: 'absolute',
@@ -72,10 +79,20 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
         title={question}
       ></CardHeader>
       <CardActions sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Button style={btnStyle} value={optionOne} variant="outlined" onClick={goMedia}>
+        <Button
+          style={btnStyle}
+          value={optionOne}
+          variant="outlined"
+          onClick={goMedia}
+        >
           {optionOne}
         </Button>
-        <Button style={btnStyle} value={optionTwo} variant="outlined" onClick={goMedia}>
+        <Button
+          style={btnStyle}
+          value={optionTwo}
+          variant="outlined"
+          onClick={goMedia}
+        >
           {optionTwo}
         </Button>
       </CardActions>
