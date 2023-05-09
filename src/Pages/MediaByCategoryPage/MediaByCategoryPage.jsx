@@ -30,7 +30,6 @@ const MediaByCategoryPage = () => {
     const userId = localStorage.userId
     // const result = await getMediaByCategories(userId)
     const result = await getMediaByCategoriesAndType(userId, type)
-    console.log(result)
     setList(result.slice(0, maxCount))
     setcontentReady(true)
   }
@@ -94,7 +93,7 @@ const MediaByCategoryPage = () => {
               ></MediaCard>
             )}
           </div>
-          {console.log(list[listItem])}
+          
           <Button style={arrowsBtnStyle} onClick={next}>
             {contentReady ? (
               <ArrowForwardIosIcon

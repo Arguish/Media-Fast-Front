@@ -41,7 +41,9 @@ function LoginCard() {
   const handleLogin = async () => {
     const body = { email, password }
     const result = await login(body)
-    if (result === 200) {
+    if (result === 200 && localStorage.getItem('role') === 'admin') {
+      navigate('/admin')
+    } else if (result === 200 && localStorage.getItem('role') === 'user') {
       navigate('/time')
     } else {
       console.log(result)
