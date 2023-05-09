@@ -30,7 +30,7 @@ const MediaByCategoryPage = () => {
     const userId = localStorage.userId
     const result = await getMediaByCategoriesAndType(userId, type)
 
-    console.log(Math.floor(Math.random() * result.length))
+    console.log(result)
     setList(result.splice(Math.floor(Math.random() * result.length), maxCount))
 
     setcontentReady(true)
@@ -131,8 +131,6 @@ const MediaByCategoryPage = () => {
               )
             }}
           >
-
-
             {list[listItem].title} <br />
             {['Ver en ', 'See on '][localStorage.getItem('lang')]}{' '}
             {list[listItem].platforms[0].name} !
