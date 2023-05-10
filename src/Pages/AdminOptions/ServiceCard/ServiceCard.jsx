@@ -40,9 +40,10 @@ const ServiceCard = ({ service }) => {
             el !== 'createdAt' &&
             el !== 'updatedAt' &&
             el.includes('image') === false &&
-            el.includes('description') === false &&
-            el !== 'categories' &&
-            el !== 'platforms'
+            el.includes('description') === false
+            //  &&
+            // el !== 'categories' &&
+            // el !== 'platforms'
           )
         })
       )
@@ -92,8 +93,13 @@ const ServiceCard = ({ service }) => {
   const showForm = () => {
     if (keys) {
       const columns = keys.map((column, idx) => {
-        console.log(column)
-        return { id: column, label: column.toUpperCase(), align: 'right' }
+        if (column === 'platforms') {
+          return { id: 'platform', label: 'PLATFORM', align: 'right' }
+        } else if (column === 'categories') {
+          return { id: 'category', label: 'CATEGORY', align: 'right' }
+        } else {
+          return { id: column, label: column.toUpperCase(), align: 'right' }
+        }
       })
 
       columns.push({ id: 'add', label: 'CREATE' })
@@ -190,7 +196,16 @@ const ServiceCard = ({ service }) => {
                         key={`row-${idx}`}
                       >
                         {columns.map((column, idx) => {
-                          const value = row[column.id]
+                          let value = ''
+                          let nameField = ''
+                          if (column.id === 'platforms') {
+                            nameField = 'name'
+                          } else {
+                            nameField = 'category_name'
+                          }
+                          typeof row[column.id] === 'object'
+                            ? (value = row[column.id][0][nameField])
+                            : (value = row[column.id])
                           return idx === columns.length - 1 ? (
                             <TableCell key={idx}>
                               <Button onClick={() => handleDelete(row.id)}>

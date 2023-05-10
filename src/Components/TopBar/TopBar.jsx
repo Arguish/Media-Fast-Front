@@ -39,12 +39,11 @@ const TopBar = () => {
     return navigate('/user/me')
   }
   const handleHome = () => {
-    if(localStorage.getItem('role') === 'admin'){
+    if (localStorage.getItem('role') === 'admin') {
       return navigate('/admin')
-    }else{
+    } else {
       return navigate('/')
     }
-    
   }
   const handleAbout = () => {
     return navigate('/aboutus')
@@ -54,7 +53,7 @@ const TopBar = () => {
     fontSize: '50px',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontFamily: 'Poppins, sans seriff',
+    fontFamily: 'Aachen, sans seriff',
     flexGrow: 1,
     userSelect: 'none',
     cursor: 'pointer',
