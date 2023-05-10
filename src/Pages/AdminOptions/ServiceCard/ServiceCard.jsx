@@ -32,12 +32,12 @@ const ServiceCard = ({ service }) => {
     const result = await service
     if (result) {
       setHeader(
-        Object.keys(service[0]).filter((el) => {
+        Object.keys(result[0]).filter((el) => {
           return el !== 'createdAt' && el !== 'updatedAt' && el !== 'id'
         })
       )
       setKeys(
-        Object.keys(service[0]).filter((el) => {
+        Object.keys(result[0]).filter((el) => {
           return (
             el !== 'createdAt' &&
             el !== 'updatedAt' &&
@@ -67,7 +67,8 @@ const ServiceCard = ({ service }) => {
   }
 
   const handleCreate = async () => {
-    data['image'] = 'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
+    data['image'] =
+      'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
     data['description'] = `${data.title} has not description.`
     const result = await postMedia(data)
     if (result) {
@@ -89,7 +90,13 @@ const ServiceCard = ({ service }) => {
   const showForm = () => {
     if (keys) {
       const columns = keys.map((column, idx) => {
-        return { id: column, label: column.toUpperCase(), align: 'right' }
+        if (column === 'platforms') {
+          return { id: 'platform', label: 'PLATFORM', align: 'right' }
+        } else if (column === 'categories') {
+          return { id: 'category', label: 'CATEGORY', align: 'right' }
+        } else {
+          return { id: column, label: column.toUpperCase(), align: 'right' }
+        }
       })
 
       columns.push({ id: 'add', label: 'CREATE' })
@@ -186,7 +193,16 @@ const ServiceCard = ({ service }) => {
                         key={`row-${idx}`}
                       >
                         {columns.map((column, idx) => {
-                          const value = row[column.id]
+                          let value = ''
+                          let nameField = ''
+                          if (column.id === 'platforms') {
+                            nameField = 'name'
+                          } else {
+                            nameField = 'category_name'
+                          }
+                          typeof row[column.id] === 'object'
+                            ? (value = row[column.id][0][nameField])
+                            : (value = row[column.id])
                           return idx === columns.length - 1 ? (
                             <TableCell key={idx}>
                               <Button onClick={() => handleDelete(row.id)}>
