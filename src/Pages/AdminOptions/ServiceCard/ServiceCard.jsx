@@ -41,9 +41,6 @@ const ServiceCard = ({ service }) => {
             el !== 'updatedAt' &&
             el.includes('image') === false &&
             el.includes('description') === false
-            //  &&
-            // el !== 'categories' &&
-            // el !== 'platforms'
           )
         })
       )
@@ -71,8 +68,6 @@ const ServiceCard = ({ service }) => {
     data['image'] =
       'https://media.istockphoto.com/id/1192652880/fr/photo/quel-est-votre-titre-story-world-sur-lardoise-du-film.jpg?s=1024x1024&w=is&k=20&c=Hbs8hvHqBE1MUh_OZqbtVtnV2LIbK7aidHwHHQ7WM-o='
     data['description'] = `${data.title} has not description.`
-    data['platform'] = 'Netflix'
-    data['category'] = 'Drama'
     const result = await postMedia(data)
     if (result) {
       console.log('Media created.', result)
