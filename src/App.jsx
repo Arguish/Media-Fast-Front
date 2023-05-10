@@ -25,7 +25,9 @@ function App() {
 
   return (
     <>
-      <div style={{ textAlign: 'center', overflow: 'hidden' }}>
+      <div
+        style={{ maxWidth: '100%', textAlign: 'center', overflow: 'hidden' }}
+      >
         <h1 id="MEDIA">MEDIA</h1>
         <iframe
           style={{

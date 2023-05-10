@@ -36,7 +36,6 @@ const MediaByCategoryPage = () => {
       )
       setcontentReady(true)
     }
-
   }
   const next = () => {
     settryCount(tryCount + 1)

@@ -76,8 +76,21 @@ const CategorySuggestionsPage = () => {
   }
 
   return (
-    <div className="listComponentWrapper">
-      <FormGroup className="listComponent">{displayCategories()}</FormGroup>
+    <div>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          marginTop: '100px',
+        }}
+      >
+        <FormGroup
+          style={{ display: 'flex', flexWrap: 'wrap' }}
+          className="listComponent"
+        >
+          {displayCategories()}
+        </FormGroup>
+      </div>
 
       <Button style={btnStyle} onClick={handleSubmit}>
         CONTINUE

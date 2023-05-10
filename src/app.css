@@ -80,3 +80,18 @@
     left: 100vw;
   }
 }
+
+/* 
+@media (width < 900px) {
+  .logoContainer {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (width >= 900) {
+  .logoContainer{
+    width: 100vw;
+    height: 100vw;
+  }
+} */

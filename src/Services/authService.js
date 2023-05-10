@@ -21,7 +21,6 @@ export const login = async (body) => {
     localStorage.setItem('token', data.token)
     localStorage.setItem('email', body.email)
     localStorage.setItem('role', role)
-    console.log(data)
     return 200
   } catch (error) {
     return error.message
