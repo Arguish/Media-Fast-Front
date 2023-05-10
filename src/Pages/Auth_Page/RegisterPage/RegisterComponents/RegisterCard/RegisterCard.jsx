@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Card,
@@ -12,8 +12,8 @@ import {
   InputAdornment,
 } from '@mui/material'
 import './RegisterCard.css'
-
-import { register, login } from '../../../../Services/authService'
+import AlertComponent from './AlertComponent/AlertComponent'
+import { register, login } from '../../../../../Services/authService'
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
@@ -21,8 +21,14 @@ const RegisterCard = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [validPassword, setValidPassword] = useState(false)
   const [validEmail, setValidEmail] = useState(false)
-
+  const [show, setShow] = useState('none')
   const handleClickShowPassword = () => setShowPassword((show) => !show)
+
+  const ableToSend = () => {
+    return validEmail && validPassword && nickname.length > 1 && birthday !== ''
+      ? false
+      : true
+  }
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault()
@@ -47,14 +53,17 @@ const RegisterCard = () => {
       nickname: nickname,
       date_of_birth: birthday,
     }
-    const result = await register(body)
-    if (result.status === 200) {
-      navigate('/preferences')
-    } else {
-      console.error('Something went wrong', result)
+    if (validEmail && validPassword && nickname.length > 1 && birthday !== '') {
+      const result = await register(body)
+      if (result.status === 200 || result === 200) {
+        return navigate('/preferences')
+      } else if (result.status === 501) {
+        setShow('block')
+      } else {
+        console.log(result)
+      }
     }
   }
-
   const setMaxDate = () => {
     const today = new Date()
     let month = today.getMonth() + 1
@@ -104,7 +113,7 @@ const RegisterCard = () => {
     textAlign: 'center',
     fontWeight: 'bold',
     fontFamily: 'Poppins, sans seriff',
-    textShadow: '1px 1px white' 
+    textShadow: '1px 1px white',
   }
 
   const inputStyle = {
@@ -126,12 +135,13 @@ const RegisterCard = () => {
     transform: isHover ? 'scale(1.05)' : 'scale(1)',
     boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
     textShadow: '0.1px 0.1px white',
-    border: '0.5px solid'
+    border: '0.5px solid',
   }
 
   return (
-    <div className='authComponentCardWrapper'>
-      <Card className='authComponentCard' style={cardStyle}>
+    <div className="authComponentCardWrapper">
+      <AlertComponent status={show} setter={setShow} />
+      <Card className="authComponentCard" style={cardStyle}>
         <CardHeader
           disableTypography={true}
           style={headerStyle}
@@ -254,6 +264,7 @@ const RegisterCard = () => {
             onMouseEnter={handleHoverIn}
             onMouseLeave={handleHoverOut}
             style={btnStyle}
+            disabled={ableToSend()}
           >
             Register
           </Button>

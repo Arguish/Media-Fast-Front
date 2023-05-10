@@ -1,10 +1,14 @@
 import api from './config'
 
 export const register = async (body) => {
-  const data = await api.post('/auth/register', body)
-  localStorage.setItem('token', data.data.token)
-  localStorage.setItem('userId', data.data.user.id)
-  return data
+  try {
+    const data = await api.post('/auth/register', body)
+    localStorage.setItem('token', data.data.token)
+    localStorage.setItem('userId', data.data.user.id)
+    return data
+  } catch (error) {
+    return error.response
+  }
 }
 
 export const login = async (body) => {
@@ -17,6 +21,7 @@ export const login = async (body) => {
     localStorage.setItem('token', data.token)
     localStorage.setItem('email', body.email)
     localStorage.setItem('role', role)
+    console.log(data)
     return 200
   } catch (error) {
     return error.message

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../../../../Services/authService'
+import { login } from '../../../../../Services/authService'
 
 import {
   Card,
@@ -76,7 +76,7 @@ function LoginCard() {
     textAlign: 'center',
     fontWeight: 'bold',
     fontFamily: 'Poppins, sans seriff',
-    textShadow: '1px 1px white' 
+    textShadow: '1px 1px white',
   }
 
   const inputStyle = {
@@ -85,7 +85,7 @@ function LoginCard() {
     fontFamily: 'Poppins, sans seriff',
     fontWeight: '400',
   }
-    const btnStyle = {
+  const btnStyle = {
     height: '50px',
     minWidth: '50px',
     margin: '10px',
@@ -97,13 +97,12 @@ function LoginCard() {
     transform: isHover ? 'scale(1.05)' : 'scale(1)',
     boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
     textShadow: '0.1px 0.1px white',
-    border: '0.5px solid'
-
+    border: '0.5px solid',
   }
 
   return (
-    <div className='authComponentCardWrapper'>
-      <Card className='authComponentCard' style={cardStyle}>
+    <div className="authComponentCardWrapper">
+      <Card className="authComponentCard" style={cardStyle}>
         <CardHeader
           title="LOGIN"
           disableTypography={true}

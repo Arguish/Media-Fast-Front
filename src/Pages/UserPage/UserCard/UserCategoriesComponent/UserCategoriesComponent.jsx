@@ -32,7 +32,6 @@ const UserCategoriesComponent = () => {
   }
 
   const optionStyle = {
-    border: '1px solid red',
     marginLeft: '30px',
     color: palette.primary.contrastText,
   }
