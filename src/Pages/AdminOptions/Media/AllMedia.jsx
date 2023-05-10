@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { getMedia, deleteMedia, postMedia } from '../../../Services/mediaServices'
+import {
+  getMedia,
+  deleteMedia,
+  postMedia,
+} from '../../../Services/mediaServices'
 import './AllMedia.css'
 import ServiceCard from '../ServiceCard/ServiceCard'
 const AllMedia = () => {
   const [header, setheader] = useState([])
   const [body, setbody] = useState([])
-  const [nextId, setnextId] = useState(0)
+  // const [nextId, setnextId] = useState(0)
 
-  const getNextId = (num) => {
-    num > nextId ? setnextId(num + 1) : nextId + 1
-  }
+  // const getNextId = (num) => {
+  //   num > nextId ? setnextId(num + 1) : nextId + 1
+  // }
 
   const handleGetData = async (getter) => {
     const result = await getter
@@ -19,32 +23,32 @@ const AllMedia = () => {
     setbody(result)
   }
 
-  const handleDelete = async (id) => {
-    await deleteMedia(id)
-    location.reload()
-  }
+  // const handleDelete = async (id) => {
+  //   await deleteMedia(id)
+  //   location.reload()
+  // }
 
-  const handleCreate = async (e) => {
-    e.preventDefault()
-    const res = new Object()
-    header.map((a) => {
-      res[e.target[a].name] = e.target[a].value
-    })
-    await postMedia(res)
-    location.reload()
-  }
+  // const handleCreate = async (e) => {
+  //   e.preventDefault()
+  //   const res = new Object()
+  //   header.map((a) => {
+  //     res[e.target[a].name] = e.target[a].value
+  //   })
+  //   await postMedia(res)
+  //   location.reload()
+  // }
 
   useEffect(() => {
     handleGetData(getMedia())
   }, [])
 
-  const shorString = (str) => {
-    if (String(str).length > 20) {
-      return String(str).slice(0, 20) + '...'
-    } else {
-      return str
-    }
-  }
+  // const shorString = (str) => {
+  //   if (String(str).length > 20) {
+  //     return String(str).slice(0, 20) + '...'
+  //   } else {
+  //     return str
+  //   }
+  // }
   if (body.length > 0)
     return (
       <>

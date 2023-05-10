@@ -18,12 +18,10 @@ import {
 import AddIcon from '@mui/icons-material/Add'
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined'
 
-
 const ServiceCard = ({ service }) => {
   const [keys, setKeys] = useState()
   const [header, setHeader] = useState([])
   const data = {}
-  const [values, setValues] = useState({})
   useEffect(() => {
     getService()
   }, [])
@@ -42,7 +40,8 @@ const ServiceCard = ({ service }) => {
             el !== 'createdAt' &&
             el !== 'updatedAt' &&
             el.includes('image') === false &&
-            el.includes('description') === false
+            el.includes('description') === false &&
+            el !== 'img_url'
           )
         })
       )
@@ -92,6 +91,8 @@ const ServiceCard = ({ service }) => {
       const columns = keys.map((column, idx) => {
         if (column === 'platforms') {
           return { id: 'platform', label: 'PLATFORM', align: 'right' }
+        } else if (column === 'private_info') {
+          return { id: 'email', label: 'EMAIL', align: 'right' }
         } else if (column === 'categories') {
           return { id: 'category', label: 'CATEGORY', align: 'right' }
         } else {
@@ -194,15 +195,21 @@ const ServiceCard = ({ service }) => {
                       >
                         {columns.map((column, idx) => {
                           let value = ''
-                          let nameField = ''
+                          let nameField = column.id
                           if (column.id === 'platforms') {
                             nameField = 'name'
+                          } else if (column.id === 'private_info') {
+                            nameField = 'email'
                           } else {
                             nameField = 'category_name'
                           }
-                          typeof row[column.id] === 'object'
+                          typeof row[column.id] === 'object' &&
+                          column.id !== 'private_info'
                             ? (value = row[column.id][0][nameField])
                             : (value = row[column.id])
+                          column.id === 'private_info'
+                            ? (value = row[column.id][nameField])
+                            : (value = value)
                           return idx === columns.length - 1 ? (
                             <TableCell key={idx}>
                               <Button onClick={() => handleDelete(row.id)}>
