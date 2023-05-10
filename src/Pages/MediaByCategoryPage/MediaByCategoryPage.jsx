@@ -29,12 +29,14 @@ const MediaByCategoryPage = () => {
   const getCategories = async () => {
     const userId = localStorage.userId
     const result = await getMediaByCategoriesAndType(userId, type)
+
     if (result.length !== 0) {
       setList(
         result.splice(Math.floor(Math.random() * result.length), maxCount)
       )
       setcontentReady(true)
     }
+
   }
   const next = () => {
     settryCount(tryCount + 1)

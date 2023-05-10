@@ -32,6 +32,7 @@ const UserCategoriesComponent = () => {
   }
 
   const optionStyle = {
+    border: '1px solid red',
     marginLeft: '30px',
     color: palette.primary.contrastText,
   }
@@ -73,10 +74,20 @@ const UserCategoriesComponent = () => {
 
   return (
     <div>
-      <FormGroup>{displayCategories()}</FormGroup>
-        <Button style={btnStyle} onClick={handleSubmit}>
-          UPDATE
-        </Button>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          marginTop: '100px',
+        }}
+      >
+        <FormGroup style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {displayCategories()}
+        </FormGroup>
+      </div>
+      <Button style={btnStyle} onClick={handleSubmit}>
+        UPDATE
+      </Button>
     </div>
   )
 }

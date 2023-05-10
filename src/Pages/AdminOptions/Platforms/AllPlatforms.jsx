@@ -5,6 +5,7 @@ import {
   postPlatform,
 } from '../../../Services/platformServices'
 import './AllPlatforms.css'
+import ServiceCard from '../ServiceCard/ServiceCard'
 
 
 const AllPlatforms = () => {
@@ -42,9 +43,11 @@ const AllPlatforms = () => {
     handleGetData(getPlatform())
   }, [])
 
+  if (body.length > 0)
   return (
     <>
-      <div
+    <ServiceCard service={body} />
+      {/* <div
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
@@ -93,7 +96,7 @@ const AllPlatforms = () => {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </>
   )
 }

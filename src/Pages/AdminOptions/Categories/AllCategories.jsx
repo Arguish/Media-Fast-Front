@@ -2,6 +2,7 @@ import React from 'react'
 import  { useEffect, useState } from 'react'
 import { getCategory, deleteCategory, postCategory } from '../../../Services/categoriesServices'
 import './AllCategories.css'
+import ServiceCard from '../ServiceCard/ServiceCard'
 const AllCategories = () => {
   const [header, setheader] = useState([])
   const [body, setbody] = useState([])
@@ -37,9 +38,11 @@ const AllCategories = () => {
     handleGetData(getCategory())
   }, [])
 
+  if (body.length > 0)
   return (
     <>
-      <div
+      <ServiceCard service={body} />
+      {/* <div
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${header.length + 1}, 1fr)`,
@@ -85,7 +88,7 @@ const AllCategories = () => {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </>
   )
 }
