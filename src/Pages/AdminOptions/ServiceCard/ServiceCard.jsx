@@ -17,11 +17,15 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined'
-
+import PersonSearchIcon from '@mui/icons-material/PersonSearch'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 const ServiceCard = ({ service }) => {
   const [keys, setKeys] = useState()
   const [header, setHeader] = useState([])
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
   const data = {}
+
   useEffect(() => {
     getService()
   }, [])
@@ -50,6 +54,10 @@ const ServiceCard = ({ service }) => {
 
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
+
+  const goToUserCard = (userId) => {
+    navigate(`/user/${userId}`)
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -158,7 +166,7 @@ const ServiceCard = ({ service }) => {
       return (
         <Paper
           className="tableStyle"
-          sx={{ width: '100vw', overflow: 'hidden' }}
+          sx={{ height: '100%', overflow: 'hidden' }}
         >
           <TableContainer sx={{ maxHeight: '80vh' }}>
             <Table
@@ -222,6 +230,24 @@ const ServiceCard = ({ service }) => {
                             </TableCell>
                           ) : (
                             <TableCell key={column.id} align={column.align}>
+                              {pathname === '/allusers' &&
+                              column.id === 'id' ? (
+                                <PersonSearchIcon
+                                  sx={{
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                      transform: 'scale(1.3)',
+                                      boxShadow: '2px 2px 5px 10px #ee9900',
+                                      border: '2px solid white',
+                                      borderRadius: '100%',
+                                    },
+                                  }}
+                                  onClick={() => goToUserCard(value)}
+                                  color="primary"
+                                />
+                              ) : (
+                                false
+                              )}
                               {column.format && typeof value === 'number'
                                 ? column.format(value)
                                 : value}
