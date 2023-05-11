@@ -54,13 +54,15 @@ const RegisterCard = () => {
       date_of_birth: birthday,
     }
     if (validEmail && validPassword && nickname.length > 1 && birthday !== '') {
+      console.log('BODY ====> ', body)
       const result = await register(body)
+      console.log(result)
       if (result.status === 200 || result === 200) {
         return navigate('/preferences')
       } else if (result.status === 501) {
         setShow('block')
       } else {
-        console.log(result)
+        setShow(true)
       }
     }
   }

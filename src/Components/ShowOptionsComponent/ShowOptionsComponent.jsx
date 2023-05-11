@@ -25,7 +25,7 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
     ) {
       navigate('/user/me/categories/media/movie')
     } else if (e.target.value === 'ENJOY') {
-      navigate('/choosemedia')
+      navigate('/time')
     } else if (e.target.value === 'WORK') {
       navigate('/admin/options')
     } else {
