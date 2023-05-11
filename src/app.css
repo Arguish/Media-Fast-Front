@@ -7,6 +7,11 @@
   src: url(./assets/ITC\ Busorama/BusoramaBold/BusoramBold.otf);
 } /* No funciona bien... */
 
+@font-face {
+  font-family: 'Poppins';
+  src: url(./assets/Poppins/Poppins/Poppins-Medium.ttf);
+}
+
 #MEDIA,
 #FAST {
   position: absolute;
