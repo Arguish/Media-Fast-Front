@@ -95,7 +95,6 @@ const paper1 = {
   width: '260px',
   height: '360px',
   display: 'grid',
-  alignItems: 'end',
   placeContent: 'center',
   overflow: 'hidden',
 
