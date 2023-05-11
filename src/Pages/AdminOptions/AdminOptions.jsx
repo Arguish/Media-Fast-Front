@@ -64,6 +64,10 @@ const AdminOptions = () => {
               fontSize: '22px',
               fontFamily: 'Poppins, sans seriff',
               textShadow: '0.1px 0.1px white',
+              '&:hover': {
+                bgcolor: '#ee9e09',
+                boxShadow: '0 1px 10px white',
+              },
             }}
             variant="outlined"
             onClick={goToAllUsers}
@@ -84,6 +88,10 @@ const AdminOptions = () => {
               fontSize: '22px',
               fontFamily: 'Poppins, sans seriff',
               textShadow: '0.1px 0.1px white',
+              '&:hover': {
+                bgcolor: '#ee9e09',
+                boxShadow: '0 1px 10px white',
+              },
             }}
             variant="outlined"
             onClick={goToAllMedia}
@@ -104,6 +112,10 @@ const AdminOptions = () => {
               fontSize: '22px',
               fontFamily: 'Poppins, sans seriff',
               textShadow: '0.1px 0.1px white',
+              '&:hover': {
+                bgcolor: '#ee9e09',
+                boxShadow: '0 1px 10px white',
+              },
             }}
             variant="outlined"
             onClick={goToAllPlat}
@@ -124,6 +136,10 @@ const AdminOptions = () => {
               fontSize: '22px',
               fontFamily: 'Poppins, sans seriff',
               textShadow: '0.1px 0.1px white',
+              '&:hover': {
+                bgcolor: '#ee9e09',
+                boxShadow: '0 1px 10px white',
+              },
             }}
             variant="outlined"
             onClick={goToAllCategories}
