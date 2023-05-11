@@ -1,24 +1,32 @@
+//Node_modules
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+//Components
 import MediaCard from '../../Components/MediaCard/MediaCard'
-import { getMediaRandom, getMediaByID } from '../../Services/mediaServices'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import {
-  getMediaByCategories,
-  getMediaByCategoriesAndType,
-} from '../../Services/mediaServices'
-import { useParams } from 'react-router-dom'
 import { Button } from '@mui/material'
+
+//Services
+import { getMediaByID } from '../../Services/mediaServices'
+import { getMediaByCategoriesAndType } from '../../Services/mediaServices'
+
+//Hooks
+import useList from '../../Hooks/useList'
+
+//THIS Component
 
 const MediaByCategoryPage = () => {
   const [contentReady, setcontentReady] = useState(false)
   const [loading, setloading] = useState(false)
   const [tryCount, settryCount] = useState(0)
   const [spin, setspin] = useState(0)
-  const [list, setList] = useState([{}])
-  const [listItem, setListItem] = useState(0)
+
+  const [item, array, setArray, nx, prv] = useList()
 
   const maxCount = 3
+  console.log('array from custom hook: \n', array)
 
   const { type } = useParams()
 
@@ -31,7 +39,7 @@ const MediaByCategoryPage = () => {
     const result = await getMediaByCategoriesAndType(userId, type)
 
     if (result.length !== 0) {
-      setList(
+      setArray(
         result.splice(Math.floor(Math.random() * result.length), maxCount)
       )
       setcontentReady(true)
@@ -41,20 +49,14 @@ const MediaByCategoryPage = () => {
     settryCount(tryCount + 1)
     setloading(true)
     setspin(spin + 720)
-    if (listItem >= list.length - 1) {
-      setListItem(0)
-    } else {
-      setListItem(listItem + 1)
-    }
+    nx()
   }
+
   const previous = () => {
     setspin(spin - 720)
-    if (listItem <= 0) {
-      setListItem(list.length - 1)
-    } else {
-      setListItem(listItem - 1)
-    }
+    prv()
   }
+
   return (
     <div className="mediaCardWrapper">
       <div
@@ -100,12 +102,7 @@ const MediaByCategoryPage = () => {
               transform: `rotateY(${spin}deg)`,
             }}
           >
-            {contentReady && (
-              <MediaCard
-                cover={`https://picsum.photos/seed/${list[listItem]}/200/300`}
-                cardContent={list[listItem]}
-              ></MediaCard>
-            )}
+            {contentReady && <MediaCard cardContent={item}></MediaCard>}
           </div>
 
           <Button style={arrowsBtnStyle} onClick={next}>
@@ -128,20 +125,22 @@ const MediaByCategoryPage = () => {
           <Button
             style={btnStyle}
             onClick={() => {
-              getMediaByID(list[listItem].id).then(
+              getMediaByID(item.id).then(
                 (A) => (window.location = A.platforms[0].platform_url)
               )
             }}
           >
-            {list[listItem].title} <br />
+            {item.title} <br />
             {['Ver en ', 'See on '][localStorage.getItem('lang')]}{' '}
-            {list[listItem].platforms[0].name} !
+            {item.platforms[0].name} !
           </Button>
         )}
       </div>
     </div>
   )
 }
+
+//CSS
 
 const btnStyle = {
   minWidth: '50px',

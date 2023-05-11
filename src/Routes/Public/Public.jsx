@@ -58,21 +58,25 @@ export const router = createBrowserRouter([
         path: '/time',
         element: (
           <ShowOptionsComponent
-            question={
+            quest={
               ['¿CUÁNTO TIEMPO TIENES?', 'HOW MUCH TIME DO YOU HAVE?'][
                 localStorage.getItem('lang')
               ]
             }
-            optionOne={
-              ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
-                localStorage.getItem('lang')
-              ]
-            }
-            optionTwo={
-              ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
-                localStorage.getItem('lang')
-              ]
-            }
+            array={[
+              {
+                option: ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
+                  localStorage.getItem('lang')
+                ],
+                url: '/user/me/categories/media/show',
+              },
+              {
+                option: ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
+                  localStorage.getItem('lang')
+                ],
+                url: '/choosemedia',
+              },
+            ]}
           />
         ),
       },
@@ -80,11 +84,19 @@ export const router = createBrowserRouter([
         path: '/choosemedia',
         element: (
           <ShowOptionsComponent
-            question={
+            quest={
               ['¿PELI O SERIE?', 'MOVIE OR SHOW?'][localStorage.getItem('lang')]
             }
-            optionOne={['SERIE', 'TV SHOW'][localStorage.getItem('lang')]}
-            optionTwo={['PELI', 'MOVIE'][localStorage.getItem('lang')]}
+            array={[
+              {
+                option: ['SERIE', 'TV SHOW'][localStorage.getItem('lang')],
+                url: '/user/me/categories/media/show',
+              },
+              {
+                option: ['PELI', 'MOVIE'][localStorage.getItem('lang')],
+                url: '/user/me/categories/media/movie',
+              },
+            ]}
           />
         ),
       },
@@ -113,18 +125,34 @@ export const router = createBrowserRouter([
           } else {
             return (
               <ShowOptionsComponent
-                question={'WHAT DO YOU WANT TO DO?'}
-                optionOne={'ENJOY'}
-                optionTwo={'WORK'}
+                quest={'WHAT DO YOU WANT TO DO?'}
+                array={[
+                  {
+                    option: 'ENJOY',
+                    url: '/time',
+                  },
+                  {
+                    option: 'WORK',
+                    url: '/admin/options',
+                  },
+                ]}
               />
             )
           }
         },
         element: (
           <ShowOptionsComponent
-            question={'WHAT DO YOU WANT TO DO?'}
-            optionOne={'ENJOY'}
-            optionTwo={'WORK'}
+            quest={'WHAT DO YOU WANT TO DO?'}
+            array={[
+              {
+                option: 'ENJOY',
+                url: '/time',
+              },
+              {
+                option: 'WORK',
+                url: '/admin/options',
+              },
+            ]}
           />
         ),
       },
