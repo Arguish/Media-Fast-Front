@@ -29,9 +29,6 @@ const MediaCard = ({ cardContent, cover }) => {
         >
           <div style={card1}>
             <div style={paper1}>
-              <div style={celo_2}>
-                {cardContent.season} x {cardContent.season_episodes}
-              </div>
               <img
                 draggable={false}
                 style={image}
@@ -47,7 +44,10 @@ const MediaCard = ({ cardContent, cover }) => {
               <h4 style={{ color: 'black', margin: '5px' }}>
                 {cardContent.type === 'movie'
                   ? ''
-                  : cardContent.season + ' x ' + cardContent.season_episodes}
+                  : 'Episode: ' +
+                    cardContent.season +
+                    ' x ' +
+                    cardContent.season_episodes}
               </h4>
               <hr style={{ color: 'black', margin: '5px' }} />
               <p style={{ color: 'black', padding: '20px', margin: '5px' }}>
