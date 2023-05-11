@@ -9,10 +9,9 @@ import { Button, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@emotion/react'
 
-const CategorySuggestionsPage = () => {
+const CategorySuggestionsPage = ({ counter = 0 }) => {
   const [categories, setCategories] = useState([])
   const categoriesToSend = []
-  const [reloadTimer, setReloadTimer] = useState(0)
   const { palette } = useTheme()
 
   const navigate = useNavigate()

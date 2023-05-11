@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -17,7 +17,7 @@ import { useTheme } from '@emotion/react'
 
 const UserCard = ({ user }) => {
   const theme = useTheme().palette
-
+  const [counter, setCounter] = useState(0)
   const showUserCategories = () => {
     if (user.categories.length > 0) {
       return <UserCategoryChip stackElements={user.categories} />
@@ -141,7 +141,7 @@ const UserCard = ({ user }) => {
             }}
           >
             <Typography style={sectionHeaderStyle}>CATEGORIES</Typography>
-            <ShowButton path="preferences" id="userCatBtn" />
+            <ShowButton path="preferences" id="userCatBtn" counter={counter} />
           </Box>
           <div style={categoryWrapperStyle}>{showUserCategories()}</div>
           <Box

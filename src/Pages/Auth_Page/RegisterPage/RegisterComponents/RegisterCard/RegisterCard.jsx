@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import './RegisterCard.css'
 import AlertComponent from './AlertComponent/AlertComponent'
-import { register, login } from '../../../../../Services/authService'
+import { register } from '../../../../../Services/authService'
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
@@ -21,8 +21,14 @@ const RegisterCard = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [validPassword, setValidPassword] = useState(false)
   const [validEmail, setValidEmail] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [birthday, setBirthday] = useState('1997-04-27')
+  const [isHover, setIsHover] = useState()
   const [show, setShow] = useState('none')
   const handleClickShowPassword = () => setShowPassword((show) => !show)
+  const navigate = useNavigate()
 
   const ableToSend = () => {
     return validEmail && validPassword && nickname.length > 1 && birthday !== ''
@@ -54,9 +60,7 @@ const RegisterCard = () => {
       date_of_birth: birthday,
     }
     if (validEmail && validPassword && nickname.length > 1 && birthday !== '') {
-      console.log('BODY ====> ', body)
       const result = await register(body)
-      console.log(result)
       if (result.status === 200 || result === 200) {
         return navigate('/preferences')
       } else if (result.status === 501) {
@@ -80,14 +84,6 @@ const RegisterCard = () => {
     const today = setMaxDate()
     return today.slice(0, 4) - 80 + today.slice(4)
   }
-
-  const navigate = useNavigate()
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [nickname, setNickname] = useState('')
-  const [birthday, setBirthday] = useState('1997-04-27')
-  const [isHover, setIsHover] = useState()
 
   const handleHoverIn = () => {
     setIsHover(true)
@@ -130,7 +126,7 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              marginBottom: '20px',
+              marginbottom: '20px',
               fontSize: '20px',
               fontFamily: 'Poppins, sans seriff',
               fontWeight: '400',
@@ -161,7 +157,7 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              marginBottom: '20px',
+              marginbottom: '20px',
               fontSize: '20px',
               fontFamily: 'Poppins, sans seriff',
               fontWeight: '400',
@@ -213,7 +209,7 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              marginBottom: '20px',
+              marginbottom: '20px',
               fontSize: '20px',
               fontFamily: 'Poppins, sans seriff',
               fontWeight: '400',
@@ -239,7 +235,7 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              marginBottom: '20px',
+              marginbottom: '20px',
               fontSize: '20px',
               fontFamily: 'Poppins, sans seriff',
               fontWeight: '400',

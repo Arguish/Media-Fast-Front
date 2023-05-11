@@ -107,9 +107,22 @@ export const router = createBrowserRouter([
       },
       {
         path: '/admin',
+        loader: () => {
+          if (localStorage.getItem('role') !== 'admin') {
+            return redirect('/time')
+          } else {
+            return (
+              <ShowOptionsComponent
+                question={'WHAT DO YOU WANT TO DO?'}
+                optionOne={'ENJOY'}
+                optionTwo={'WORK'}
+              />
+            )
+          }
+        },
         element: (
           <ShowOptionsComponent
-            question={'¿PELI O SERIE?'}
+            question={'WHAT DO YOU WANT TO DO?'}
             optionOne={'ENJOY'}
             optionTwo={'WORK'}
           />

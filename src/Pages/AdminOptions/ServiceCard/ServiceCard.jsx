@@ -3,8 +3,6 @@ import './ServiceCard.css'
 import { deleteMedia, postMedia } from '../../../Services/mediaServices'
 import {
   Button,
-  FormControl,
-  FormControlLabel,
   Paper,
   Table,
   TableBody,
@@ -19,9 +17,12 @@ import AddIcon from '@mui/icons-material/Add'
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined'
 import PersonSearchIcon from '@mui/icons-material/PersonSearch'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+
 const ServiceCard = ({ service }) => {
   const [keys, setKeys] = useState()
   const [header, setHeader] = useState([])
+  const [page, setPage] = React.useState(0)
+  const [rowsPerPage, setRowsPerPage] = React.useState(10)
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const data = {}
@@ -51,9 +52,6 @@ const ServiceCard = ({ service }) => {
       )
     }
   }
-
-  const [page, setPage] = React.useState(0)
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
   const goToUserCard = (userId) => {
     navigate(`/user/${userId}`)
