@@ -16,15 +16,13 @@ import {
 import { Visibility } from '@mui/icons-material'
 import { VisibilityOff } from '@mui/icons-material'
 
-function LoginCard() {
+const LoginCard = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const navigate = useNavigate()
   const [isHover, setIsHover] = useState()
-
   const [validEmail, setValidEmail] = useState(false)
+  const navigate = useNavigate()
 
   const checkEmail = (e) => {
     setEmail(e.target.value)
@@ -57,63 +55,47 @@ function LoginCard() {
     setIsHover(false)
   }
 
-  const cardStyle = {
-    height: 'auto',
-    position: 'absolute',
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#000000',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    color: '#ee9e09',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const headerStyle = {
-    fontSize: '50px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Poppins, sans seriff',
-    textShadow: '1px 1px white',
-  }
-
-  const inputStyle = {
-    marginBottom: '20px',
-    fontSize: '20px',
-    fontFamily: 'Poppins, sans seriff',
-    fontWeight: '400',
-  }
-  const btnStyle = {
-    height: '50px',
-    minWidth: '50px',
-    margin: '10px',
-    color: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    transform: isHover ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
-    textShadow: '0.1px 0.1px white',
-    border: '0.5px solid',
+  const ableToSend = () => {
+    return validEmail && password.length > 2 ? false : true
   }
 
   return (
     <div className="authComponentCardWrapper">
-      <Card className="authComponentCard" style={cardStyle}>
+      <Card
+        className="authComponentCard"
+        sx={{
+          height: 'auto',
+          position: 'absolute',
+          top: '40%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          bgcolor: '#000000',
+          border: '2px solid #000',
+          boxShadow: 24,
+          p: 4,
+          color: '#ee9e09',
+          fontFamily: 'Poppins, sans seriff',
+        }}
+      >
         <CardHeader
           title="LOGIN"
           disableTypography={true}
-          style={headerStyle}
+          sx={{
+            fontSize: '50px',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontFamily: 'Poppins, sans seriff',
+            textShadow: '1px 1px white',
+          }}
         />
         <CardContent>
           <TextField
-            style={inputStyle}
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginbottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             color={!validEmail && email.length !== 0 ? 'secondary' : 'primary'}
             onChange={checkEmail}
@@ -121,6 +103,10 @@ function LoginCard() {
             variant="outlined"
             fullWidth={true}
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   !validEmail && email.length !== 0
@@ -130,10 +116,12 @@ function LoginCard() {
             }}
           />
           <TextField
-            style={inputStyle}
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginbottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             onChange={(e) => setPassword(e.target.value)}
             label="PASSWORD"
@@ -142,6 +130,10 @@ function LoginCard() {
             fullWidth={true}
             color={password.length <= 1 ? 'secondary' : 'primary'}
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   password.length <= 1
@@ -150,7 +142,10 @@ function LoginCard() {
               },
             }}
             InputProps={{
-              style: inputStyle,
+              marginbottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -158,7 +153,11 @@ function LoginCard() {
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                    {showPassword ? (
+                      <Visibility color="primary" />
+                    ) : (
+                      <VisibilityOff color="primary" />
+                    )}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -171,7 +170,23 @@ function LoginCard() {
             onClick={handleLogin}
             onMouseEnter={handleHoverIn}
             onMouseLeave={handleHoverOut}
-            style={btnStyle}
+            sx={{
+              height: '50px',
+              minWidth: '50px',
+              margin: '10px',
+              color: '#ee9e09',
+              borderRadius: '15px',
+              fontWeight: '800',
+              fontSize: '22px',
+              fontFamily: 'Poppins, sans seriff',
+              transform: isHover ? 'scale(1.05)' : 'scale(1)',
+              boxShadow: isHover
+                ? '0px 1px 15px #ee9e09'
+                : '0px 1px 0px #000000',
+              textShadow: '0.1px 0.1px white',
+              border: '0.5px solid',
+            }}
+            disabled={ableToSend()}
           >
             Login
           </Button>

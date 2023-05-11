@@ -55,7 +55,7 @@ const ShowOptionsComponent = ({ question, optionOne, optionTwo }) => {
   }
 
   const inputStyle = {
-    marginBottom: '20px',
+    marginbottom: '20px',
     fontSize: '20px',
     fontFamily: 'Poppins, sans seriff',
     fontWeight: '400',

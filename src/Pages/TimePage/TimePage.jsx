@@ -44,7 +44,7 @@ const TimePage = () => {
   }
 
   const inputStyle = {
-    marginBottom: '20px',
+    marginbottom: '20px',
     fontSize: '20px',
     fontFamily: 'Poppins, sans seriff',
     fontWeight: '400',
@@ -67,7 +67,7 @@ const TimePage = () => {
   }
 
   return (
-    <Card className='timeQuestionComponent' style={cardStyle}>
+    <Card className="timeQuestionComponent" style={cardStyle}>
       <CardHeader
         disableTypography={true}
         style={headerStyle}
