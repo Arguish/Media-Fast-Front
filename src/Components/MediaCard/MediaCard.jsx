@@ -165,7 +165,6 @@ const image = {
   border: '0.1px dashed black',
   gridArea: '1/3/1/3',
   objectFit: 'scale-down',
-  filter: 'grayscale(100%) contrast(150%)',
   mixBlendMode: 'multiply',
   userSelect: 'none',
   cursor: 'pointer',
