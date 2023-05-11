@@ -5,7 +5,7 @@ import { setUserCategories } from '../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { Button, Container, ThemeProvider } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@emotion/react'
 
@@ -70,13 +70,6 @@ const CategorySuggestionsPage = () => {
     }
   }
 
-  const reloader = () => {
-    if (reloadTimer < 1) {
-      navigate(0)
-      setReloadTimer(1)
-    }
-  }
-
   return (
     <Container
       sx={{
@@ -99,6 +92,7 @@ const CategorySuggestionsPage = () => {
 
       <Button
         sx={{
+          marginTop: '10px',
           height: '50px',
           maxWidth: '400px',
           minWidth: '50px',

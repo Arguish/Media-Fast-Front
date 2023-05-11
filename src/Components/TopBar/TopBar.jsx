@@ -88,10 +88,6 @@ const TopBar = () => {
             component="div"
             onClick={handleHome}
             style={logoStyle}
-            // sx={{
-            //   flexGrow: 1,
-            //   color: '#ee9e09',
-            // }}
           >
             MEDIAFAST
           </Typography>

@@ -5,7 +5,7 @@ import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { Button } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import { useTheme } from '@emotion/react'
 
 const UserCategoriesComponent = () => {
@@ -16,25 +16,6 @@ const UserCategoriesComponent = () => {
   useEffect(() => {
     getAllCategories()
   }, [])
-
-  const btnStyle = {
-    height: '50px',
-    minWidth: '50px',
-    margin: '10px',
-    padding: '20px',
-    color: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    textShadow: '0.1px 0.1px white',
-    border: '0.5px solid',
-  }
-
-  const optionStyle = {
-    marginLeft: '30px',
-    color: palette.primary.contrastText,
-  }
 
   const getAllCategories = async () => {
     const result = await getCategory()
@@ -60,7 +41,21 @@ const UserCategoriesComponent = () => {
       return categories.map((category) => {
         return (
           <FormControlLabel
-            style={optionStyle}
+            sx={{
+              marginLeft: '30px',
+              marginTop: '5px',
+              padding: '5px',
+              boxSizing: 'border-box',
+              width: {
+                xs: '150px',
+                md: '200px',
+              },
+              fontSize: {
+                xs: '16px',
+              },
+              color: palette.primary.main,
+              boxShadow: '0 0 5px #ee9e09',
+            }}
             key={category.id}
             control={<Checkbox color={'secondary'} onClick={setCategory} />}
             label={category.category_name}
@@ -72,22 +67,45 @@ const UserCategoriesComponent = () => {
   }
 
   return (
-    <div>
-      <div
-        style={{
+    <Container
+      sx={{
+        marginTop: '50px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <FormGroup
+        sx={{
           display: 'flex',
-          flexWrap: 'wrap',
-          marginTop: '100px',
+          flexDirection: 'row',
+          fontSize: '10px',
         }}
       >
-        <FormGroup style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {displayCategories()}
-        </FormGroup>
-      </div>
-      <Button style={btnStyle} onClick={handleSubmit}>
+        {displayCategories()}
+      </FormGroup>
+      <Button
+        sx={{
+          marginTop: '10px',
+          height: '50px',
+          maxWidth: '400px',
+          minWidth: '50px',
+          margin: '10px',
+          padding: '20px',
+          color: '#ee9e09',
+          borderRadius: '15px',
+          fontWeight: '800',
+          fontSize: '22px',
+          fontFamily: 'Poppins, sans seriff',
+          textShadow: '0.1px 0.1px white',
+          border: '0.5px solid',
+        }}
+        onClick={handleSubmit}
+      >
         UPDATE
       </Button>
-    </div>
+    </Container>
   )
 }
 export default UserCategoriesComponent

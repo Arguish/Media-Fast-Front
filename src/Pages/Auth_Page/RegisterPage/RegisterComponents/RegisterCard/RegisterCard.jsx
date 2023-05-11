@@ -96,65 +96,44 @@ const RegisterCard = () => {
     setIsHover(false)
   }
 
-  const cardStyle = {
-    height: 'auto',
-    position: 'absolute',
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#000000',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    color: '#ee9e09',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const headerStyle = {
-    fontSize: '50px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Poppins, sans seriff',
-    textShadow: '1px 1px white',
-  }
-
-  const inputStyle = {
-    marginBottom: '20px',
-    fontSize: '20px',
-    fontFamily: 'Poppins, sans seriff',
-    fontWeight: '400',
-  }
-
-  const btnStyle = {
-    height: '50px',
-    minWidth: '50px',
-    margin: '10px',
-    color: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    transform: isHover ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHover ? '0px 1px 15px #ee9e09' : '0px 1px 0px #000000',
-    textShadow: '0.1px 0.1px white',
-    border: '0.5px solid',
-  }
-
   return (
     <div className="authComponentCardWrapper">
       <AlertComponent status={show} setter={setShow} />
-      <Card className="authComponentCard" style={cardStyle}>
+      <Card
+        className="authComponentCard"
+        sx={{
+          height: 'auto',
+          position: 'absolute',
+          top: '40%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          bgcolor: '#000000',
+          border: '2px solid #000',
+          boxShadow: 24,
+          p: 4,
+          color: '#ee9e09',
+          fontFamily: 'Poppins, sans seriff',
+        }}
+      >
         <CardHeader
           disableTypography={true}
-          style={headerStyle}
+          sx={{
+            fontSize: '50px',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontFamily: 'Poppins, sans seriff',
+            textShadow: '1px 1px white',
+          }}
           title="REGISTER"
         />
         <CardContent>
           <TextField
-            style={inputStyle}
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             onChange={checkEmail}
             label="EMAIL"
@@ -167,6 +146,10 @@ const RegisterCard = () => {
                 : null
             }
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   !validEmail && email.length !== 0
@@ -178,7 +161,10 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             onChange={checkPassword}
             label="PASSWORD"
@@ -194,6 +180,10 @@ const RegisterCard = () => {
                 : null
             } //text to test, change it later.
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   !validPassword && password.length !== 0
@@ -202,7 +192,6 @@ const RegisterCard = () => {
               },
             }}
             InputProps={{
-              style: inputStyle,
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -222,16 +211,22 @@ const RegisterCard = () => {
           ></TextField>
 
           <TextField
-            style={inputStyle}
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             onChange={(e) => setNickname(e.target.value)}
             label="NICKNAME"
             variant="outlined"
             fullWidth={true}
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   nickname.length > 0
@@ -244,7 +239,10 @@ const RegisterCard = () => {
           <TextField
             InputLabelProps={{
               shrink: true,
-              style: inputStyle,
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
             }}
             type="date"
             onChange={(e) => setBirthday(e.target.value)}
@@ -254,6 +252,10 @@ const RegisterCard = () => {
             fullWidth={true}
             defaultValue={'1997-04-27'}
             sx={{
+              marginBottom: '20px',
+              fontSize: '20px',
+              fontFamily: 'Poppins, sans seriff',
+              fontWeight: '400',
               input: {
                 color: (themeOptions) =>
                   birthday !== ''
@@ -269,7 +271,22 @@ const RegisterCard = () => {
             onClick={handleRegister}
             onMouseEnter={handleHoverIn}
             onMouseLeave={handleHoverOut}
-            style={btnStyle}
+            sx={{
+              height: '50px',
+              minWidth: '50px',
+              margin: '10px',
+              color: '#ee9e09',
+              borderRadius: '15px',
+              fontWeight: '800',
+              fontSize: '22px',
+              fontFamily: 'Poppins, sans seriff',
+              transform: isHover ? 'scale(1.05)' : 'scale(1)',
+              boxShadow: isHover
+                ? '0px 1px 15px #ee9e09'
+                : '0px 1px 0px #000000',
+              textShadow: '0.1px 0.1px white',
+              border: '0.5px solid',
+            }}
             disabled={ableToSend()}
           >
             Register
