@@ -35,8 +35,6 @@ const MediaCard = ({ cardContent, cover }) => {
                 src={cardContent.image}
                 alt=""
               />
-              {/*               <h1 style={title}>{cardContent.title}</h1>
-               */}{' '}
             </div>
           </div>
           <div style={card2}>
