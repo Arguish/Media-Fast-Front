@@ -1,7 +1,12 @@
 import api from './config'
 
 export const getUser = async () => {
-  const { data } = await api.get('/user')
+  const { data } = await api.get('/user', {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  }
+  )
   return data
 }
 
@@ -11,7 +16,11 @@ export const getUserByID = async (id) => {
 }
 
 export const getUserMe = async (id) => {
-  const { data } = await api.get(`/user/me`)
+  const { data } = await api.get(`/user/me`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

@@ -1,7 +1,11 @@
 import api from './config'
 
 export const getprivateInfo = async () => {
-  const { data } = await api.get('/private_info')
+  const { data } = await api.get('/private_info', {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

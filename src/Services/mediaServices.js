@@ -1,7 +1,11 @@
 import api from './config'
 
 export const getMedia = async () => {
-  const { data } = await api.get('/media')
+  const { data } = await api.get('/media', {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

@@ -1,7 +1,11 @@
 import api from './config'
 
 export const getPlatform = async () => {
-  const { data } = await api.get('/platform')
+  const { data } = await api.get('/platform', {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

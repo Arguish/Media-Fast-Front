@@ -33,7 +33,7 @@ const TopBar = () => {
 
   const handleLogOut = () => {
     localStorage.clear()
-    navigate('/')
+    location.reload()
   }
 
   const handleMe = () => {
