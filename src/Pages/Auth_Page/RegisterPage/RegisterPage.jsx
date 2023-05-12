@@ -8,7 +8,7 @@ import RegisterCard from './RegisterComponents/RegisterCard/RegisterCard'
 const RegisterModalComponent = ({ name }) => {
   const lang = useLang()
   const showCard = () => {
-    return name === ['Registrarse', 'Register'][lang] ? (
+    return name === ['Registrarse', 'Register'][lang || 0] ? (
       <RegisterCard />
     ) : (
       <LoginCard />

@@ -7,8 +7,8 @@ const AuthPage = () => {
   const lang = useLang()
   return (
     <div>
-      <RegisterModalComponent name={['Registrarse', 'Register'][lang]} />
-      <RegisterModalComponent name={['Iniciar sesión', 'Login'][lang]} />
+      <RegisterModalComponent name={['Registrarse', 'Register'][lang || 0]} />
+      <RegisterModalComponent name={['Iniciar sesión', 'Login'][lang || 0]} />
     </div>
   )
 }

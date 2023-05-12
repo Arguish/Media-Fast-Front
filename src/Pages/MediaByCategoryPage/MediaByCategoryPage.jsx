@@ -79,7 +79,7 @@ const MediaByCategoryPage = () => {
                   tryCount > 3 ? ' A LOT' : ''
                 }... Please wait
             please...`,
-              ][lang]
+              ][lang || 0]
             }
           </h2>
         )}
@@ -116,7 +116,7 @@ const MediaByCategoryPage = () => {
                 color="secondary"
               />
             ) : (
-              ['Un momento por favor...', 'One moment, please...'][lang]
+              ['Un momento por favor...', 'One moment, please...'][lang || 0]
             )}
           </Button>
         </div>
@@ -130,7 +130,7 @@ const MediaByCategoryPage = () => {
             }}
           >
             {item.title} <br />
-            {['Ver en ', 'See on '][lang]} {item.platforms[0].name} !
+            {['Ver en ', 'See on '][lang || 0]} {item.platforms[0].name} !
           </Button>
         )}
       </div>

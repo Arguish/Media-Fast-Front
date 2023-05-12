@@ -1,8 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Card, CardActions, CardHeader } from '@mui/material'
+import useLang from '../../Hooks/useLang'
 
 const AdminOptions = () => {
+  const lang = useLang
   const navigate = useNavigate()
 
   const goToAllUsers = () => {
@@ -27,7 +29,7 @@ const AdminOptions = () => {
         <CardHeader disableTypography={true} sx={headerStl}></CardHeader>
         <CardActions sx={{ display: 'flex', flexDirection: 'column' }}>
           <Button sx={btnStyle} variant="outlined" onClick={goToAllUsers}>
-            {['USUARIOS', 'USERS'][localStorage.getItem('lang')]}
+            {['USUARIOS', 'USERS'][lang || 0]}
           </Button>
 
           <Button sx={btnStyle} variant="outlined" onClick={goToAllMedia}>
@@ -35,11 +37,11 @@ const AdminOptions = () => {
           </Button>
 
           <Button sx={btnStyle} variant="outlined" onClick={goToAllPlat}>
-            {['PLATAFORMAS', 'PLATFORMS'][localStorage.getItem('lang')]}
+            {['PLATAFORMAS', 'PLATFORMS'][lang || 0]}
           </Button>
 
           <Button sx={btnStyle} variant="outlined" onClick={goToAllCategories}>
-            {['CATEGORIAS', 'CATEGORIES'][localStorage.getItem('lang')]}
+            {['CATEGORIAS', 'CATEGORIES'][lang || 0]}
           </Button>
         </CardActions>
       </Card>
