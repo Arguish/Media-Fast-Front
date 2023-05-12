@@ -8,7 +8,7 @@ const useLang = () => {
       : localStorage.setItem('lang', String(localStorage.getItem('lang')))
     setlang(0)
   }
-  return lang
+  return lang || 0
 }
 
 export default useLang
