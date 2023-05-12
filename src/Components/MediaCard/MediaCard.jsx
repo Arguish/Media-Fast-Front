@@ -114,68 +114,17 @@ const paper2 = {
   userSelect: 'none',
   cursor: 'pointer',
 }
-const celo_1 = {
-  border: ' 1px solid rgba(0, 0, 0, 0.201)',
-  boxShadow: '1px 2px 1px -2px #00000022',
-  position: 'absolute',
-  zIndex: '100',
-  height: '20px',
-  width: '80px',
-  gridArea: '1/1/1/1',
-  backgroundColor: 'rgba(249, 209, 78, 0.341)',
-  transform: 'rotate(-17deg) translateX(-15px)',
-  fontSize: '15px',
-  userSelect: 'none',
-  cursor: 'pointer',
-}
-const celo_2 = {
-  color: 'black',
-  border: ' 1px solid rgba(0, 0, 0, 0.201)',
-  boxShadow: '1px 2px 1px -2px #00000022',
-  position: 'absolute',
-  zIndex: '100',
-  height: '20px',
-  width: '80px',
-  gridArea: '2/2/3/3',
-  backgroundColor: 'rgba(249, 209, 78, 0.341)',
-  transform: 'rotate(-17deg) translateX(170px) translateY(30px)',
-  fontSize: '15px',
-  userSelect: 'none',
-  cursor: 'pointer',
-}
-const title = {
-  fontFamily: 'sans-serif',
-  WebkitTextStroke: '0.1px balck',
-  textShadow: '2px 2px #a40000',
-  color: '#e94 ',
-  position: 'absolute',
-  gridArea: '2/3/2/3',
-  transform: ' translateX(-25px)',
-  userSelect: 'none',
-  cursor: 'pointer',
-}
+
 const image = {
   padding: '5px',
   boxSizing: 'border-box',
   maxWidth: '100%',
   maxHeight: '100%',
+  margin: '2px auto',
   border: '0.1px dashed black',
   gridArea: '1/3/1/3',
   objectFit: 'scale-down',
   mixBlendMode: 'multiply',
   userSelect: 'none',
   cursor: 'pointer',
-}
-
-const btnStyle = {
-  height: '50px',
-  minWidth: '50px',
-  margin: '10px',
-  color: '#ee9e09',
-  borderRadius: '15px',
-  fontWeight: '800',
-  fontSize: '22px',
-  fontFamily: 'Poppins, sans seriff',
-  textShadow: '0.1px 0.1px white',
-  border: '0.5px solid',
 }
