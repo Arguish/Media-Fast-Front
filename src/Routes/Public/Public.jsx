@@ -57,19 +57,19 @@ export const router = createBrowserRouter([
           <ShowOptionsComponent
             quest={
               ['¿CUÁNTO TIEMPO TIENES?', 'HOW MUCH TIME DO YOU HAVE?'][
-                localStorage.getItem('lang')
+                localStorage.getItem('lang' || 0)
               ]
             }
             array={[
               {
                 option: ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
-                  localStorage.getItem('lang')
+                  localStorage.getItem('lang' || 0)
                 ],
                 url: '/user/me/categories/media/show',
               },
               {
                 option: ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
-                  localStorage.getItem('lang')
+                  localStorage.getItem('lang' || 0)
                 ],
                 url: '/choosemedia',
               },
@@ -82,15 +82,17 @@ export const router = createBrowserRouter([
         element: (
           <ShowOptionsComponent
             quest={
-              ['¿PELI O SERIE?', 'MOVIE OR SHOW?'][localStorage.getItem('lang')]
+              ['¿PELI O SERIE?', 'MOVIE OR SHOW?'][
+                localStorage.getItem('lang' || 0)
+              ]
             }
             array={[
               {
-                option: ['SERIE', 'TV SHOW'][localStorage.getItem('lang')],
+                option: ['SERIE', 'TV SHOW'][localStorage.getItem('lang' || 0)],
                 url: '/user/me/categories/media/show',
               },
               {
-                option: ['PELI', 'MOVIE'][localStorage.getItem('lang')],
+                option: ['PELI', 'MOVIE'][localStorage.getItem('lang' || 0)],
                 url: '/user/me/categories/media/movie',
               },
             ]}
