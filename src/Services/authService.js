@@ -13,7 +13,6 @@ export const register = async (body) => {
 
 export const login = async (body) => {
   try {
-    console.log('connecting...')
     const { data } = await api.post('/auth/login', body)
     const userId = data.userInfo.user.id
     const role = data.userInfo.user.role

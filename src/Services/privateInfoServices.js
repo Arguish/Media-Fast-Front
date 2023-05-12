@@ -10,32 +10,56 @@ export const getprivateInfo = async () => {
 }
 
 export const getprivateInfoByID = async (id) => {
-  const { data } = await api.get(`/private_info/${id}`)
+  const { data } = await api.get(`/private_info/${id}`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
 export const getprivateInfoMe = async (id) => {
-  const { data } = await api.get(`/private_info/me`)
+  const { data } = await api.get(`/private_info/me`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
 export const putprivateInfo = async (id) => {
-  const { data } = await api.put(`/private_info/${id}`)
+  const { data } = await api.put(`/private_info/${id}`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
 export const putprivateInfoMe = async (id) => {
-  const { data } = await api.put(`/private_info/me`)
+  const { data } = await api.put(`/private_info/me`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
 export const postprivateInfo = async (id) => {
-  const { data } = await api.post('/private_info')
+  const { data } = await api.post('/private_info', {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
 export const deleteprivateInfo = async (id) => {
-  const { data } = await api.delete(`/private_info/${id}`)
+  const { data } = await api.delete(`/private_info/${id}`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

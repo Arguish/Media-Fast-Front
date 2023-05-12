@@ -74,7 +74,6 @@ const customCrd = {
   bgcolor: '#000000',
   border: '2px solid #000',
   boxShadow: 24,
-  padding: '25px',
   color: '#ee9e09',
   fontFamily: 'Poppins, sans seriff',
 }
