@@ -76,4 +76,5 @@ const customCrd = {
   boxShadow: 24,
   color: '#ee9e09',
   fontFamily: 'Poppins, sans seriff',
+  borderRadius: '10px',
 }

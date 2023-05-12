@@ -15,7 +15,14 @@ const UserCategoryChip = ({ stackElements }) => {
   }
 
   return (
-    <Stack style={stackStyle} sx={{}}>
+    <Stack
+      sx={{
+        display: 'flex',
+        maxHeight: '30vh',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      }}
+    >
       {stackElements.map((el) => {
         return (
           <Chip

@@ -18,6 +18,7 @@ import { useTheme } from '@emotion/react'
 const UserCard = ({ user }) => {
   const theme = useTheme().palette
   const [counter, setCounter] = useState(0)
+
   const showUserCategories = () => {
     if (user.categories.length > 0) {
       return <UserCategoryChip stackElements={user.categories} />
@@ -59,7 +60,6 @@ const UserCard = ({ user }) => {
     width: '100%',
     position: 'static',
     border: '2px solid #000',
-    boxShadow: 24,
     color: '#ee9e09',
     fontFamily: 'Poppins, sans seriff',
   }
@@ -99,15 +99,41 @@ const UserCard = ({ user }) => {
   }
 
   return (
-    <Card className="userCardWrapper" style={cardStyle}>
+    <Card
+      className="userCardWrapper"
+      sx={{
+        height: 'auto',
+        width: {
+          xs: '80vw',
+          md: '100%',
+        },
+        position: 'static',
+        border: '2px solid',
+        borderRadius: '10px',
+        color: '#ee9e09',
+        fontFamily: 'Poppins, sans seriff',
+      }}
+    >
       <CardContent>
         <Box
           sx={{
+            width: '100%',
             display: 'flex',
+            alignItems: 'flex-end',
             justifyContent: 'space-between',
+            flexDirection: 'row',
           }}
         >
-          <Typography style={headerStyle} variant="h4" component="div">
+          <Typography
+            sx={{
+              fontSize: '50px',
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontFamily: 'Poppins, sans seriff',
+            }}
+            variant="h4"
+            component="div"
+          >
             {user.nickname}
           </Typography>
           <CardMedia
@@ -116,7 +142,6 @@ const UserCard = ({ user }) => {
             image={user.img_url}
             alt="User avatar."
             sx={{
-              border: '1px solid #ee9e09',
               height: '100px',
               width: '100px',
             }}
@@ -133,27 +158,61 @@ const UserCard = ({ user }) => {
         >
           <Box
             sx={{
-              width: '50%',
+              width: '100%',
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'space-between',
               flexDirection: 'row',
             }}
           >
-            <Typography style={sectionHeaderStyle}>CATEGORIES</Typography>
+            <Typography
+              sx={{
+                fontSize: '20px',
+                margin: '5px 0',
+                textAlign: 'center',
+                fontWeight: '600',
+                textShadow: `0 1px 30px ${theme.secondary.main}`,
+                color: theme.secondary.main,
+                fontFamily: 'Poppins, sans seriff',
+              }}
+            >
+              CATEGORIES
+            </Typography>
             <ShowButton path="preferences" id="userCatBtn" counter={counter} />
           </Box>
-          <div style={categoryWrapperStyle}>{showUserCategories()}</div>
           <Box
             sx={{
-              width: '50%',
+              width: '100%',
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'space-between',
               flexDirection: 'row',
             }}
           >
-            <Typography style={sectionHeaderStyle}>USER MEDIA</Typography>
+            {showUserCategories()}
+          </Box>
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: '20px',
+                margin: '5px 0',
+                textAlign: 'center',
+                fontWeight: '600',
+                textShadow: `0 1px 30px ${theme.secondary.main}`,
+                color: theme.secondary.main,
+                fontFamily: 'Poppins, sans seriff',
+              }}
+            >
+              USER MEDIA
+            </Typography>
             <ShowButton path="#" id="userMediaBtn" />
           </Box>
           {showUserMedia()}

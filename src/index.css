@@ -21,6 +21,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
 body {
   width: 100%;
   margin: 0;
@@ -40,6 +41,10 @@ body {
 .chipStyle {
   text-transform: uppercase;
   margin: 5px;
+}
+
+.authComponentCard {
+  width: 50vw;
 }
 
 @media (max-width: 900px) {
