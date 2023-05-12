@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Aachen';
-  src: url(./assets/Aachen/aachenn.ttf);
+  src: url('../../assets/Aachen/aachenn.ttf');
 }
 
 .Aachen {
