@@ -1,7 +1,11 @@
 import api from "./config";
 
 export const getCategory = async () => {
-  const { data } = await api.get("/category");
+  const { data } = await api.get("/category", {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  });
   return data;
 };
 
