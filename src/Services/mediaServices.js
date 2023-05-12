@@ -6,7 +6,11 @@ export const getMedia = async () => {
 }
 
 export const getMediaRandom = async (id) => {
-  const { data } = await api.get(`/media/random`)
+  const { data } = await api.get(`/media/random`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 

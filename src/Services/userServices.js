@@ -16,7 +16,11 @@ export const getUserMe = async (id) => {
 }
 
 export const setUserCategories = async (body) => {
-  const { data } = await api.post(`/user/me/categories`, body)
+  const { data } = await api.post(`/user/me/categories`, body, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
 
