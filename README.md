@@ -87,14 +87,9 @@ En resumen, el diseño en Figma del Recomendador de películas o series busca of
 
 ## Tecnologias empleadas
 
-<img src="https://logo.clearbit.com/nodejs.org" width="21.5%">
-<img src="https://logo.clearbit.com/reactjs.org" width="21.5%">
-<img src="https://reactrouter.com/_brand/react-router-mark-color-inverted.png" width="21.5%">
-<img src="https://logo.clearbit.com/mui.com" width="21.5%">
-<img src="https://user-images.githubusercontent.com/8939680/57233882-20344080-6fe5-11e9-9086-d20a955bed59.png" width="21.5%">
-<img src="https://logo.clearbit.com/vitejs.dev" width="21.5%">
-<img src="https://logo.clearbit.com/prettier.io"width="21.5%">
-<img src="https://logo.clearbit.com/eslint.org"width="21.5%">
+<img src="https://logo.clearbit.com/nodejs.org" width="21.5%"><img src="https://logo.clearbit.com/reactjs.org" width="21.5%"><img src="https://reactrouter.com/_brand/react-router-mark-color-inverted.png" width="21.5%"><img src="https://logo.clearbit.com/mui.com" width="21.5%">
+
+<img src="https://user-images.githubusercontent.com/8939680/57233882-20344080-6fe5-11e9-9086-d20a955bed59.png" width="21.5%"><img src="https://logo.clearbit.com/vitejs.dev" width="21.5%"><img src="https://logo.clearbit.com/prettier.io" width="21.5%"><img src="https://logo.clearbit.com/eslint.org" width="21.5%">
 
 ## Scritp to update the Database
 
