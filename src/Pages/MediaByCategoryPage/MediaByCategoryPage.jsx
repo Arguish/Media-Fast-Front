@@ -14,6 +14,7 @@ import { getMediaByCategoriesAndType } from '../../Services/mediaServices'
 
 //Hooks
 import useList from '../../Hooks/useList'
+import useLang from '../../Hooks/useLang'
 
 //THIS Component
 
@@ -24,9 +25,9 @@ const MediaByCategoryPage = () => {
   const [spin, setspin] = useState(0)
 
   const [item, array, setArray, nx, prv] = useList()
+  const lang = useLang()
 
   const maxCount = 3
-  console.log('array from custom hook: \n', array)
 
   const { type } = useParams()
 
@@ -78,7 +79,7 @@ const MediaByCategoryPage = () => {
                   tryCount > 3 ? ' A LOT' : ''
                 }... Please wait
             please...`,
-              ][localStorage.getItem('lang')]
+              ][lang]
             }
           </h2>
         )}
@@ -115,9 +116,7 @@ const MediaByCategoryPage = () => {
                 color="secondary"
               />
             ) : (
-              ['Un momento por favor...', 'One moment, please...'][
-                localStorage.getItem('lang')
-              ]
+              ['Un momento por favor...', 'One moment, please...'][lang]
             )}
           </Button>
         </div>
@@ -131,8 +130,7 @@ const MediaByCategoryPage = () => {
             }}
           >
             {item.title} <br />
-            {['Ver en ', 'See on '][localStorage.getItem('lang')]}{' '}
-            {item.platforms[0].name} !
+            {['Ver en ', 'See on '][lang]} {item.platforms[0].name} !
           </Button>
         )}
       </div>
