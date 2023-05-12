@@ -4,7 +4,7 @@ import { Button, Card, CardActions, CardHeader } from '@mui/material'
 import useLang from '../../Hooks/useLang'
 
 const AdminOptions = () => {
-  const lang = useLang
+  const lang = useLang()
   const navigate = useNavigate()
 
   const goToAllUsers = () => {
