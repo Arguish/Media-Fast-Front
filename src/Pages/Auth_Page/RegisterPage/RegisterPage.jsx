@@ -1,12 +1,18 @@
 import { Box, Button, Modal } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
+import useLang from '../../../Hooks/useLang'
 import LoginCard from './RegisterComponents/LoginCard/LoginCard'
 import RegisterCard from './RegisterComponents/RegisterCard/RegisterCard'
 
 const RegisterModalComponent = ({ name }) => {
+  const lang = useLang()
   const showCard = () => {
-    return name === 'Register' ? <RegisterCard /> : <LoginCard />
+    return name === ['Registrarse', 'Register'][lang] ? (
+      <RegisterCard />
+    ) : (
+      <LoginCard />
+    )
   }
 
   const [isHover, setIsHover] = useState()
