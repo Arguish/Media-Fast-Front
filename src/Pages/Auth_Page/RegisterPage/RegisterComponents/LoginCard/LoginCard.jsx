@@ -22,6 +22,7 @@ const LoginCard = () => {
   const [password, setPassword] = useState('')
   const [isHover, setIsHover] = useState()
   const [validEmail, setValidEmail] = useState(false)
+  const [body, setBody] = useState({})
   const navigate = useNavigate()
 
   const checkEmail = (e) => {
@@ -37,8 +38,9 @@ const LoginCard = () => {
   }
 
   const handleLogin = async () => {
-    const body = { email, password }
-    const result = await login(body)
+    setBody({ email, password })
+    const userInfo = { email, password }
+    const result = await login(userInfo)
     if (result === 200 && localStorage.getItem('role') === 'admin') {
       navigate('/admin')
     } else if (result === 200 && localStorage.getItem('role') === 'user') {
