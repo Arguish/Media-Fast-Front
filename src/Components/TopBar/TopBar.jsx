@@ -13,6 +13,7 @@ import Menu from '@mui/material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
 import GroupsIcon from '@mui/icons-material/Groups'
+
 const TopBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -47,17 +48,6 @@ const TopBar = () => {
   }
   const handleAbout = () => {
     return navigate('/aboutus')
-  }
-
-  const logoStyle = {
-    fontSize: '50px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Aachen, sans seriff',
-    flexGrow: 1,
-    userSelect: 'none',
-    cursor: 'pointer',
-    color: '#ee9e09',
   }
 
   return (
@@ -167,3 +157,14 @@ const TopBar = () => {
 }
 
 export default TopBar
+
+const logoStyle = {
+  fontSize: '50px',
+  textAlign: 'center',
+  fontWeight: 'bold',
+  fontFamily: 'Aachen, sans seriff',
+  flexGrow: 1,
+  userSelect: 'none',
+  cursor: 'pointer',
+  color: '#ee9e09',
+}

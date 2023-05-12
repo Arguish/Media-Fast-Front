@@ -1,27 +1,28 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import TimePage from '../../Pages/TimePage/TimePage'
-import ChooseMedia from '../../Pages/chooseMedia/chooseMedia'
+
+//Public comps
+import App from '../../App'
 import Main from '../../Layouts/index'
 import AuthPage from '../../Pages/Auth_Page/Auth_Page'
-import App from '../../App'
-import UserPage from '../../Pages/UserPage/UserPage'
-import CategorySuggestionsPage from '../../Pages/CategorySuggestionsPage/CategorySuggestionsPage'
-import Media_page from '../../Pages/Media_page/Media_page'
-import UserCategoriesComponent from '../../Pages/UserPage/UserCard/UserCategoriesComponent/UserCategoriesComponent'
-import ChangeToShow from '../../Pages/ChangeToShow/ChangeToShow'
-import ChangeToMovie from '../../Pages/ChangeToMovie/ChangeToMovie'
-import Bye from '../../Pages/Bye/Bye'
-import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
-import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
-import AllUsers from '../../Pages/AdminOptions/Users/AllUsers'
-import AllPlatforms from '../../Pages/AdminOptions/Platforms/AllPlatforms'
 
-import OneUser from '../../Pages/AdminOptions/Users/OneUser'
-import AllMedia from '../../Pages/AdminOptions/Media/AllMedia'
-import OneMedia from '../../Pages/AdminOptions/Media/OneMedia'
-import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
+//User Comps
 import AboutUs from '../../Pages/AboutUs/AboutUs'
+import UserPage from '../../Pages/UserPage/UserPage'
+import MediaByCategoryPage from '../../Pages/MediaByCategoryPage/MediaByCategoryPage'
+import ShowOptionsComponent from '../../Components/ShowOptionsComponent/ShowOptionsComponent'
+import CategorySuggestionsPage from '../../Pages/CategorySuggestionsPage/CategorySuggestionsPage'
+import UserCategoriesComponent from '../../Pages/UserPage/UserCard/UserCategoriesComponent/UserCategoriesComponent'
+
+//Admin Comps
+import OneUser from '../../Pages/AdminOptions/Users/OneUser'
+import OneMedia from '../../Pages/AdminOptions/Media/OneMedia'
+import AllMedia from '../../Pages/AdminOptions/Media/AllMedia'
+import AllUsers from '../../Pages/AdminOptions/Users/AllUsers'
+import AdminOptions from '../../Pages/AdminOptions/AdminOptions'
+import AllPlatforms from '../../Pages/AdminOptions/Platforms/AllPlatforms'
 import AllCategories from '../../Pages/AdminOptions/Categories/AllCategories'
+
+//Router
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -51,28 +52,28 @@ export const router = createBrowserRouter([
         element: <CategorySuggestionsPage />,
       },
       {
-        path: '/media',
-        element: <Media_page />,
-      },
-      {
         path: '/time',
         element: (
           <ShowOptionsComponent
-            question={
+            quest={
               ['¿CUÁNTO TIEMPO TIENES?', 'HOW MUCH TIME DO YOU HAVE?'][
                 localStorage.getItem('lang')
               ]
             }
-            optionOne={
-              ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
-                localStorage.getItem('lang')
-              ]
-            }
-            optionTwo={
-              ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
-                localStorage.getItem('lang')
-              ]
-            }
+            array={[
+              {
+                option: ['MENOS DE DOS HORAS', 'LESS THAN TWO HOURS'][
+                  localStorage.getItem('lang')
+                ],
+                url: '/user/me/categories/media/show',
+              },
+              {
+                option: ['MAS DE DOS HORAS', 'MORE THAN TWO HOURS'][
+                  localStorage.getItem('lang')
+                ],
+                url: '/choosemedia',
+              },
+            ]}
           />
         ),
       },
@@ -80,26 +81,21 @@ export const router = createBrowserRouter([
         path: '/choosemedia',
         element: (
           <ShowOptionsComponent
-            question={
+            quest={
               ['¿PELI O SERIE?', 'MOVIE OR SHOW?'][localStorage.getItem('lang')]
             }
-            optionOne={['SERIE', 'TV SHOW'][localStorage.getItem('lang')]}
-            optionTwo={['PELI', 'MOVIE'][localStorage.getItem('lang')]}
+            array={[
+              {
+                option: ['SERIE', 'TV SHOW'][localStorage.getItem('lang')],
+                url: '/user/me/categories/media/show',
+              },
+              {
+                option: ['PELI', 'MOVIE'][localStorage.getItem('lang')],
+                url: '/user/me/categories/media/movie',
+              },
+            ]}
           />
         ),
-      },
-
-      {
-        path: '/changetoshow',
-        element: <ChangeToShow />,
-      },
-      {
-        path: '/changetomovie',
-        element: <ChangeToMovie />,
-      },
-      {
-        path: '/bye',
-        element: <Bye />,
       },
       {
         path: 'user/me/categories/media/:type',
@@ -111,20 +107,22 @@ export const router = createBrowserRouter([
           if (localStorage.getItem('role') !== 'admin') {
             return redirect('/time')
           } else {
-            return (
-              <ShowOptionsComponent
-                question={'WHAT DO YOU WANT TO DO?'}
-                optionOne={'ENJOY'}
-                optionTwo={'WORK'}
-              />
-            )
+            return null
           }
         },
         element: (
           <ShowOptionsComponent
-            question={'WHAT DO YOU WANT TO DO?'}
-            optionOne={'ENJOY'}
-            optionTwo={'WORK'}
+            quest={'WHAT DO YOU WANT TO DO?'}
+            array={[
+              {
+                option: 'ENJOY',
+                url: '/time',
+              },
+              {
+                option: 'WORK',
+                url: '/admin/options',
+              },
+            ]}
           />
         ),
       },
