@@ -19,7 +19,7 @@ Esta aplicación es un recomendador de películas o series que utiliza los gusto
 
 La idea inicial de este proyecto surge a partir de la necesidad de muchas personas de encontrar películas o series que se ajusten a sus gustos y tiempo disponible. En la actualidad, hay una gran cantidad de opciones de entretenimiento en línea, lo que puede hacer que resulte difícil para los usuarios encontrar una película o serie que les guste y que puedan ver en el tiempo que tienen disponible.
 
-Esta aplicación de recomendación de películas o series pretende solucionar ese problema ofreciendo sugerencias personalizadas basadas en los gustos y tiempo disponible del usuario. De esta manera, los usuarios podrán encontrar películas o series que se adapten a sus preferencias y limitaciones de tiempo de manera más fácil y rápida. Además, al permitir a los usuarios crear una cuenta, la aplicación también les brinda la opción de guardar sus preferencias y ver recomendaciones actualizadas en función de sus gustos y tiempo disponible en diferentes momentos.
+Esta aplicación de recomendación de películas o series pretende solucionar ese problema ofreciendo sugerencias personalizadas basadas en los gustos y tiempo disponible del usuario.
 
 ## Figma:
 
