@@ -40,6 +40,10 @@ export const getMediaByCategories = async (userId) => {
 }
 
 export const getMediaByCategoriesAndType = async (userId, type) => {
-  const { data } = await api.get(`media/user/${userId}/categories/media/${type}`)
+  const { data } = await api.get(`media/user/${userId}/categories/media/${type}`, {
+    headers: {
+      'token': localStorage.getItem('token')
+    }
+  })
   return data
 }
