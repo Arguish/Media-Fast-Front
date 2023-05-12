@@ -11,9 +11,6 @@ function App() {
 
   play()
   useEffect(() => {
-    localStorage.getItem('lang')
-      ? localStorage.setItem('lang', '0')
-      : localStorage.setItem('lang', String(localStorage.getItem('lang')))
     const timer = setTimeout(() => {
       localStorage.getItem('token') ? navigate('/time') : navigate('/auth')
     }, 2000)

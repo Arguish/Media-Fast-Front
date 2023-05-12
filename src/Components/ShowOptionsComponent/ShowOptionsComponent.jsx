@@ -2,12 +2,10 @@ import { Button, Card, CardActions, CardHeader } from '@mui/material'
 import React from 'react'
 // import Box from '@mui/material/Box';
 
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ShowOptionsComponent = ({ quest, array }) => {
   const navigate = useNavigate()
-
-  console.log(quest, array)
 
   //Recive a String and an array of objetcs
   // {option:STRING, url:STRING}

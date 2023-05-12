@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import themeOptions from './Themes/theme'
-import { ContextProvider } from './Context/Context/ContextProvider'
-
-import { router } from './Routes/Public/Public.jsx'
 import { RouterProvider } from 'react-router-dom'
+
+import themeOptions from './Themes/theme'
 import { ThemeProvider } from '@emotion/react'
+import { router } from './Routes/Public/Public.jsx'
+import { ContextProvider } from './Context/Context/ContextProvider'
 
 import './index.css'
 

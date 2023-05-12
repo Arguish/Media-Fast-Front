@@ -24,7 +24,7 @@ const MediaByCategoryPage = () => {
   const [tryCount, settryCount] = useState(0)
   const [spin, setspin] = useState(0)
 
-  const [item, array, setArray, nx, prv] = useList()
+  const [item, , setArray, nx, prv] = useList()
   const lang = useLang()
 
   const maxCount = 3
