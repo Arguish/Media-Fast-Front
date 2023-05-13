@@ -42,10 +42,14 @@ const UserCategoriesComponent = () => {
         return (
           <FormControlLabel
             sx={{
-              marginLeft: '30px',
-              marginTop: '5px',
               padding: '5px',
               boxSizing: 'border-box',
+              borderRadius: '10px',
+              margin: '5px',
+              '&:hover': {
+                textShadow: '0 0 20px white',
+                boxShadow: '0 0 5px white',
+              },
               width: {
                 xs: '150px',
                 md: '200px',
@@ -69,7 +73,6 @@ const UserCategoriesComponent = () => {
   return (
     <Container
       sx={{
-        marginTop: '50px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -80,14 +83,15 @@ const UserCategoriesComponent = () => {
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          fontSize: '10px',
+          marginLeft: {
+            xs: '22px'
+          }
         }}
       >
         {displayCategories()}
       </FormGroup>
       <Button
         sx={{
-          marginTop: '10px',
           height: '50px',
           maxWidth: '400px',
           minWidth: '50px',
@@ -100,6 +104,9 @@ const UserCategoriesComponent = () => {
           fontFamily: 'Poppins, sans seriff',
           textShadow: '0.1px 0.1px white',
           border: '0.5px solid',
+          '&:hover': {
+            boxShadow: '0 0 10px #ee9e09',
+          },
         }}
         onClick={handleSubmit}
       >

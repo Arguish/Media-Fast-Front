@@ -51,6 +51,7 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
               margin: '5px',
               '&:hover': {
                 textShadow: '0 0 20px white',
+                boxShadow: '0 0 5px white',
               },
               width: {
                 xs: '150px',
@@ -62,6 +63,7 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
               color: palette.primary.main,
               boxShadow: '0 0 5px #ee9e09',
             }}
+            
             key={category.id}
             control={<Checkbox color={'secondary'} onClick={setCategory} />}
             label={category.category_name}
@@ -85,6 +87,9 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
         sx={{
           display: 'flex',
           flexDirection: 'row',
+          marginLeft: {
+            xs: '22px'
+          }
         }}
       >
         {displayCategories()}
@@ -109,7 +114,6 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
           },
         }}
         onClick={handleSubmit}
-        // disabled={categoriesToSend.length > 0 ? false : true}
       >
         CONTINUE
       </Button>
