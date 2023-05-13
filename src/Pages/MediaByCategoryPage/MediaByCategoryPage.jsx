@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import MediaCard from '../../Components/MediaCard/MediaCard'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import { Button } from '@mui/material'
+import { Button, Card } from '@mui/material'
 
 //Services
 import { getMediaByID } from '../../Services/mediaServices'
@@ -59,7 +59,22 @@ const MediaByCategoryPage = () => {
   }
 
   return (
-    <div className="mediaCardWrapper">
+    <Card
+      sx={{
+        height: 'auto',
+        width: {
+          xs: '80vw',
+          md: '50vw',
+        },
+        position: 'absolute',
+        top: '40%',
+        left: '50%',
+        transform: 'translate(-50%, -30%)',
+        borderRadius: '20px',
+        p: 4,
+      }}
+      raised={true}
+    >
       <div
         style={{
           display: 'flex',
@@ -83,9 +98,33 @@ const MediaByCategoryPage = () => {
             }
           </h2>
         )}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            maxWidth: '80vw',
+          }}
+        >
           {contentReady && (
-            <Button style={arrowsBtnStyle} onClick={previous}>
+            <Button
+              sx={{
+                height: '5em',
+                margin: '5px',
+                position: {
+                  xs: 'absolute',
+                  md: 'inherit',
+                },
+                left: {
+                  xs: '5px',
+                },
+                top: {
+                  xs: '40%',
+                },
+              }}
+              style={arrowsBtnStyle}
+              onClick={previous}
+            >
               {
                 <ArrowBackIosIcon
                   color="secondary"
@@ -106,7 +145,24 @@ const MediaByCategoryPage = () => {
             {contentReady && <MediaCard cardContent={item}></MediaCard>}
           </div>
 
-          <Button style={arrowsBtnStyle} onClick={next}>
+          <Button
+            sx={{
+              height: '5em',
+              margin: '5px',
+              position: {
+                xs: 'absolute',
+                md: 'inherit',
+              },
+              right: {
+                xs: '-10px',
+              },
+              top: {
+                xs: '40%',
+              },
+            }}
+            style={arrowsBtnStyle}
+            onClick={next}
+          >
             {contentReady ? (
               <ArrowForwardIosIcon
                 sx={{
@@ -134,7 +190,7 @@ const MediaByCategoryPage = () => {
           </Button>
         )}
       </div>
-    </div>
+    </Card>
   )
 }
 
@@ -153,14 +209,14 @@ const btnStyle = {
 }
 
 const arrowsBtnStyle = {
-  height: '5em',
-  margin: '10px',
-  color: '#ee9e09',
-  borderRadius: '15px',
-  fontWeight: '800',
-  fontSize: '22px',
-  fontFamily: 'Poppins, sans seriff',
-  textShadow: '0.1px 0.1px white',
+  // height: '5em',
+  // margin: '5px',
+  // color: '#ee9e09',
+  // borderRadius: '15px',
+  // fontWeight: '800',
+  // fontSize: '22px',
+  // fontFamily: 'Poppins, sans seriff',
+  // textShadow: '0.1px 0.1px white',
 }
 
 export default MediaByCategoryPage
