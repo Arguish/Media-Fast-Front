@@ -24,7 +24,7 @@ const AdminOptions = () => {
   }
 
   return (
-    <div>
+    <>
       <Card className="showQuestionComponent" sx={cardStl}>
         <CardHeader disableTypography={true} sx={headerStl}></CardHeader>
         <CardActions sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -45,7 +45,7 @@ const AdminOptions = () => {
           </Button>
         </CardActions>
       </Card>
-    </div>
+    </>
   )
 }
 
@@ -71,6 +71,10 @@ const btnStyle = {
 
 const cardStl = {
   height: 'auto',
+  width: {
+    xs: '80vw',
+    md: '50vw'
+  },
   position: 'absolute',
   top: '40%',
   left: '50%',

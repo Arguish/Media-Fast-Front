@@ -3,6 +3,7 @@ import './ServiceCard.css'
 import { deleteMedia, postMedia } from '../../../Services/mediaServices'
 import {
   Button,
+  Card,
   Paper,
   Table,
   TableBody,
@@ -272,7 +273,28 @@ const ServiceCard = ({ service }) => {
     }
   }
 
-  return <>{showTable()}</>
+  return (
+    <Card
+      sx={{
+        width: {
+          xs: '80vw',
+          md: '90vw',
+        },
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        bgcolor: '#000000',
+        border: '2px solid #000',
+        boxShadow: 24,
+        padding: '25px',
+        color: '#ee9e09',
+        fontFamily: 'Poppins, sans seriff',
+      }}
+    >
+      {showTable()}
+    </Card>
+  )
 }
 
 export default ServiceCard

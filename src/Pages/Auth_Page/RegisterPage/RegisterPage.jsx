@@ -1,4 +1,4 @@
-import { Box, Button, Modal } from '@mui/material'
+import { Button, Modal } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import useLang from '../../../Hooks/useLang'
@@ -15,41 +15,53 @@ const RegisterModalComponent = ({ name }) => {
     )
   }
 
-  const [isHover, setIsHover] = useState()
 
-  const handleHoverIn = () => {
-    setIsHover(true)
-  }
-  const handleHoverOut = () => {
-    setIsHover(false)
-  }
+
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const btnStyle = {
-    height: '50px',
-    minWidth: '40vw',
-    margin: '10px',
-    color: '#000000',
-    backgroundColor: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    background: '#ee9e09',
-    textShadow: '0.5px 0.5px 5px #FFF',
-    transform: isHover ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHover ? '0px 0px 25px #ee9e09' : '0px 1px 0px #000000',
-    border: '0.5px solid',
-  }
+  // const btnStyle = {
+  //   height: '50px',
+  //   minWidth: '40vw',
+  //   margin: '10px',
+  //   color: '#000000',
+  //   backgroundColor: '#ee9e09',
+  //   borderRadius: '15px',
+  //   fontWeight: '800',
+  //   fontSize: '22px',
+  //   fontFamily: 'Poppins, sans seriff',
+  //   background: '#ee9e09',
+  //   textShadow: '0.5px 0.5px 5px #FFF',
+  //   transform: isHover ? 'scale(1.05)' : 'scale(1)',
+  //   boxShadow: isHover ? '0px 0px 25px #ee9e09' : '0px 1px 0px #000000',
+  //   border: '0.5px solid',
+  // }
 
   return (
     <div className="authModalComponent">
       <Button
-        onMouseEnter={handleHoverIn}
-        onMouseLeave={handleHoverOut}
-        style={btnStyle}
+        sx={{
+          height: '50px',
+          minWidth: '40vw',
+          margin: '10px',
+          color: '#000000',
+          backgroundColor: '#ee9e09',
+          borderRadius: '15px',
+          fontSize: '22px',
+          fontFamily: 'Poppins, sans seriff',
+          bgcolor: '#ee9e09',
+          textShadow: '0.5px 0.5px 5px #FFF',
+          transform: 'scale(1.05)',
+          boxShadow: '0px 0px 5px #000000',
+          border: '0.5px solid',
+          '&:hover': {
+          boxShadow: '0px 2px 20px #ee9e09',
+          bgcolor: '#ee9e09',
+          transform: 'scale(1.1)'
+          
+          }
+        }}
         onClick={handleOpen}
       >
         {name}
