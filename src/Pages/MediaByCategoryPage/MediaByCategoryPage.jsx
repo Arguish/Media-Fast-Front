@@ -63,14 +63,15 @@ const MediaByCategoryPage = () => {
       sx={{
         height: 'auto',
         width: {
-          xs: '80vw',
-          md: '50vw',
+          // xs: '80vw',
+          md: 'auto',
         },
         position: 'absolute',
         top: '40%',
         left: '50%',
         transform: 'translate(-50%, -30%)',
         borderRadius: '20px',
+        backgroundColor: 'black',
         p: 4,
       }}
       raised={true}
@@ -116,7 +117,7 @@ const MediaByCategoryPage = () => {
                   md: 'inherit',
                 },
                 left: {
-                  xs: '5px',
+                  xs: '0px',
                 },
                 top: {
                   xs: '40%',

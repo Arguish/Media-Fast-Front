@@ -14,7 +14,7 @@ const MediaCard = ({ cardContent, cover }) => {
           draggable={true}
           onClick={() => setTurn(!turn)}
           style={{
-            margin: '20px',
+            // margin: '20px',
             width: '300px',
             height: '400px',
             display: 'flex',
