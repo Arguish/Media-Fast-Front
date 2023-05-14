@@ -44,28 +44,32 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
       return categories.map((category) => {
         return (
           <FormControlLabel
-            sx={{
-              padding: '5px',
-              boxSizing: 'border-box',
-              borderRadius: '10px',
-              margin: '5px',
-              '&:hover': {
-                textShadow: '0 0 20px white',
-                boxShadow: '0 0 5px white',
-              },
-              width: {
-                xs: '150px',
-                md: '200px',
-              },
-              fontSize: {
-                xs: '16px',
-              },
-              color: palette.primary.main,
-              boxShadow: '0 0 5px #ee9e09',
-            }}
-            
+          sx={{
+            padding: {
+              xs: 0,
+              sm: '5px'
+            },
+            boxSizing: 'border-box',
+            borderRadius: '10px',
+            margin: '5px',
+            '&:hover': {
+              textShadow: '0 0 20px white',
+              boxShadow: '0 0 5px white',
+            },
+            width: {
+              xs: '140px',
+              md: '200px',
+            },
+            color: palette.primary.main,
+            boxShadow: '0 0 5px #ee9e09',
+          }}
             key={category.id}
-            control={<Checkbox color={'secondary'} onClick={setCategory} />}
+            control={<Checkbox sx={{
+              width: {
+                xs: '40px',
+                sm: 'auto'
+              }
+            }} color={'secondary'} onClick={setCategory} />}
             label={category.category_name}
             value={category.id}
           />
@@ -76,20 +80,21 @@ const CategorySuggestionsPage = ({ counter = 0 }) => {
 
   return (
     <Container
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    sx={{
+      marginTop: '30px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    }}
     >
       <FormGroup
-        sx={{
+         sx={{
           display: 'flex',
           flexDirection: 'row',
           marginLeft: {
             xs: '22px'
-          }
+          },
         }}
       >
         {displayCategories()}

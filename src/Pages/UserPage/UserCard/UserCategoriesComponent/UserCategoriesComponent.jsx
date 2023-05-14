@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Navigate, redirect, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { getCategory } from '../../../../Services/categoriesServices'
 import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { Button, Container } from '@mui/material'
+import { Button, Card, Container } from '@mui/material'
 import { useTheme } from '@emotion/react'
 
 const UserCategoriesComponent = () => {
@@ -42,7 +42,10 @@ const UserCategoriesComponent = () => {
         return (
           <FormControlLabel
             sx={{
-              padding: '5px',
+              padding: {
+                xs: 0,
+                sm: '5px'
+              },
               boxSizing: 'border-box',
               borderRadius: '10px',
               margin: '5px',
@@ -51,17 +54,19 @@ const UserCategoriesComponent = () => {
                 boxShadow: '0 0 5px white',
               },
               width: {
-                xs: '150px',
+                xs: '140px',
                 md: '200px',
-              },
-              fontSize: {
-                xs: '16px',
               },
               color: palette.primary.main,
               boxShadow: '0 0 5px #ee9e09',
             }}
             key={category.id}
-            control={<Checkbox color={'secondary'} onClick={setCategory} />}
+            control={<Checkbox sx={{
+              width: {
+                xs: '40px',
+                sm: 'auto'
+              }
+            }} color={'secondary'} onClick={setCategory} />}
             label={category.category_name}
             value={category.id}
           />
@@ -73,9 +78,10 @@ const UserCategoriesComponent = () => {
   return (
     <Container
       sx={{
+        marginTop: '30px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
       }}
     >
@@ -85,7 +91,7 @@ const UserCategoriesComponent = () => {
           flexDirection: 'row',
           marginLeft: {
             xs: '22px'
-          }
+          },
         }}
       >
         {displayCategories()}
