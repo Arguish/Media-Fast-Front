@@ -56,10 +56,10 @@ const customBtn = {
   color: '#000000',
   backgroundColor: '#ee9e09',
   borderRadius: '15px',
-  fontWeight: '200',
+  fontWeight:'normal',
   fontSize: {
     xs: 'calc(16px + 1.2vw)',
-    sm: 'calc(16px + 1.5vw)'
+    sm: 'calc(16px + 1.3vw)'
   },
   fontFamily: 'Poppins, sans seriff',
   textShadow: '0.1px 0.1px white',
