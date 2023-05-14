@@ -9,6 +9,7 @@ import {
   CardActionArea,
   CardActions,
   CardHeader,
+  Container,
 } from '@mui/material'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
 import { NavLink } from 'react-router-dom'
@@ -55,107 +56,70 @@ const UserCard = ({ user }) => {
     )
   }
 
-  const cardStyle = {
-    height: 'auto',
-    width: '100%',
-    position: 'static',
-    border: '2px solid #000',
-    color: '#ee9e09',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const categoryWrapperStyle = {
-    width: '100%',
-  }
-
-  const headerStyle = {
-    fontSize: '50px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const sectionHeaderStyle = {
-    fontSize: '20px',
-    margin: '5px 0',
-    textAlign: 'center',
-    fontWeight: '600',
-    textShadow: `0 1px 30px ${theme.secondary.main}`,
-    color: theme.secondary.main,
-    fontFamily: 'Poppins, sans seriff',
-  }
-
-  const btnStyle = {
-    height: '50px',
-    minWidth: '50px',
-    margin: '10px',
-    color: '#ee9e09',
-    borderRadius: '15px',
-    fontWeight: '800',
-    fontSize: '22px',
-    fontFamily: 'Poppins, sans seriff',
-    textShadow: '0.1px 0.1px white',
-    border: '0.5px solid',
-  }
-
   return (
     <Card
       className="userCardWrapper"
       sx={{
-        height: 'auto',
         width: {
-          xs: '80vw',
-          md: '100%',
+          xs: '99%',
         },
         position: 'static',
-        border: '2px solid',
+        border: '1px solid',
         borderRadius: '10px',
         color: '#ee9e09',
         fontFamily: 'Poppins, sans seriff',
       }}
     >
-      <CardContent>
-        <Box
-          sx={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: '50px',
-              textAlign: 'center',
-              fontWeight: 'bold',
-              fontFamily: 'Poppins, sans seriff',
-            }}
-            variant="h4"
-            component="div"
-          >
-            {user.nickname}
-          </Typography>
-          <CardMedia
-            className="userAvatarClass"
-            component="img"
-            image={user.img_url}
-            alt="User avatar."
-            sx={{
-              height: '100px',
-              width: '100px',
-            }}
-          />
-        </Box>
 
-        <CardContent
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            color: 'text.primary',
-          }}
-        >
+      <CardContent>
+        <Container>
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: '50px',
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontFamily: 'Poppins, sans seriff',
+              }}
+              variant="h4"
+              component="div"
+            >
+              {user.nickname}
+            </Typography>
+            <CardMedia
+              className="userAvatarClass"
+              component="img"
+              image={user.img_url}
+              alt="User avatar."
+              sx={{
+                height: '100px',
+                width: '100px',
+              }}
+            />
+          </Box>
+        </Container>
+      </CardContent>
+
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          color: 'text.primary',
+          maxHeight: {
+            xs: '100%',
+          },
+        }}
+      >
+        <Container>
           <Box
             sx={{
               width: '100%',
@@ -191,6 +155,9 @@ const UserCard = ({ user }) => {
           >
             {showUserCategories()}
           </Box>
+        </Container>
+
+        <Container>
           <Box
             sx={{
               width: '100%',
@@ -215,8 +182,8 @@ const UserCard = ({ user }) => {
             </Typography>
             <ShowButton path="#" id="userMediaBtn" />
           </Box>
-          {showUserMedia()}
-        </CardContent>
+          <Box>{showUserMedia()}</Box>
+        </Container>
       </CardContent>
     </Card>
   )

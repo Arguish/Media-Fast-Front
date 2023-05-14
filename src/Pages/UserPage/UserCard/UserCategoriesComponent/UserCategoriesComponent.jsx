@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Navigate, redirect, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { getCategory } from '../../../../Services/categoriesServices'
 import { updateUserCategories } from '../../../../Services/userServices'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { Button, Container } from '@mui/material'
+import { Button, Card, Container } from '@mui/material'
 import { useTheme } from '@emotion/react'
 
 const UserCategoriesComponent = () => {
@@ -42,22 +42,31 @@ const UserCategoriesComponent = () => {
         return (
           <FormControlLabel
             sx={{
-              marginLeft: '30px',
-              marginTop: '5px',
-              padding: '5px',
-              boxSizing: 'border-box',
-              width: {
-                xs: '150px',
-                md: '200px',
+              padding: {
+                xs: 0,
+                sm: '5px'
               },
-              fontSize: {
-                xs: '16px',
+              boxSizing: 'border-box',
+              borderRadius: '10px',
+              margin: '5px',
+              '&:hover': {
+                textShadow: '0 0 20px white',
+                boxShadow: '0 0 5px white',
+              },
+              width: {
+                xs: '140px',
+                md: '200px',
               },
               color: palette.primary.main,
               boxShadow: '0 0 5px #ee9e09',
             }}
             key={category.id}
-            control={<Checkbox color={'secondary'} onClick={setCategory} />}
+            control={<Checkbox sx={{
+              width: {
+                xs: '40px',
+                sm: 'auto'
+              }
+            }} color={'secondary'} onClick={setCategory} />}
             label={category.category_name}
             value={category.id}
           />
@@ -69,10 +78,10 @@ const UserCategoriesComponent = () => {
   return (
     <Container
       sx={{
-        marginTop: '50px',
+        marginTop: '30px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
       }}
     >
@@ -80,14 +89,15 @@ const UserCategoriesComponent = () => {
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          fontSize: '10px',
+          marginLeft: {
+            xs: '22px'
+          },
         }}
       >
         {displayCategories()}
       </FormGroup>
       <Button
         sx={{
-          marginTop: '10px',
           height: '50px',
           maxWidth: '400px',
           minWidth: '50px',
@@ -100,6 +110,9 @@ const UserCategoriesComponent = () => {
           fontFamily: 'Poppins, sans seriff',
           textShadow: '0.1px 0.1px white',
           border: '0.5px solid',
+          '&:hover': {
+            boxShadow: '0 0 10px #ee9e09',
+          },
         }}
         onClick={handleSubmit}
       >
