@@ -68,7 +68,6 @@ const UserCard = ({ user }) => {
         borderRadius: '10px',
         color: '#ee9e09',
         fontFamily: 'Poppins, sans seriff',
-        boxShadow: '0 0 5px white'
       }}
     >
 
