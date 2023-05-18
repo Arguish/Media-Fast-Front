@@ -62,7 +62,7 @@ const customBtn = {
   borderRadius: '15px',
   fontWeight:'normal',
   fontSize: {
-    xs: 'calc(16px + 2vw)',
+    xs: 'calc(16px + 1.8vw)',
     sm: 'calc(16px + 1.5vw)',
     lg: 'calc(16px + 1.2vw)'
   },
