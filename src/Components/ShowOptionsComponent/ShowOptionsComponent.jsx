@@ -20,7 +20,11 @@ const ShowOptionsComponent = ({ quest, array }) => {
         <CardHeader
           disableTypography={true}
           sx={{
-            fontSize: 'calc(16px + 2vw)',
+            fontSize: {
+              xs: 'calc(16px + 2vw)',
+              sm: 'calc(16px + 1.5vw)',
+              lg: 'calc(16px + 1.2vw)'
+            },
             textAlign: 'center',
             fontWeight: 'bold',
             fontFamily: 'Poppins, sans seriff',
@@ -58,8 +62,9 @@ const customBtn = {
   borderRadius: '15px',
   fontWeight:'normal',
   fontSize: {
-    xs: 'calc(16px + 1.2vw)',
-    sm: 'calc(16px + 1.3vw)'
+    xs: 'calc(16px + 2vw)',
+    sm: 'calc(16px + 1.5vw)',
+    lg: 'calc(16px + 1.2vw)'
   },
   fontFamily: 'Poppins, sans seriff',
   textShadow: '0.1px 0.1px white',
